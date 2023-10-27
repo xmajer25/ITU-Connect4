@@ -223,15 +223,19 @@ ALL TODO
 
 \section{Rozdelenie práce a varianta}
 
-Rozhodli sme sa pre variantu dva. Každý člen vypracuje časti aplikácie.
-Dušan Slúka: Hlavné menu,Obrazovka hry 4-vrade,Modálne okno pre výhru, Modely pre tieto scény, Pislúchajúca časť backendu.\\
-Jakub Majer:
-Ivan Mahút:
-\section{Maketa}
-Jakub Majer:
-Ivan Mahút:
-Dušan Slúka:
-\subsection{Hlavné menu:}
+Rozhodli sme sa pre variantu dva, kde každý člen vypracuje časti aplikácie.
+\subsection*{Práca (Slúka)}
+Hlavné menu, obrazovka hry 4-vrade, modálne okno pre výhru, modely pre tieto scény, prislúchajúca časť backendu.\\
+\subsection*{Práca (Majer)}
+Prihlásenie a registrácia užívateľa, varianta hry štyri v rade s náhodnosťou
+\subsection*{Práca (Mahút)}
+INAV TODO
+
+\section{Tvorba makety a jej testovanie}
+
+\subsection{(Slúka)}
+
+\subsection*{Hlavné menu:}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Menu.png}
@@ -239,7 +243,7 @@ Dušan Slúka:
   \label{fig:menu_label}
 \end{figure}
 
-\subsection{Hracia plocha:}
+\subsection*{Hracia plocha:}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Plocha.png}
@@ -247,15 +251,83 @@ Dušan Slúka:
   \label{fig:štandard_label}
 \end{figure}
 
-\subsection{Modálne okno sumarizácie hry:}
+\subsection*{Modálne okno sumarizácie hry:}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{Vyhra.png}
   \caption{ Sumár po odohraní partie.}
   \label{fig:sumár_label}
 \end{figure}
+\subsection*{Riešenie potrieb užívateľov}
+DUSAN TODO
+\subsection*{Testovanie makety}
+DUSAN TODO
 
-\subsection{Riešenie potrieb užívateľov}
+
+\subsection{(Majer)}
+\subsection*{Vytvorenie konta}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Register.png}
+  \caption{Vytvorenie nového konta}
+  \label{fig:register}
+\end{figure}
+
+\subsection*{Úspešné vytvorenie konta}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{RegisterDone.png}
+  \caption{Úspešné vytvorenie konta}
+  \label{fig:register_done}
+\end{figure}
+
+\subsection*{Prihlásenie sa}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{LogIn.png}
+  \caption{Prihlásenie sa do existujúceho konta}
+  \label{fig:login}
+\end{figure}
+
+\subsection*{Výber hernej varianty}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{PickVariant.png}
+  \caption{Výber varianty hry štyri v rade}
+  \label{fig:pick_variant}
+\end{figure}
+
+\subsection*{Varianta hry s náhodnosťou}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{RandomVariant.png}
+  \caption{Varianta hry štyri v rade s náhodnosťou}
+  \label{fig:random_variant}
+\end{figure}
+
+\subsection*{Riešenie potrieb užívateľov}
+\begin{itemize}
+  \item \textbf{Modifikovateľnosť:} Pokiaľ sa užívateľ prihlási, má možnosť zmeny 
+               použitej scenérie na pozadí hry, avataru profilu a tokenu použitého pri hre.
+  \item \textbf{Varianty:} Pridali sme variantu hry, ktorá má za úlohu udržať hru čo najdlhšie
+                zaujímavú. Ide o variantu kde pri páde tokenu do hernej plochy, sa token
+                ešte môže poodrážať a dopadnúť na iné políčko ako bolo pôvodne zamýšlané.
+  \item \textbf{Vizuálny aspekt:} Rozhodli sme sa využiť pixel art ako zvolenú umeleckú formu.
+                Zámienkou je vytvoriť atraktívnu hru pre nových užívateľov ako aj pre stálich hráčov.
+\end{itemize}
+\subsection*{Testovanie makety}
+JAKUB TODO
+
+\subsection{(Mahút)}
+IVAN TODO
+\subsection*{Riešenie potrieb užívateľov}
+IVAN TODO
+\subsection*{Testovanie makety}
+IVAN TODO
+
+
+
+\section{Riešenie potrieb užívateľov (FIX)}
 Jakub Majer:
 Ivan Mahút:
 Dušan Slúka:
@@ -273,7 +345,5 @@ Dušan Slúka:
     \item \textbf{Slabé užívateľské rozhranie:} Nové užívateľské rozhranie je jasné a intuitívne, zamerané na zlepšenie skúsenosti hráča.
     \item \textbf{Nedostatok herných režimov:} V aktuálnej verzí sú dostupné dva herné režimy pre ktoré sú vytvorené pre dlh3ie udržanie a väčšiu návratnosť hráča.
 \end{itemize}
-
-\end{document}
 
 \end{document}
