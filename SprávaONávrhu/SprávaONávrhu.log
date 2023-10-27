@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.22)  27 OCT 2023 13:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.22)  27 OCT 2023 14:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -396,13 +396,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--229
 
  []
 
-<Menu.png, id=166, 1144.275pt x 767.86874pt>
+<Menu.png, id=178, 1144.275pt x 767.86874pt>
 File: Menu.png Graphic file (type png)
 <use Menu.png>
 Package pdftex.def Info: Menu.png  used on input line 241.
 (pdftex.def)             Requested size: 386.95894pt x 259.66591pt.
 [6]
-<Plocha.png, id=179, 1126.96031pt x 767.86874pt>
+<Plocha.png, id=191, 1126.96031pt x 767.86874pt>
 File: Plocha.png Graphic file (type png)
 <use Plocha.png>
 Package pdftex.def Info: Plocha.png  used on input line 249.
@@ -413,7 +413,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has
                                                   \__shipout_drop_firstpage_...
 l.253 
        <./Menu.png>]
-<Vyhra.png, id=188, 1081.03876pt x 765.6103pt>
+<Vyhra.png, id=200, 1081.03876pt x 765.6103pt>
 File: Vyhra.png Graphic file (type png)
 <use Vyhra.png>
 Package pdftex.def Info: Vyhra.png  used on input line 257.
@@ -423,18 +423,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.263 \subsection
-                 *{Testovanie makety}
+                 {Testovanie makety}
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.263 \subsection
-                 *{Testovanie makety} <./Plocha.png> <./Vyhra.png>]
-<Register.png, id=199, 1704.3675pt x 1141.26375pt>
+                 {Testovanie makety} <./Plocha.png> <./Vyhra.png>]
+<Register.png, id=211, 1704.3675pt x 1141.26375pt>
 File: Register.png Graphic file (type png)
 <use Register.png>
 Package pdftex.def Info: Register.png  used on input line 271.
 (pdftex.def)             Requested size: 386.95894pt x 259.10677pt.
-<RegisterDone.png, id=200, 1722.435pt x 1140.51094pt>
+<RegisterDone.png, id=212, 1722.435pt x 1140.51094pt>
 File: RegisterDone.png Graphic file (type png)
 <use RegisterDone.png>
 Package pdftex.def Info: RegisterDone.png  used on input line 279.
@@ -445,12 +445,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has
                                                   \__shipout_drop_firstpage_...
 l.283 
        <./Register.png>]
-<LogIn.png, id=210, 1722.435pt x 1140.51094pt>
+<LogIn.png, id=221, 1722.435pt x 1140.51094pt>
 File: LogIn.png Graphic file (type png)
 <use LogIn.png>
 Package pdftex.def Info: LogIn.png  used on input line 287.
 (pdftex.def)             Requested size: 386.95894pt x 256.22102pt.
-<PickVariant.png, id=211, 1722.435pt x 1125.45468pt>
+<PickVariant.png, id=222, 1722.435pt x 1125.45468pt>
 File: PickVariant.png Graphic file (type png)
 <use PickVariant.png>
 Package pdftex.def Info: PickVariant.png  used on input line 295.
@@ -466,7 +466,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has
                                                   \__shipout_drop_firstpage_...
 l.299 
        <./RegisterDone.png> <./LogIn.png>]
-<RandomVariant.png, id=222, 897.3525pt x 610.53094pt>
+<RandomVariant.png, id=233, 897.3525pt x 610.53094pt>
 File: RandomVariant.png Graphic file (type png)
 <use RandomVariant.png>
 Package pdftex.def Info: RandomVariant.png  used on input line 303.
@@ -481,35 +481,23 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.312   \item \textbf
-                     {Varianty:} Pridali sme variantu hry, ktorá má za úl... <./PickVariant.png> <./RandomVariant.png>] [12] (./SprávaONávrhu.aux)
-
-Package rerunfilecheck Warning: File `SprávaONávrhu.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `SprávaONávrhu.out':
-(rerunfilecheck)             Before: 71EA28EBD59DD1676A2F85DD3A4BB534;3741
-(rerunfilecheck)             After:  42575D843DF3094FD36CAB595CF3FAFC;3727.
+                     {Varianty:} Pridali sme variantu hry, ktorá má za úl... <./PickVariant.png> <./RandomVariant.png>] [12] [13] (./SprávaONávrhu.aux)
+Package rerunfilecheck Info: File `SprávaONávrhu.out' has not changed.
+(rerunfilecheck)             Checksum: 88FB5A8A1B6C64F8A2456B5004731E6A;4165.
  ) 
 Here is how much of TeX's memory you used:
- 11477 strings out of 476029
- 179283 string characters out of 5794164
+ 11483 strings out of 476029
+ 179366 string characters out of 5794164
  1872340 words of memory out of 5000000
- 31635 multiletter control sequences out of 15000+600000
+ 31640 multiletter control sequences out of 15000+600000
  527686 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,76p,477b,534s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{subsection.7.5} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.7.4} has been referenced but does not exist, replaced by a fixed one
-
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2022/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on SprávaONávrhu.pdf (12 pages, 4913955 bytes).
+Output written on SprávaONávrhu.pdf (13 pages, 4916675 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 116 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 262 compressed objects within 3 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
