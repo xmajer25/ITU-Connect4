@@ -271,9 +271,51 @@ Ivan Mahút:
 Dušan Slúka:
 \begin{itemize}
     \item \textbf{Slabé užívateľské rozhranie:} Nové užívateľské rozhranie je jasné a intuitívne, zamerané na zlepšenie skúsenosti hráča.
-    \item \textbf{Nedostatok herných režimov:} V aktuálnej verzí sú dostupné dva herné režimy pre ktoré sú vytvorené pre dlh3ie udržanie a väčšiu návratnosť hráča.
+    \item \textbf{Nedostatok herných režimov:} V aktuálnej verzí sú dostupné dva herné režimy pre ktoré sú vytvorené pre dlhšie udržanie a väčšiu návratnosť hráča.
 \end{itemize}
 
-\end{document}
 
+\section{Testovanie makety}
+\section{Test navigácie v rozhraní}
+
+
+\textbf{Cieľ:} Overiť, či používatelia môžu ľahko a intuitívne navigovať v rozhraní a rýchlo nájsť požadované informácie.
+
+\textbf{Testovacia úloha/scenár:} 
+\begin{itemize}
+  \item Zahrať štandardnú hru a potom navigovať naspäť do menu alebo zahrať daľšiu a potom následovať do menu.
+  \item Nájasť cestu k registrácií uživaťeľa a naspäť do menu.
+\end{itemize}
+
+\textbf{Metriky:}
+\begin{itemize}
+    \item \textbf{Úspešnosť dokončenia scenára/úlohy (success/error rate):} Koľko používateľov bolo schopných úspešne dokončiť úlohu?
+    \item \textbf{Počet pokusov o nájdenie informácie (number of trials):} Koľkokrát používateľ klikol alebo navštívil rôzne časti rozhrania, kým našiel správnu informáciu?
+    \item \textbf{Počet dotazov od používateľa:} Koľkokrát používateľ požiadal o pomoc alebo mal dotaz týkajúci sa postupu?
+    \item \textbf{Úspešnosť nájdenia predpokladanej cesty pri navigácii (expected path):} Sledujte, či používateľ nasledoval predpokladanú cestu k dosiahnutiu cieľa.
+\end{itemize}
+
+\textbf{Respondenti:}
+
+Počet: 3 
+
+Poznámka: Rovnaký ako pri dotazníku.
+
+\textbf{Vyhodnotenie metrík:}
+\begin{itemize}
+    \item \textbf{Úspešnosť dokončenia scenára/úlohy (success/error rate):} 66\%
+    \item \textbf{Počet pokusov o nájdenie informácie (number of trials):} V priemere 2.
+    \item \textbf{Počet dotazov od používateľa:} V priemere 1.
+    \item \textbf{Úspešnosť nájdenia predpokladanej cesty pri navigácii (expected path):} 100\%
+\end{itemize}
+
+\textbf{Vyhodnotenie:}
+Test odhalil nedostatok pri navigácií do rozhrania registrácie nového uživaťeľa. V aktuálnej verzí sa k tejto obrazovke dostáva cez obrazovku MENU-LOGIN-REGISTER.
+Uživaťeľovi to nakoniec došlo no trvalo mu to dlhšie než by som očakával (úloha 2.). Ako riešenie plánujem pridať tlačítko pre registráciu priamo do Menu aplikácie.
+Ďaľšia maličkosť nastala pri jednom respondentovy kedy po kliknutí na tlačidlo play sa zamyslel ktorý herný režim vybrať.
+A spýtal sa čo znamená crazy house. Pre opravenie tohoto problému plánujem pridať vysvetlivky ktoré sa  zobrazia po nájdení myššou na konkrétnu hernú možnosť.
+Kedže som použil tých istých respondentov ako v dotazníku mohol som sa spýtať či si aplikáciu predstavovali takto ?
+Odpovede boli kladné. Najviac si pochvaľovali zaujímavý dizajn a možnosť rýchlej hry bez registrácie.
+
+ 
 \end{document}
