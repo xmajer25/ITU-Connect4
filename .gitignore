@@ -1,6 +1,7 @@
 .vs
 bin
 obj
-.aux
-.out
-.log
+*.aux
+*.out
+*.log
+*.synctex.gz
