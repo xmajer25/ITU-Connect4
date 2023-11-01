@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connect4.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,12 @@ namespace Connect4.Views
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Menu : Window
     {
-        public Window1()
+        public Menu()
         {
             InitializeComponent();
+            DataContext = new MenuViewModel();
         }
     }
 }
