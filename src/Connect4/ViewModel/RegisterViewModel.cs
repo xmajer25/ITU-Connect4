@@ -20,7 +20,7 @@ namespace Connect4.ViewModel
         public string _password { get; set; } = "Password";
         public string _passwordRepeat { get; set; } = "Repeat Password";
         public string _email { get; set; } = "Email";
-        public string _imgSource { get; set; } = "/Resources/AvatarRn.png";
+        public string _imgSource { get; set; } = "/Resources/Images/AvatarRn.png";
 
         public ICommand NavigateBackCommand { get; private set; }
         public ICommand RegisterCommand { get; private set; }

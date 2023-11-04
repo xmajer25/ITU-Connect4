@@ -25,12 +25,16 @@
 
         <!-- Place the controls in their respective rows -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
-            <Button Content="Register" Margin="10"
+            <Button Margin="10"
                 Command="{Binding NavigateToSettingsCommand}"
-                Width="150" Height="40"/>
-            <Button Content="Log In" Margin="10"
+                Width="150" Height="40">
+                <TextBlock Text="Register" Style="{StaticResource PixelTextStyle}"/>
+            </Button>
+            <Button Margin="10"
                 Command="{Binding NavigateToLogInCommand}"
-                Width="150" Height="40"/>
+                Width="150" Height="40">
+                <TextBlock Text="LogIn" Style="{StaticResource PixelTextStyle}"/>
+            </Button>
             <Button Content="Play" Margin="10"
                 Command="{Binding NavigateToPickVariantCommand}"
                 Width="150" Height="40"/>

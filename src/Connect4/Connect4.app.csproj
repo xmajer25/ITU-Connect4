@@ -143,6 +143,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CrazyHouseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -173,7 +177,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\AvatarRn.png" />
+    <Resource Include="Resources\Images\AvatarRn.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Connect4.BL\Connect4.BL.csproj">
@@ -184,6 +188,10 @@
       <Project>{4bb25e5f-148a-437d-b262-26e4eb6abe92}</Project>
       <Name>Connect4.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\StaticImages\InputField.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,5 +1,6 @@
 ﻿using Connect4.Commands;
 using Connect4.DAL.DatabaseHelpers;
+using System.Windows.Documents;
 using System.Windows.Input;
 using NavService = Connect4.Services.NavigationService;
 

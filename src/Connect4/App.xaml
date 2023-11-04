@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Connect4"
              StartupUri="Views/Menu.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="/Resources/Styles/Styles.xaml">
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

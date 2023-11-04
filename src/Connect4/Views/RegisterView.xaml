@@ -30,17 +30,13 @@
         <StackPanel Orientation="Vertical" Margin="20, 20, 20, 20" 
                     Grid.Row="1" Grid.Column="1" 
                     VerticalAlignment="Center" HorizontalAlignment="Right">
-            <TextBox x:Name="inputName" Text="{Binding _name}" Margin="10" TextAlignment="Center"
-                       Width="200" Height="20"
+            <TextBox x:Name="inputName" Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
-            <TextBox x:Name="inputEmail" Text="{Binding _email}" Margin="10" TextAlignment="Center"
-                       Width="200" Height="20"
+            <TextBox x:Name="inputEmail" Text="{Binding _email}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
-            <TextBox x:Name="inputPassword" Text="{Binding _password}" Margin="10" TextAlignment="Center"
-                       Width="200" Height="20"
+            <TextBox x:Name="inputPassword" Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
-            <TextBox x:Name="inputRepeatPassword" Text="{Binding _passwordRepeat}" Margin="10" TextAlignment="Center"
-                       Width="200" Height="20"
+            <TextBox x:Name="inputRepeatPassword" Text="{Binding _passwordRepeat}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
         </StackPanel>
 
