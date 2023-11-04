@@ -70,6 +70,31 @@ namespace Connect4.DAL.Repositories
             return usernames;
         }
 
+        public List<string> GetAllEmails()
+        {
+            List<string> emails = new List<string>();
+
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT Email FROM Users";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            emails.Add(reader["Email"].ToString());
+                        }
+                    }
+                }
+            }
+
+            return emails;
+        }
+
         public User GetUserByUsername(string username)
         {
             using (var connection = DatabaseConnection.GetConnection())

@@ -15,13 +15,17 @@ using System.Data.Entity;
 using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.Repositories;
 using Connect4.DAL.DataModels;
-
+using System.Windows.Controls;
+using System.Windows;
 
 namespace Connect4.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged
     {
-        public ICommand NavigateToSettingsCommand { get; }
+        public ICommand NavigateToSettingsCommand { get; private set; }
+        public ICommand ExitAppCommand { get; private set; }
+        public ICommand NavigateToLogInCommand { get; private set; }
+        public ICommand NavigateToPickVariantCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
         private string _loggedInUser;
 
@@ -39,27 +43,32 @@ namespace Connect4.ViewModel
 
 
         private readonly NavService _navigationService;
-        private readonly UserService _userService;  // Make this readonly as well
+        private readonly UserService _userService;
         private ObservableCollection<string> _usernames;
 
         public MenuViewModel()
         {
-            //_navigationService = new NavService();
-            // _userService = new UserService();  // Initialize here
-
-            // Usernames = new ObservableCollection<string>(_userService.GetAllUsernames());  // Load usernames here
-
-            //NavigateToSettingsCommand = new RelayCommand(async () => await NavigateToSettings());
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
             Usernames = new ObservableCollection<string>(_userService.GetAllUsernames());
-            //NavigateToSettingsCommand = new RelayCommand(async () => await NavigateToSettings());
-            LogInCommand = new RelayCommand<object>(LogIn);
-            //LogInCommand = new RelayCommand<object>(LogIn);
 
+            LogInCommand = new RelayCommand<object>(LogIn);
+            NavigateToSettingsCommand = new RelayCommand<object>(NavigateToSettings);
+            NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
+            ExitAppCommand = new RelayCommand<object>(ExitApp);
+            NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
         }
 
+        public void ExitApp(object obj)
+        {
+            Application.Current.Shutdown();
+        }
+
+        public void NavigateToPickVariant(object obj)
+        {
+            _navigationService.NavigateTo("/PickVariant");
+        }
 
         private void LogIn(object obj)
         {
@@ -80,9 +89,14 @@ namespace Connect4.ViewModel
 
 
 
-        private async Task NavigateToSettings()
+        private void NavigateToSettings(object obj)
         {
-            _navigationService.NavigateTo("Views/Settings.xaml");
+            _navigationService.NavigateTo("/Register");
+        }
+
+        private void NavigateToLogIn(object obj)
+        {
+            _navigationService.NavigateTo("/LogIn");
         }
 
         public ObservableCollection<string> Usernames

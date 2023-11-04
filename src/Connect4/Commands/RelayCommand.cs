@@ -24,12 +24,26 @@ namespace Connect4.Commands
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null || _canExecute((T)parameter);
+            if (parameter is T typedParameter)
+            {
+                return _canExecute == null || _canExecute(typedParameter);
+            }
+            return _canExecute == null || _canExecute(default);
         }
 
         public void Execute(object parameter)
         {
-            _execute((T)parameter);
+            if (parameter is T typedParameter)
+            {
+                _execute(typedParameter);
+            }
+            else
+            {
+                if (typeof(T).IsValueType || parameter == null)
+                {
+                    _execute(default);
+                }
+            }
         }
     }
 }

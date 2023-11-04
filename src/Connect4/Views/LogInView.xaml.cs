@@ -11,19 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Connect4.Views
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for LogInView.xaml
     /// </summary>
-    public partial class Menu : Page
+    public partial class LogInView : Page
     {
-        public Menu()
+        public LogInView()
         {
             InitializeComponent();
-            DataContext = new MenuViewModel();
+            DataContext = new LogInViewModel();
         }
     }
 }
