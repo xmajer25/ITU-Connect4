@@ -27,7 +27,9 @@ namespace Connect4.Services
         new RouteModel("/Setting", typeof(Settings), typeof(SettingsViewModel)),
         new RouteModel("/Register", typeof(RegisterView), typeof(RegisterViewModel)),
         new RouteModel("/LogIn", typeof(LogInView), typeof(LogInViewModel)),
-        new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel))
+        new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel)),
+        new RouteModel("/StandardMode", typeof(StandardModeView), typeof(StandardModeViewModel)),
+        new RouteModel("/CrazyHouseMode", typeof(CrazyHouseView), typeof(CrazyHouseViewModel)),
     };
 
         public void NavigateTo(string uri)

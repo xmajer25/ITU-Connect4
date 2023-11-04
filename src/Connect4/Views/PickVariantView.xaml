@@ -17,8 +17,10 @@
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Standard" Margin="10"
+                    Command="{Binding NavigateToStandardModeCommand}"
                     Width="150" Height="40"/>
             <Button Content="Crazy House" Margin="10"
+                    Command="{Binding NavigateToCrazyHouseModeCommand}"
                     Width="150" Height="40"/>
             <Button Content="Back" Margin="10"
                     Command="{Binding NavigateToMenuCommand}"

@@ -15,6 +15,8 @@ namespace Connect4.ViewModel
     public class PickVariantViewModel
     {
         public ICommand NavigateToMenuCommand { get; private set; }
+        public ICommand NavigateToStandardModeCommand { get; private set; }
+        public ICommand NavigateToCrazyHouseModeCommand { get; private set; }
         private readonly NavService _navigationService;
 
         public PickVariantViewModel()
@@ -22,11 +24,23 @@ namespace Connect4.ViewModel
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
+            NavigateToStandardModeCommand = new RelayCommand<object>(NavigateToStandardMode);
+            NavigateToCrazyHouseModeCommand = new RelayCommand<object>(NavigateToCrazyHouseMode);
+        }
+
+        public void NavigateToCrazyHouseMode(object obj)
+        {
+            _navigationService.NavigateTo("/CrazyHouseMode");
         }
 
         public void NavigateToMenu(object obj)
         {
             _navigationService.NavigateTo("/Menu");
+        }
+
+        public void NavigateToStandardMode(object obj)
+        {
+            _navigationService.NavigateTo("/StandardMode");
         }
     }
 }
