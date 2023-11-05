@@ -14,10 +14,40 @@
     </Page.DataContext>
     
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Hyperlink Command="{Binding NavigateToMenuCommand}">
-                TODO: Login page (click to return)
-            </Hyperlink>
-        </TextBlock>
+        <Image Source="\Resources\Images\StaticImages\PageLogin.png" Stretch="Fill"/>
+
+        <StackPanel Orientation="Vertical" Margin="0, 250, 0, 0"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Name:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
+            <TextBox Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"/>
+            <TextBlock Text="Password:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
+            <TextBox Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"/>
+
+            <StackPanel Orientation="Vertical" Margin="0, 50, 0, 0"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Style="{StaticResource DefaultButton}"
+                        Command="{Binding LogInCommand}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource YellowButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+                <TextBlock Style="{StaticResource PixelSmallTextStyle}" TextAlignment="Center">
+                <Hyperlink Command="{Binding NavigateToRegisterCommand}" Foreground="Black">
+                    Don't have an account yet?
+                    <LineBreak/>
+                    Create a new one!
+                </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Command="{Binding NavigateToMenuCommand}"
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Background="Transparent" BorderBrush="Transparent"
+                Height="100">
+            <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
+        </Button>
     </Grid>
 </Page>
