@@ -1,5 +1,7 @@
-﻿using Connect4.Models;
+﻿using Connect4.DAL.DataModels;
+using Connect4.Models;
 using Connect4.ViewModel;
+using Connect4.ViewModel.Interfaces;
 using Connect4.Views;
 using System;
 using System.Collections.Generic;
@@ -22,26 +24,26 @@ namespace Connect4.Services
             _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
         }
         public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
-    {
-        new RouteModel("/Menu", typeof(Menu), typeof(MenuViewModel)),
-        new RouteModel("/Settings", typeof(Settings), typeof(SettingsViewModel)),
-        new RouteModel("/Register", typeof(RegisterView), typeof(RegisterViewModel)),
-        new RouteModel("/LogIn", typeof(LogInView), typeof(LogInViewModel)),
-        new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel)),
-        new RouteModel("/StandardMode", typeof(StandardModeView), typeof(StandardModeViewModel)),
-        new RouteModel("/CrazyHouseMode", typeof(CrazyHouseView), typeof(CrazyHouseViewModel)),
-    };
+        {
+            new RouteModel("/Menu", typeof(Menu), typeof(MenuViewModel)),
+            new RouteModel("/Settings", typeof(SettingsView), typeof(SettingsViewModel)),
+            new RouteModel("/Register", typeof(RegisterView), typeof(RegisterViewModel)),
+            new RouteModel("/LogIn", typeof(LogInView), typeof(LogInViewModel)),
+            new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel)),
+            new RouteModel("/StandardMode", typeof(StandardModeView), typeof(StandardModeViewModel)),
+            new RouteModel("/CrazyHouseMode", typeof(CrazyHouseView), typeof(CrazyHouseViewModel)),
+            new RouteModel("/Profile", typeof(ProfileView), typeof(ProfileViewModel)),
+        };
 
-        public void NavigateTo(string uri)
+        public void NavigateTo(string uri, User currentUser)
         {
             Type pageType = GetPageFromString(uri);
             Page page = (Page)Activator.CreateInstance(pageType);
 
-            /*if (page is IReceiveData receiveDataPage)
+            if (page.DataContext is ILoadUser receiveDataPage)
             {
-                // If the page implements a specific interface for receiving data
-                receiveDataPage.ReceiveData(data);
-            }*/
+                receiveDataPage.LoadUser(currentUser);
+            }
 
             _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             _window.WindowState = WindowState.Maximized;

@@ -5,7 +5,6 @@ using Connect4.DAL.DataModels;
 using Connect4.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,40 +13,45 @@ using NavService = Connect4.Services.NavigationService;
 
 namespace Connect4.ViewModel
 {
-    public class PickVariantViewModel : ILoadUser
+    public class ProfileViewModel : ILoadUser
     {
         public User CurrentUser { get; set; }
+        public string username { get; set; } = string.Empty;
+        private string originalUsername { get; set; } = string.Empty;
         public ICommand NavigateToMenuCommand { get; private set; }
-        public ICommand NavigateToStandardModeCommand { get; private set; }
-        public ICommand NavigateToCrazyHouseModeCommand { get; private set; }
+        public ICommand EditNameCommand { get; private set; }
         private readonly NavService _navigationService;
+        private readonly UserService _userService;
 
-        public PickVariantViewModel()
+        public ProfileViewModel()
         {
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
+            _userService = new UserService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
-            NavigateToStandardModeCommand = new RelayCommand<object>(NavigateToStandardMode);
-            NavigateToCrazyHouseModeCommand = new RelayCommand<object>(NavigateToCrazyHouseMode);
+            EditNameCommand = new RelayCommand<string>(EditName);
         }
         public void LoadUser(User user)
         {
             CurrentUser = user;
+
+            if (CurrentUser != null)
+            {
+                username = CurrentUser.Username;
+                originalUsername = CurrentUser.Username;
+            }
         }
 
-        public void NavigateToCrazyHouseMode(object obj)
+        public void EditName(string name)
         {
-            _navigationService.NavigateTo("/CrazyHouseMode", CurrentUser);
+            if (originalUsername == username) return;
+            if (_userService.IsUserNameRegistered(username)) return;
+            if(username == string.Empty) return;
         }
 
         public void NavigateToMenu(object obj)
         {
             _navigationService.NavigateTo("/Menu", CurrentUser);
-        }
-
-        public void NavigateToStandardMode(object obj)
-        {
-            _navigationService.NavigateTo("/StandardMode", CurrentUser);
         }
     }
 }

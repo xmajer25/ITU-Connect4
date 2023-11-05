@@ -1,6 +1,8 @@
 ﻿using Connect4.BL.Services;
 using Connect4.Commands;
 using Connect4.DAL.DatabaseHelpers;
+using Connect4.DAL.DataModels;
+using Connect4.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,8 +16,9 @@ using NavService = Connect4.Services.NavigationService;
 
 namespace Connect4.ViewModel
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : ILoadUser
     {
+        public User CurrentUser { get; set; }
         public string _name { get; set; } = string.Empty;
         public string _password { get; set; } = string.Empty;
         public string _passwordRepeat { get; set; } = string.Empty;
@@ -41,14 +44,19 @@ namespace Connect4.ViewModel
             RegisterCommand = new RelayCommand<object>(Register);
         }
 
+        public void LoadUser(User user)
+        {
+            CurrentUser = user;
+        }
+
         public void NavigateToMenu(object obj)
         {
-            _navigationService.NavigateTo("/Menu");
+            _navigationService.NavigateTo("/Menu", CurrentUser);
         }
 
         public void NavigateToLogIn(object obj)
         {
-            _navigationService.NavigateTo("/LogIn");
+            _navigationService.NavigateTo("/LogIn", CurrentUser);
         }
         public void Register(object obj)
         {

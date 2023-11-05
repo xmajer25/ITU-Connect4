@@ -17,16 +17,19 @@ using Connect4.DAL.Repositories;
 using Connect4.DAL.DataModels;
 using System.Windows.Controls;
 using System.Windows;
+using Connect4.ViewModel.Interfaces;
 
 namespace Connect4.ViewModel
 {
-    public class MenuViewModel : INotifyPropertyChanged
+    public class MenuViewModel : INotifyPropertyChanged, ILoadUser
     {
+        public User CurrentUser { get; set; }
         public ICommand NavigateToSettingsCommand { get; private set; }
         public ICommand ExitAppCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand NavigateToPickVariantCommand { get; private set; }
         public ICommand NavigateToRegisterCommand { get; private set; }
+        public ICommand NavigateToProfileCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
         private string _loggedInUser;
 
@@ -60,11 +63,22 @@ namespace Connect4.ViewModel
             ExitAppCommand = new RelayCommand<object>(ExitApp);
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             NavigateToRegisterCommand = new RelayCommand<object>(NavigateToRegister);
+            NavigateToProfileCommand = new RelayCommand<object>(NavigateToProfile);
+        }
+
+        public void LoadUser(User user)
+        {
+            CurrentUser = user;
+        }
+
+        public void NavigateToProfile(object obj)
+        {
+            _navigationService.NavigateTo("/Profile", CurrentUser);
         }
 
         public void NavigateToRegister(object obj)
         {
-            _navigationService.NavigateTo("/Register");
+            _navigationService.NavigateTo("/Register", CurrentUser);
         }
 
         public void ExitApp(object obj)
@@ -74,7 +88,7 @@ namespace Connect4.ViewModel
 
         public void NavigateToPickVariant(object obj)
         {
-            _navigationService.NavigateTo("/PickVariant");
+            _navigationService.NavigateTo("/PickVariant", CurrentUser);
         }
 
         private void LogIn(object obj)
@@ -83,12 +97,11 @@ namespace Connect4.ViewModel
             if (!string.IsNullOrEmpty(username))
             {
                 var userRepository = new UserRepository();
-                User dbUser = userRepository.GetUserByUsername(username);
+                CurrentUser = userRepository.GetUserByUsername(username);
 
-                if (dbUser != null)
+                if (CurrentUser != null)
                 {
-                    // assuming the User model has a Name property
-                    LoggedInUser = dbUser.Username;
+                    LoggedInUser = CurrentUser.Username;
                 }
                 // ... rest of the code
             }
@@ -98,12 +111,12 @@ namespace Connect4.ViewModel
 
         private void NavigateToSettings(object obj)
         {
-            _navigationService.NavigateTo("/Settings");
+            _navigationService.NavigateTo("/Settings", CurrentUser);
         }
 
         private void NavigateToLogIn(object obj)
         {
-            _navigationService.NavigateTo("/LogIn");
+            _navigationService.NavigateTo("/LogIn", CurrentUser);
         }
 
         public ObservableCollection<string> Usernames

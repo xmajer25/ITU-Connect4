@@ -87,6 +87,8 @@
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
+    <Compile Include="ViewModel\Interfaces\ILoadUser.cs" />
+    <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\PickVariantViewModel.cs" />
@@ -108,11 +110,14 @@
     <Compile Include="Views\PickVariantView.xaml.cs">
       <DependentUpon>PickVariantView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProfileView.xaml.cs">
+      <DependentUpon>ProfileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
@@ -170,11 +175,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ProfileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Settings.xaml">
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -18,9 +18,9 @@ namespace Connect4.Views
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class SettingsView : Page
     {
-        public Settings()
+        public SettingsView()
         {
             InitializeComponent();
             DataContext = new SettingsViewModel();
