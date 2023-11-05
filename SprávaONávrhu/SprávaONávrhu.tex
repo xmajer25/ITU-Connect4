@@ -547,6 +547,12 @@ BL vrstva slúži na oddelenie prístupu do databázy a zobrazovania informáci�
 ktoré jednotlivé funkcie v Services volajú  pre získanie/modifikáciu dát. Services následne využívajú príslušné repozitáre na komunikáciu s databázou.
 Dátový model s Business logikou tvoria \textbf{Model} návrhového vzoru MVVM.
 
-\subsection*{}
+\subsection*{ViewModel}
+Predstavuje logiku užívateľského rozhrania. Slúži ako medzivrsta medzi dátovou vrstvou a zobrazovacou vrstvou.
+ViewModel definuje funkcie na ovládanie stránky a spracúva údaje, ktoré majú byť na stránke zobrazené.
 
+\subsection*{View}
+View je vizuálna časť užívateľského rozhrania aplikácie. Je založený na stránkovom module WPF - Page. 
+Jednotlivé stránky sú prepojené s odpovedajúcim ViewModelom. Je zodpovedný za prezentáciu dát z ViewModelu, to zahŕňa zobrazovanie a "binding"
+dát na jednotlivé vizuálne prvky. Taktiež slúži na interakciu s užívateľom. Jednotlivé stránky sme sa snažili čo najviac oddeliť od ViewModelov. 
 \end{document}
