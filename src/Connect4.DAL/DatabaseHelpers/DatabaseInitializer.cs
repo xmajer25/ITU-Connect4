@@ -20,11 +20,11 @@ namespace Connect4.DAL.DatabaseHelpers
 
                 // Create the table if it doesn't exist
                 string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS Users (
+            CREATE TABLE IF NOT EXISTS Users(
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Username TEXT NOT NULL,
                 Password TEXT NOT NULL,
-                Email TEXT NOT NULL UNIQUE
+                Email TEXT NOT NULL UNIQUE,
                 GamesPlayed INTEGER NOT NULL,
                 GamesWon INTEGER NOT NULL,
                 GoldTotal INTEGER NOT NULL,
@@ -56,7 +56,7 @@ namespace Connect4.DAL.DatabaseHelpers
                 ImagePath TEXT NOT NULL,
                 IsToken INTEGER NOT NULL,
                 IsAvatar INTEGER NOT NULL,
-                IsBack INTEGER NOT NULL,
+                IsBack INTEGER NOT NULL
                 
             );
 
@@ -84,12 +84,12 @@ namespace Connect4.DAL.DatabaseHelpers
         private static void InsertDummyUsers(SQLiteConnection connection)
         {
             string insertDummyQuery = @"
-        INSERT INTO Users (Username, Password, Email) VALUES 
-        ('DummyUser1', 'DummyPass1', 'dummy1@email.com'),
-        ('DummyUser2', 'DummyPass2', 'dummy2@email.com'),
-        ('DummyUser3', 'DummyPass3', 'dummy3@email.com');
+        INSERT INTO Users (Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual) VALUES 
+        ('DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
+        ('DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
+        ('DummyUser3', 'DummyPass3', 'dummy3@email.com', 0, 0, 0, 0);
 
-        INSERT INTO UserAchievements (Name, Description, Earned) VALUES
+        INSERT INTO Achievements (Name, Description) VALUES
         ('Getting Started!', 'Play one game of Connect4.'),
         ('Played 10!','Play ten games of Connect4.'),
         ('Played 100!','Play hundred games of Connect4.'),

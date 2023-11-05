@@ -45,5 +45,22 @@ namespace Connect4.BL.Services
             newUser.GoldActual = 0;
             _userRepository.CreateUser(newUser);
         }
+
+        public void UpdateUser(int userId, string username, string password, string email, int gamesPlayed, int gamesWon, int goldTotal, int goldActual)
+        {
+            User updatedUser = new User
+            {
+                Id = userId,
+                Username = username,
+                Password = password,  // Hashed and salted before storage
+                Email = email,
+                GamesPlayed = gamesPlayed,
+                GamesWon = gamesWon,
+                GoldTotal = goldTotal,
+                GoldActual = goldActual
+            };
+
+            _userRepository.UpdateUser(updatedUser);
+        }
     }
 }

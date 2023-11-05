@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\RouteModel.cs" />
+    <Compile Include="Resources\Converters\StringNotEmptyConverter.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadUser.cs" />

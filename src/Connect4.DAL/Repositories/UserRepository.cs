@@ -134,6 +134,26 @@ namespace Connect4.DAL.Repositories
 
             return null; // Return null if no user was found
         }
+        public void UpdateUser(User user)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+                string query = "UPDATE Users SET Username = @Username, Password = @Password, Email = @Email, GamesPlayed = @GamesPlayed, GamesWon = @GamesWon, GoldTotal = @GoldTotal, GoldActual = @GoldActual WHERE Id = @UserId";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("UserId", user.Id);
+                    command.Parameters.AddWithValue("Username", user.Username);
+                    command.Parameters.AddWithValue("Password", user.Password);
+                    command.Parameters.AddWithValue("Email", user.Email);
+                    command.Parameters.AddWithValue("GamesPlayed", user.GamesPlayed);
+                    command.Parameters.AddWithValue("GamesWon", user.GamesWon);
+                    command.Parameters.AddWithValue("GoldTotal", user.GoldTotal);
+                    command.Parameters.AddWithValue("GoldActual", user.GoldActual);
 
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

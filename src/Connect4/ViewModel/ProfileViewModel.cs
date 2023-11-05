@@ -5,6 +5,7 @@ using Connect4.DAL.DataModels;
 using Connect4.ViewModel.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using NavService = Connect4.Services.NavigationService;
 
 namespace Connect4.ViewModel
 {
-    public class ProfileViewModel : ILoadUser
+    public class ProfileViewModel : ILoadUser, INotifyPropertyChanged
     {
         public User CurrentUser { get; set; }
         public string username { get; set; } = string.Empty;
@@ -22,6 +23,8 @@ namespace Connect4.ViewModel
         public ICommand EditNameCommand { get; private set; }
         private readonly NavService _navigationService;
         private readonly UserService _userService;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ProfileViewModel()
         {
@@ -47,6 +50,9 @@ namespace Connect4.ViewModel
             if (originalUsername == username) return;
             if (_userService.IsUserNameRegistered(username)) return;
             if(username == string.Empty) return;
+
+            _userService.UpdateUser(CurrentUser.Id, username, CurrentUser.Password, CurrentUser.Email, CurrentUser.GamesPlayed, CurrentUser.GamesWon, CurrentUser.GoldTotal, CurrentUser.GoldActual);
+            _navigationService.NavigateTo("/Menu", CurrentUser);
         }
 
         public void NavigateToMenu(object obj)

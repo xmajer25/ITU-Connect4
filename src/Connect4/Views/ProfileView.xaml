@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
-      xmlns:local="clr-namespace:Connect4.Views"
+      xmlns:local="clr-namespace:Connect4.Resources.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfileView">
@@ -12,13 +12,18 @@
     <Page.DataContext>
         <viewModel:ProfileViewModel/>
     </Page.DataContext>
+    <Page.Resources>
+        <local:StringNotEmptyConverter x:Key="StringNotEmptyConverter"/>
+    </Page.Resources>
     
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Name:" Margin="100, 0, 0, -30" Style="{StaticResource PixelSmallTextStyle}"/>
-            <TextBox x:Name="inputName" Text="{Binding username}" Style="{StaticResource InputFieldStyle}"
+            <TextBlock Text="Enter new username:" Margin="100, 0, 0, -30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <TextBox x:Name="inputName" Text="{Binding username, Mode=TwoWay}" Style="{StaticResource NoPlaceHolderInputField}" 
                        IsEnabled="True" IsReadOnly="False"/>
-            <Button Content="Edit" Width="70" Height="70" Command="{Binding EditNameCommand}"/>
+            <Button Width="70" Height="70" Command="{Binding EditNameCommand}">
+                <TextBlock Text="Edit"/>
+            </Button>
         </StackPanel>
 
         <Button Content="Back" Margin="10" 
