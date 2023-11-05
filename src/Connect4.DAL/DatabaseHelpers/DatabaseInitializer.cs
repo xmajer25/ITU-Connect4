@@ -25,6 +25,10 @@ namespace Connect4.DAL.DatabaseHelpers
                 Username TEXT NOT NULL,
                 Password TEXT NOT NULL,
                 Email TEXT NOT NULL UNIQUE
+                GamesPlayed INTEGER NOT NULL,
+                GamesWon INTEGER NOT NULL,
+                GoldTotal INTEGER NOT NULL,
+                GoldActual INTEGER NOT NULL
             );
             
             CREATE TABLE IF NOT EXISTS Achievements(
@@ -53,6 +57,13 @@ namespace Connect4.DAL.DatabaseHelpers
                 IsToken INTEGER NOT NULL,
                 IsAvatar INTEGER NOT NULL,
                 IsBack INTEGER NOT NULL,
+                
+            );
+
+            CREATE TABLE IF NOT EXISTS UserCustomizables (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER NOT NULL,
+                CustomizableId INTEGER NOT NULL,
                 Ownership INTEGER NOT NULL
             );
                 ";

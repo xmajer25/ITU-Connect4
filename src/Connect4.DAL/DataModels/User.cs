@@ -12,5 +12,10 @@ namespace Connect4.DAL.DataModels
         public string Username { get; set; }
         public string Password { get; set; }  // this is hashed and salted before storage
         public string Email { get; set; }
+        public int GamesPlayed { get; set; }
+        public int GamesWon {  get; set; }
+        public int GoldTotal { get; set; }
+        public int GoldActual {  get; set; }
+
     }
 }

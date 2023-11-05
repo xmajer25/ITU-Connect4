@@ -39,6 +39,10 @@ namespace Connect4.BL.Services
             newUser.Username = name;
             newUser.Password = password;
             newUser.Email = email;
+            newUser.GamesPlayed = 0;
+            newUser.GamesWon = 0;
+            newUser.GoldTotal = 0;
+            newUser.GoldActual = 0;
             _userRepository.CreateUser(newUser);
         }
     }

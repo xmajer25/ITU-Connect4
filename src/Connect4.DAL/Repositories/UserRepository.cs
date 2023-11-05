@@ -17,13 +17,18 @@ namespace Connect4.DAL.Repositories
             {
                 connection.Open();
 
-                string query = "INSERT INTO Users (Username, Password, Email) VALUES (@Username, @Password, @Email)";
+                string query = "INSERT INTO Users (Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual)" +
+                    " VALUES (@Username, @Password, @Email, @GamesPlayed, @GamesWon, @GoldTotal, @GoldActual)";
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Username", user.Username);
                     command.Parameters.AddWithValue("@Password", user.Password);
                     command.Parameters.AddWithValue("@Email", user.Email);
+                    command.Parameters.AddWithValue("GamesPlayed", user.GamesPlayed);
+                    command.Parameters.AddWithValue("GamesWon", user.GamesWon);
+                    command.Parameters.AddWithValue("GoldTotal", user.GoldTotal);
+                    command.Parameters.AddWithValue("GoldActual", user.GoldActual);
 
                     command.ExecuteNonQuery();
                 }
@@ -116,7 +121,11 @@ namespace Connect4.DAL.Repositories
                                 Id = Convert.ToInt32(reader["Id"]),
                                 Username = reader["Username"].ToString(),
                                 Password = reader["Password"].ToString(),
-                                Email = reader["Email"].ToString()
+                                Email = reader["Email"].ToString(),
+                                GamesPlayed = Convert.ToInt32(reader["GamesPlayed"]),
+                                GamesWon = Convert.ToInt32(reader["GamesWon"]),
+                                GoldTotal = Convert.ToInt32(reader["GoldTotal"]),
+                                GoldActual = Convert.ToInt32(reader["GoldActual"])
                             };
                         }
                     }
