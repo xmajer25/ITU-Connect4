@@ -199,7 +199,9 @@ Cieľom bolo získať širší názor hráčov, čo dopomôže k dôkladnejšej 
   \item Veľa respondentov neodpovedalo na túto otázku, avšak zaujímavé odpovede boli interaktívna nápoveda a turnajový mód.
 \end{enumerate}
 \subsection*{Zhrnutie prieskumu}
-IVAN TODO
+Na základe prieskumu by aplikácia mala ponúknuť možnosť modifikácie hráčskeho rozhrania formou menenia pozadia, avatarov a pod. Taktiež by aplikácia mala odmeňovať
+hráčov za aktivitu. Odmeňovanie by mohlo byť spojenené práve s modifikovateľnými prvkami, čo by zvýšilo záujem hráčov.
+Užívatelia by uvítali aj nové herné módy ako aj tzv. "user friendly" funkcie ako interaktívna nápoveda.
 \section{Porovnanie s existujúcou aplikáciou}
 \subsection{\href{https://boardgames.io/en/connect4/gameEnd}{boardgames.io/connect4} (Slúka)}
 
@@ -532,5 +534,25 @@ Riešením bude pridanie stavu meny do obchodu.
 
 \section{Návrh riešienia aplikácie}
 Po zvážení schopností a silných stránok tímu, sme ako programovací jazyk vybrali C\# .Ako platformu pre vývoj aplikácie WPF (Windows Presentation Foundation).
-Na ukladanie dát je použitý relačný databázový systém SQLite. Aplikácia je postavená na modeli MVVM (Model\,-\,view\,-\,viewmodel).
+Aplikácia je postavená na modeli MVVM (Model\,-\,view\,-\,viewmodel).
+
+\subsection*{Dátový model}
+Na ukladanie dát je použitý relačný databázový systém SQLite. Tento nástroj sme zvolili z dôvodu skúsenosti práce s ním a zároveň jednoduchosti implementácie.
+Na túto aplikáciu je úplne postačujúci.
+Základné dátové štruktúry sú User, Achievements, Customizables a Settings. Následne model obsahuje aj prepojovacie tabuľky, spájajúce tabuľku User s Achievements a User s Customizables.
+Komunikácia s databázou je riešená repozitármi. Každá tabuľka má prislúchajúci repozitár a obsahuje funckie potrebné na prácu s dátami v konkrétnej tabuľke.
+
+\subsection*{Business logika}
+BL vrstva slúži na oddelenie prístupu do databázy a zobrazovania informácií. Vrstva obsahuje Services pre jednotlivé tabuľky. Services obsahujú funkcie ktoré spracúvajú/pripravujú informácie pre ViewModely,
+ktoré jednotlivé funkcie v Services volajú  pre získanie/modifikáciu dát. Services následne využívajú príslušné repozitáre na komunikáciu s databázou.
+Dátový model s Business logikou tvoria \textbf{Model} návrhového vzoru MVVM.
+
+\subsection*{ViewModel}
+Predstavuje logiku užívateľského rozhrania. Slúži ako medzivrsta medzi dátovou vrstvou a zobrazovacou vrstvou.
+ViewModel definuje funkcie na ovládanie stránky a spracúva údaje, ktoré majú byť na stránke zobrazené.
+
+\subsection*{View}
+View je vizuálna časť užívateľského rozhrania aplikácie. Je založený na stránkovom module WPF - Page. 
+Jednotlivé stránky sú prepojené s odpovedajúcim ViewModelom. Je zodpovedný za prezentáciu dát z ViewModelu, to zahŕňa zobrazovanie a "binding"
+dát na jednotlivé vizuálne prvky. Taktiež slúži na interakciu s užívateľom. Jednotlivé stránky sme sa snažili čo najviac oddeliť od ViewModelov. 
 \end{document}
