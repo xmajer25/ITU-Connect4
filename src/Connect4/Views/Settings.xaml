@@ -6,11 +6,15 @@
         xmlns:viewModel="clr-namespace:Connect4.ViewModel"
         xmlns:local="clr-namespace:Connect4.Views"
         mc:Ignorable="d"
-        Title="Settings" Height="450" Width="800">
+        Title="Settings">
     <Page.DataContext>
         <viewModel:SettingsViewModel/>
     </Page.DataContext>
     <Grid>
-        <TextBlock Text="HELLO WORLD"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Hyperlink Command="{Binding NavigateToMenuCommand}">
+                Page in progress! Click to go back.
+            </Hyperlink>
+        </TextBlock>
     </Grid>
 </Page>

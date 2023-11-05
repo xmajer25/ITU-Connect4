@@ -98,7 +98,7 @@ namespace Connect4.ViewModel
 
         private void NavigateToSettings(object obj)
         {
-            _navigationService.NavigateTo("/Register");
+            _navigationService.NavigateTo("/Settings");
         }
 
         private void NavigateToLogIn(object obj)

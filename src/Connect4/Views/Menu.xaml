@@ -6,25 +6,25 @@
         xmlns:viewModel="clr-namespace:Connect4.ViewModel"
         xmlns:local="clr-namespace:Connect4.Views"
         mc:Ignorable="d"
-        Title="Window1" Height="450" Width="800"
+        Title="Window1"
         ShowsNavigationUI="False">
     <Page.DataContext>
         <viewModel:MenuViewModel/>
     </Page.DataContext>
 
-    <Grid>
+    <Grid ShowGridLines="True">
         <!-- Define rows for the Grid -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- For the Button -->
-            <RowDefinition Height="Auto"/>
-            <!-- For the TextBlock -->
             <RowDefinition Height="*"/>
-            <!-- For the ListBox, * means it'll take the remaining space -->
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <!-- Place the controls in their respective rows -->
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Grid.Row="0" Grid.Column="0">
             <Button Margin="10"
                 Command="{Binding NavigateToRegisterCommand}"
                 Style="{StaticResource DefaultButton}">
@@ -33,7 +33,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource PixelButtonTextStyle}"/>
                 </Grid>
             </Button>
-            
+
             <Button Margin="10"
                 Command="{Binding NavigateToLogInCommand}"
                 Style="{StaticResource DefaultButton}">
@@ -42,6 +42,11 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource PixelButtonTextStyle}"/>
                 </Grid>
             </Button>
+        </StackPanel>
+
+        <!-- Place the controls in their respective rows -->
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            
             
             <Button Margin="10"
                 Command="{Binding NavigateToPickVariantCommand}"
@@ -51,7 +56,16 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Play" Style="{StaticResource PixelButtonTextStyle}"/>
                 </Grid>
             </Button>
-            
+
+            <Button Margin="10"
+                Command="{Binding NavigateToSettingsCommand}"
+                Style="{StaticResource DefaultButton}">
+                <Grid>
+                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" Style="{StaticResource PixelButtonTextStyle}"/>
+                </Grid>
+            </Button>
+
             <Button Margin="10"
                 Command="{Binding ExitAppCommand}"
                 Style="{StaticResource DefaultButton}">
@@ -68,7 +82,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="{Binding}" VerticalAlignment="Bottom" Margin="5"/>
                         <Button Content="LOG In" Width="80" Margin="5" Command="{Binding Path=DataContext.LogInCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                     </StackPanel>
                 </DataTemplate>

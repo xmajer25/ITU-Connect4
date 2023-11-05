@@ -24,7 +24,7 @@ namespace Connect4.Services
         public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
     {
         new RouteModel("/Menu", typeof(Menu), typeof(MenuViewModel)),
-        new RouteModel("/Setting", typeof(Settings), typeof(SettingsViewModel)),
+        new RouteModel("/Settings", typeof(Settings), typeof(SettingsViewModel)),
         new RouteModel("/Register", typeof(RegisterView), typeof(RegisterViewModel)),
         new RouteModel("/LogIn", typeof(LogInView), typeof(LogInViewModel)),
         new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel)),
