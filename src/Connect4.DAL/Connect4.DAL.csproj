@@ -62,7 +62,17 @@
   <ItemGroup>
     <Compile Include="DatabaseHelpers\DatabaseConnection.cs" />
     <Compile Include="DatabaseHelpers\DatabaseInitializer.cs" />
+    <Compile Include="DataModels\Achievements.cs" />
+    <Compile Include="DataModels\Customizable.cs" />
+    <Compile Include="DataModels\JoinUserAchiev.cs" />
+    <Compile Include="DataModels\JoinUserCustom.cs" />
+    <Compile Include="DataModels\Settings.cs" />
     <Compile Include="DataModels\User.cs" />
+    <Compile Include="Repositories\AchievementRepository.cs" />
+    <Compile Include="Repositories\CustomizableRepository.cs" />
+    <Compile Include="Repositories\JoinUserAchievRepository.cs" />
+    <Compile Include="Repositories\JoinUserCustomRepository.cs" />
+    <Compile Include="Repositories\SettingsRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

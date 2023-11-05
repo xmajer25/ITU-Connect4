@@ -39,6 +39,22 @@ namespace Connect4.DAL.DatabaseHelpers
                 AchievementId INTEGER,
                 Earned BOOLEAN
             );
+
+            CREATE TABLE IF NOT EXISTS Settings (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER NOT NULL,
+                MasterVolume INTEGER NOT NULL,
+                EffectVolume INTEGER NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS Customizables (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                ImagePath TEXT NOT NULL,
+                IsToken INTEGER NOT NULL,
+                IsAvatar INTEGER NOT NULL,
+                IsBack INTEGER NOT NULL,
+                Ownership INTEGER NOT NULL
+            );
                 ";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {
