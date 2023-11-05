@@ -16,13 +16,14 @@ namespace Connect4.ViewModel
 {
     public class RegisterViewModel
     {
-        public string _name { get; set; } = "Name";
-        public string _password { get; set; } = "Password";
-        public string _passwordRepeat { get; set; } = "Repeat Password";
-        public string _email { get; set; } = "Email";
+        public string _name { get; set; } = string.Empty;
+        public string _password { get; set; } = string.Empty;
+        public string _passwordRepeat { get; set; } = string.Empty;
+        public string _email { get; set; } = string.Empty;
         public string _imgSource { get; set; } = "/Resources/Images/AvatarRn.png";
 
-        public ICommand NavigateBackCommand { get; private set; }
+        public ICommand NavigateToMenuCommand { get; private set; }
+        public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand RegisterCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -35,22 +36,36 @@ namespace Connect4.ViewModel
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
-            NavigateBackCommand = new RelayCommand<object>(NavigateBack);
+            NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
+            NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
             RegisterCommand = new RelayCommand<object>(Register);
         }
 
-        public void NavigateBack(object obj)
+        public void NavigateToMenu(object obj)
+        {
+            _navigationService.NavigateTo("/Menu");
+        }
+
+        public void NavigateToLogIn(object obj)
         {
             _navigationService.NavigateTo("/LogIn");
         }
-
         public void Register(object obj)
         {
+            //Check empty string
+            if (_name == string.Empty ||
+                _email == string.Empty ||
+                _password == string.Empty ||
+                _passwordRepeat == string.Empty) return;
+
+            //Check if not exist
             if (_userService.IsUserNameRegistered(_name)) return;
             if (_userService.IsUserEmailRegistered(_email)) return;
+
             if (_password != _passwordRepeat) return;
+
             _userService.CreateUser(_name, _password, _email);
-            NavigateBack(obj);
+            NavigateToLogIn(obj);
         }
     }
 }

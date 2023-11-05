@@ -6,23 +6,68 @@
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
                     <Grid>
-                        <Image Source="/Resources/Images/StaticImages/InputField.png" Width="250" Height="30" Margin="0"/>
-                        <ScrollViewer x:Name="PART_ContentHost" VerticalContentAlignment="Bottom" Margin="5"/>
-                    </Grid>                    
+                        <Image Source="/Resources/Images/StaticImages/InputField.png" Width="500" Height="50"/>
+                        <TextBlock x:Name="PlaceholderTextBlock" Text="Enter..."
+                                    FontSize="20" 
+                                    FontFamily="Press Start 2P" 
+                                    Margin="0, 15, 0, 0"
+                                    TextOptions.TextRenderingMode="Aliased" 
+                                    TextOptions.TextFormattingMode="Display"
+                                    FontWeight="Bold"
+                                    Visibility="Collapsed"/>
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalContentAlignment="Bottom" Margin="15"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Show the placeholder when TextBox is empty -->
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="PlaceholderTextBlock" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="0, 30, 0, 0"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
-    <!--Pixel Text??-->
-    <Style x:Key="PixelTextStyle" TargetType="TextBlock">
+    <!--Pixel Button Text??-->
+    <Style x:Key="PixelButtonTextStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="FontFamily" Value="Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
+
+    <Style x:Key="YellowButtonTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Yellow"/>
+    </Style>
+
+    <Style x:Key="PixelSmallTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <!-- Button Styles -->
+    <Style x:Key="DefaultButton" TargetType="Button">
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+    
 
 </ResourceDictionary>

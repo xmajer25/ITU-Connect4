@@ -44,6 +44,7 @@ namespace Connect4.Services
             }*/
 
             _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            _window.WindowState = WindowState.Maximized;
             _window.Content = page;
         }
 

@@ -26,6 +26,7 @@ namespace Connect4.ViewModel
         public ICommand ExitAppCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand NavigateToPickVariantCommand { get; private set; }
+        public ICommand NavigateToRegisterCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
         private string _loggedInUser;
 
@@ -58,6 +59,12 @@ namespace Connect4.ViewModel
             NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
             ExitAppCommand = new RelayCommand<object>(ExitApp);
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
+            NavigateToRegisterCommand = new RelayCommand<object>(NavigateToRegister);
+        }
+
+        public void NavigateToRegister(object obj)
+        {
+            _navigationService.NavigateTo("/Register");
         }
 
         public void ExitApp(object obj)

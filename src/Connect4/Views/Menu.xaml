@@ -26,21 +26,29 @@
         <!-- Place the controls in their respective rows -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
             <Button Margin="10"
-                Command="{Binding NavigateToSettingsCommand}"
+                Command="{Binding NavigateToRegisterCommand}"
                 Width="150" Height="40">
-                <TextBlock Text="Register" Style="{StaticResource PixelTextStyle}"/>
+                <TextBlock Text="Register" Style="{StaticResource PixelButtonTextStyle}"/>
             </Button>
+            
             <Button Margin="10"
                 Command="{Binding NavigateToLogInCommand}"
                 Width="150" Height="40">
-                <TextBlock Text="LogIn" Style="{StaticResource PixelTextStyle}"/>
+                <TextBlock Text="LogIn" Style="{StaticResource PixelButtonTextStyle}"/>
             </Button>
-            <Button Content="Play" Margin="10"
+            
+            <Button Margin="10"
                 Command="{Binding NavigateToPickVariantCommand}"
-                Width="150" Height="40"/>
-            <Button Content="Exit" Margin="10"
+                Width="150" Height="40">
+                <TextBlock Text="Play" Style="{StaticResource PixelButtonTextStyle}"/>
+            </Button>
+            
+            <Button Margin="10"
                 Command="{Binding ExitAppCommand}"
-                Width="150" Height="40"/>
+                Width="150" Height="40">
+                <TextBlock Text="Exit" Style="{StaticResource PixelButtonTextStyle}"/>
+            </Button>
+            
         </StackPanel>
         <TextBlock Name="ResultText" Text="{Binding LoggedInUser}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
 

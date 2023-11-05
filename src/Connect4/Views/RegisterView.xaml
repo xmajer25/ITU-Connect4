@@ -26,34 +26,54 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        <Image Source="/Resources/Images/StaticImages/PageRegister.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Stretch="Fill"/>
 
-        <StackPanel Orientation="Vertical" Margin="20, 20, 20, 20" 
-                    Grid.Row="1" Grid.Column="1" 
+        <Button Command="{Binding NavigateToMenuCommand}" 
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Background="Transparent" BorderBrush="Transparent"
+                Height="100">
+            <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
+        </Button>
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1" Grid.Column="1" Margin="0, 300, -100, 0"
                     VerticalAlignment="Center" HorizontalAlignment="Right">
+            
+            <TextBlock Text="Name:" Margin="100,0,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputName" Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+
+            <TextBlock Text="Email:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputEmail" Text="{Binding _email}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+
+            <TextBlock Text="Password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputPassword" Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+
+            <TextBlock Text="Repeat password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputRepeatPassword" Text="{Binding _passwordRepeat}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
         </StackPanel>
 
 
-        <StackPanel Orientation="Vertical" Margin="20"
-                    Grid.Row="1" Grid.Column="2"
+        <StackPanel Orientation="Vertical" 
+                    Grid.Row="1" Grid.Column="2" Margin="100, 300, 0, 0"
                     VerticalAlignment="Center" HorizontalAlignment="Left">
-            <StackPanel Orientation="Vertical" Margin="10"
+            <StackPanel Orientation="Vertical" Margin="0, 0, 0, 100"
                         VerticalAlignment="Top" HorizontalAlignment="Center">
-                <TextBlock Text="CHOOSE AVATAR" FontSize="15" FontWeight="Bold"/>
+                <TextBlock Text="CHOOSE AVATAR" Style="{StaticResource PixelSmallTextStyle}"/>
                 <Image Source="{Binding _imgSource}" Width="100" Height="100"></Image>
             </StackPanel>
-            <Button Content="REGISTER" Command="{Binding RegisterCommand}">
-                <!-- Todo button -->
+
+            <Button Command="{Binding RegisterCommand}" Style="{StaticResource DefaultButton}">
+                <Grid>
+                    <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource YellowButtonTextStyle}"/>
+                </Grid>
             </Button>
-            <TextBlock FontSize="15" FontWeight="Bold">
-                <Hyperlink Command="{Binding NavigateBackCommand}">
+            <TextBlock Style="{StaticResource PixelSmallTextStyle}">
+                <Hyperlink Command="{Binding NavigateToLogInCommand}" Foreground="Black">
                     Already have an account?
                     <LineBreak/>
                     Log in .
