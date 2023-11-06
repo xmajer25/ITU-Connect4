@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -16,7 +17,7 @@ using NavService = Connect4.Services.NavigationService;
 
 namespace Connect4.ViewModel
 {
-    public class RegisterViewModel : ILoadUser
+    public class RegisterViewModel : ILoadUser, INotifyPropertyChanged
     {
         public User CurrentUser { get; set; }
         public string _name { get; set; } = string.Empty;
@@ -25,6 +26,111 @@ namespace Connect4.ViewModel
         public string _email { get; set; } = string.Empty;
         public string _imgSource { get; set; } = "/Resources/Images/AvatarRn.png";
 
+        private bool _isNameError = false;
+        private string _nameError = string.Empty;
+        public bool IsNameError
+        {
+            get { return _isNameError; }
+            set
+            {
+                if (_isNameError != value)
+                {
+                    _isNameError = value;
+                    OnPropertyChanged("IsNameError");
+                }
+            }
+        }
+        public string NameError
+        {
+            get { return _nameError; }
+            set
+            {
+                if(_nameError != value)
+                {
+                    _nameError = value;
+                    OnPropertyChanged("NameError");
+                }
+            }
+        }
+
+        private bool _isEmailError = false;
+        private string _emailError = string.Empty;
+        public bool IsEmailError
+        {
+            get { return _isEmailError; }
+            set
+            {
+                if (_isEmailError != value)
+                {
+                    _isEmailError = value;
+                    OnPropertyChanged("IsEmailError");
+                }
+            }
+        }
+        public string EmailError
+        {
+            get { return _emailError; }
+            set
+            {
+                if (_emailError != value)
+                {
+                    _emailError = value;
+                    OnPropertyChanged("EmailError");
+                }
+            }
+        }
+        private bool _isPasswordError = false;
+        private string _passwordError = string.Empty;
+        public bool IsPasswordError
+        {
+            get { return _isPasswordError; }
+            set
+            {
+                if (_isPasswordError != value)
+                {
+                    _isPasswordError = value;
+                    OnPropertyChanged("IsPasswordError");
+                }
+            }
+        }
+        public string PasswordError
+        {
+            get { return _passwordError; }
+            set
+            {
+                if (_passwordError != value)
+                {
+                    _passwordError = value;
+                    OnPropertyChanged("PasswordError");
+                }
+            }
+        }
+        private bool _isRepeatPasswordError = false;
+        private string _repeatPasswordError = string.Empty;
+        public bool IsRepeatPasswordError
+        {
+            get { return _isRepeatPasswordError; }
+            set
+            {
+                if (_isRepeatPasswordError != value)
+                {
+                    _isRepeatPasswordError = value;
+                    OnPropertyChanged("IsRepeatPasswordError");
+                }
+            }
+        }
+        public string RepeatPasswordError
+        {
+            get { return _repeatPasswordError; }
+            set
+            {
+                if (_repeatPasswordError != value)
+                {
+                    _repeatPasswordError = value;
+                    OnPropertyChanged("RepeatPasswordError");
+                }
+            }
+        }
         public ICommand NavigateToMenuCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand RegisterCommand { get; private set; }
@@ -60,20 +166,88 @@ namespace Connect4.ViewModel
         }
         public void Register(object obj)
         {
-            //Check empty string
-            if (_name == string.Empty ||
-                _email == string.Empty ||
-                _password == string.Empty ||
-                _passwordRepeat == string.Empty) return;
+            bool canRegister = true;
 
-            //Check if not exist
-            if (_userService.IsUserNameRegistered(_name)) return;
-            if (_userService.IsUserEmailRegistered(_email)) return;
+            //Check if name is correct
+            if(_name == string.Empty)
+            {
+                IsNameError = true;
+                NameError = "*Name is empty. Fill in your name.";
+                canRegister = false;
+            }
+            else if (_userService.IsUserNameRegistered(_name))
+            {
+                IsNameError = true;
+                NameError = "*Name already exists. Pick unique name.";
+                canRegister = false;
+            }
+            else
+            {
+                IsNameError = false;
+                NameError = string.Empty;
+            }
 
-            if (_password != _passwordRepeat) return;
+            //Check if email is correct
+            if(_email == string.Empty)
+            {
+                IsEmailError = true;
+                EmailError = "*Email is empty. Fill in your email";
+                canRegister = false;
+            }
+            else if (_userService.IsUserEmailRegistered(_email))
+            {
+                IsEmailError = true;
+                EmailError = "*Email already exists. Pick unique email";
+                canRegister = false;
+            }
+            else
+            {
+                IsEmailError = false;
+                EmailError = string.Empty;
+            }
+
+            //Check if password is correct
+            if (_password == string.Empty)
+            {
+                IsPasswordError = true;
+                PasswordError = "*Password is empty. Fill in your password";
+                canRegister = false;
+            }
+            else
+            {
+                IsPasswordError = false;
+                PasswordError = string.Empty;
+            }
+
+
+            if (_passwordRepeat == string.Empty)
+            {
+                IsRepeatPasswordError = true;
+                RepeatPasswordError = "*Password repeat is empty. Fill in your password";
+                canRegister = false;
+            }
+            else if (_password != _passwordRepeat)
+            {
+                IsRepeatPasswordError = true;
+                RepeatPasswordError = "*Passwords do not match. Make sure you entered password correctly.";
+                canRegister = false;
+            }
+            else
+            {
+                IsRepeatPasswordError = false;
+                RepeatPasswordError = string.Empty;
+            }
+            
+
+
+            if (!canRegister) return;
 
             _userService.CreateUser(_name, _password, _email);
             NavigateToLogIn(obj);
+        }
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

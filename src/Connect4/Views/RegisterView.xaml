@@ -4,11 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+      xmlns:conv="clr-namespace:Connect4.Resources.Converters"
       xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterView"
       ShowsNavigationUI="False">
+
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
 
     <Page.DataContext>
         <viewModel:RegisterViewModel/>
@@ -42,18 +47,22 @@
             <TextBlock Text="Name:" Margin="100,0,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputName" Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding NameError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsNameError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
 
             <TextBlock Text="Email:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputEmail" Text="{Binding _email}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding EmailError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsEmailError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
 
             <TextBlock Text="Password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputPassword" Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding PasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
 
             <TextBlock Text="Repeat password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
             <TextBox x:Name="inputRepeatPassword" Text="{Binding _passwordRepeat}" Style="{StaticResource InputFieldStyle}"
                        IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding RepeatPasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsRepeatPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
         </StackPanel>
 
 
