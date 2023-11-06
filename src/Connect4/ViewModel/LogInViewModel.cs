@@ -22,6 +22,60 @@ namespace Connect4.ViewModel
         public ICommand NavigateToRegisterCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
         public string _name { get; set; } = string.Empty;
+        private bool _isNameError = false;
+        private string _nameError = string.Empty;
+        public bool IsNameError
+        {
+            get { return _isNameError; }
+            set
+            {
+                if( _isNameError != value )
+                {
+                    _isNameError = value;
+                    OnPropertyChanged("IsNameError");
+                }
+            }
+        }
+        public string NameError
+        {
+            get { return _nameError; }
+            set
+            {
+                if( _nameError != value )
+                {
+                    _nameError = value;
+                    OnPropertyChanged("NameError");
+                }
+            }
+        }
+
+        private bool _isPasswordError = false;
+        private string _passwordError = string.Empty;
+        public bool IsPasswordError
+        {
+            get { return _isPasswordError; }
+            set
+            {
+                if (_isPasswordError != value)
+                {
+                    _isPasswordError = value;
+                    OnPropertyChanged("IsPasswordError");
+                }
+            }
+        }
+        public string PasswordError
+        {
+            get { return _passwordError; }
+            set
+            {
+                if (_passwordError != value)
+                {
+                    _passwordError = value;
+                    OnPropertyChanged("PasswordError");
+                }
+            }
+        }
+
         public string _password { get; set; } = string.Empty;
 
 
@@ -56,7 +110,54 @@ namespace Connect4.ViewModel
 
         public void LogIn(object obj)
         {
-            //TODO
+            bool canLogIn = true;
+            if(_password == string.Empty) 
+            {
+                IsPasswordError = true;
+                PasswordError = "*Password is empty. Please fill in your password.";
+                canLogIn = false;
+            }
+            else
+            {
+                IsPasswordError = false;
+                PasswordError = string.Empty;
+            }
+
+            if (_name == string.Empty)
+            {
+                IsNameError = true;
+                NameError = "*Name is empty. Please fill in your name.";
+                canLogIn= false;
+            }
+            else
+            {
+                IsNameError = false;
+                NameError = string.Empty;
+            }
+
+            if (!canLogIn) return;
+
+            User logInUser = _userService.GetUserByUsername(_name);
+            if(logInUser == null)
+            {
+                IsNameError = true;
+                NameError = "*Name or Password are incorect.";
+                return;
+            }
+            if(_password != logInUser.Password) 
+            {
+                IsNameError = true;
+                NameError = "*Name or Password are incorect.";
+                return;
+            }
+
+            CurrentUser = logInUser;
+            _navigationService.NavigateTo("/Menu", CurrentUser);
+        }
+
+         protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

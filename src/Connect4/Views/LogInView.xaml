@@ -4,10 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+      xmlns:conv="clr-namespace:Connect4.Resources.Converters"
       xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LogInView">
+    
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
     
     <Page.DataContext>
         <viewModel:LogInViewModel/>
@@ -20,8 +25,11 @@
                     VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Name:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
             <TextBox Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"/>
+            <TextBlock Text="{Binding NameError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsNameError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+            
             <TextBlock Text="Password:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
             <TextBox Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"/>
+            <TextBlock Text="{Binding PasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
 
             <StackPanel Orientation="Vertical" Margin="0, 50, 0, 0"
                         HorizontalAlignment="Center" VerticalAlignment="Center">

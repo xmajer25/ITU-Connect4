@@ -62,5 +62,10 @@ namespace Connect4.BL.Services
 
             _userRepository.UpdateUser(updatedUser);
         }
+
+        public User GetUserByUsername(string username)
+        {
+            return _userRepository.GetUserByUsername(username);
+        }
     }
 }
