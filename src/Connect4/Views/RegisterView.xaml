@@ -67,9 +67,9 @@
 
 
         <StackPanel Orientation="Vertical" 
-                    Grid.Row="1" Grid.Column="2" Margin="100, 300, 0, 0"
+                    Grid.Row="1" Grid.Column="2" Margin="50, 330, 0, 0"
                     VerticalAlignment="Center" HorizontalAlignment="Left">
-            <StackPanel Orientation="Vertical" Margin="0, 0, 0, 100"
+            <StackPanel Orientation="Vertical" Margin="0, 0, 0, 130"
                         VerticalAlignment="Top" HorizontalAlignment="Center">
                 <TextBlock Text="CHOOSE AVATAR" Style="{StaticResource PixelSmallTextStyle}"/>
                 <Image Source="{Binding _imgSource}" Width="100" Height="100"></Image>
@@ -81,7 +81,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource YellowButtonTextStyle}"/>
                 </Grid>
             </Button>
-            <TextBlock Style="{StaticResource PixelSmallTextStyle}">
+            <TextBlock Style="{StaticResource PixelSmallTextStyle}" TextAlignment="Center">
                 <Hyperlink Command="{Binding NavigateToLogInCommand}" Foreground="Black">
                     Already have an account?
                     <LineBreak/>

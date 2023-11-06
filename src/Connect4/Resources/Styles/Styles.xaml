@@ -30,14 +30,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="MaxLength" Value="25"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0, 30, 0, 0"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="MaxLength" Value="25"/>
+        <Setter Property="MaxLength" Value="18"/>
     </Style>
 
     <Style x:Key="NoPlaceHolderInputField" TargetType="TextBox">
@@ -54,7 +54,7 @@
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0, 30, 0, 0"/>
         <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -63,16 +63,25 @@
     
     <!--TEXT BLOCK STYLES-->
     <Style x:Key="PixelButtonTextStyle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
+    <Style x:Key="PixelBigButtonTextStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+
+    </Style>
+
     <Style x:Key="YellowButtonTextStyle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="17"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -80,16 +89,15 @@
     </Style>
 
     <Style x:Key="PixelSmallTextStyle" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style x:Key="ErrorMessage" TargetType="TextBlock">
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontFamily" Value="Press Start 2P"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontFamily" Value="/Resources/Fonts/#Press Start 2P"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Aliased"/>
         <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -103,6 +111,13 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
     </Style>
-    
+
+    <Style x:Key="BigButton" TargetType="Button">
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+
 
 </ResourceDictionary>

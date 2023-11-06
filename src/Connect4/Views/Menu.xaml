@@ -27,6 +27,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Stretch="Fill" Source="/Resources/Images/StaticImages/PageMenu.png"/>
         <Grid Grid.Row="0" Grid.Column="0"
               HorizontalAlignment="Right" VerticalAlignment="Top"
               Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
@@ -36,7 +37,7 @@
                 Style="{StaticResource DefaultButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource PixelButtonTextStyle}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="REGISTER" Style="{StaticResource PixelButtonTextStyle}"/>
                     </Grid>
                 </Button>
 
@@ -45,7 +46,7 @@
                 Style="{StaticResource DefaultButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource PixelButtonTextStyle}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="LOG IN" Style="{StaticResource PixelButtonTextStyle}"/>
                     </Grid>
                 </Button>
             </StackPanel>
@@ -69,43 +70,32 @@
             
             <Button Margin="10"
                 Command="{Binding NavigateToPickVariantCommand}"
-                Style="{StaticResource DefaultButton}">
+                Style="{StaticResource BigButton}">
                 <Grid>
                     <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Play" Style="{StaticResource PixelButtonTextStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="PLAY" Style="{StaticResource PixelBigButtonTextStyle}"/>
                 </Grid>
             </Button>
 
             <Button Margin="10"
                 Command="{Binding NavigateToSettingsCommand}"
-                Style="{StaticResource DefaultButton}">
+                Style="{StaticResource BigButton}">
                 <Grid>
                     <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Settings" Style="{StaticResource PixelButtonTextStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SETTINGS" Style="{StaticResource PixelBigButtonTextStyle}"/>
                 </Grid>
             </Button>
 
             <Button Margin="10"
                 Command="{Binding ExitAppCommand}"
-                Style="{StaticResource DefaultButton}">
+                Style="{StaticResource BigButton}">
                 <Grid>
                     <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Exit" Style="{StaticResource PixelButtonTextStyle}"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
                 </Grid>
             </Button>
             
         </StackPanel>
         <TextBlock Name="ResultText" Text="{Binding LoggedInUser}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
-
-        <ListBox x:Name="UsernamesListBox" ItemsSource="{Binding Usernames}" Grid.Row="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" VerticalAlignment="Bottom" Margin="5"/>
-                        <Button Content="LOG In" Width="80" Margin="5" Command="{Binding Path=DataContext.LogInCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
     </Grid>
 </Page>

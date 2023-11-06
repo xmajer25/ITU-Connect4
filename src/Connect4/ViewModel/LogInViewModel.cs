@@ -114,7 +114,7 @@ namespace Connect4.ViewModel
             if(_password == string.Empty) 
             {
                 IsPasswordError = true;
-                PasswordError = "*Password is empty. Please fill in your password.";
+                PasswordError = "*Please fill in your password.";
                 canLogIn = false;
             }
             else
@@ -126,7 +126,7 @@ namespace Connect4.ViewModel
             if (_name == string.Empty)
             {
                 IsNameError = true;
-                NameError = "*Name is empty. Please fill in your name.";
+                NameError = "*Please fill in your name.";
                 canLogIn= false;
             }
             else

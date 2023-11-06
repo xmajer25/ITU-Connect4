@@ -172,13 +172,13 @@ namespace Connect4.ViewModel
             if(_name == string.Empty)
             {
                 IsNameError = true;
-                NameError = "*Name is empty. Fill in your name.";
+                NameError = "*Fill in your name.";
                 canRegister = false;
             }
             else if (_userService.IsUserNameRegistered(_name))
             {
                 IsNameError = true;
-                NameError = "*Name already exists. Pick unique name.";
+                NameError = "*Name already exists.";
                 canRegister = false;
             }
             else
@@ -191,13 +191,13 @@ namespace Connect4.ViewModel
             if(_email == string.Empty)
             {
                 IsEmailError = true;
-                EmailError = "*Email is empty. Fill in your email";
+                EmailError = "*Fill in your email";
                 canRegister = false;
             }
             else if (_userService.IsUserEmailRegistered(_email))
             {
                 IsEmailError = true;
-                EmailError = "*Email already exists. Pick unique email";
+                EmailError = "*Email already exists.";
                 canRegister = false;
             }
             else
@@ -210,7 +210,7 @@ namespace Connect4.ViewModel
             if (_password == string.Empty)
             {
                 IsPasswordError = true;
-                PasswordError = "*Password is empty. Fill in your password";
+                PasswordError = "*Fill in your password";
                 canRegister = false;
             }
             else
@@ -223,13 +223,13 @@ namespace Connect4.ViewModel
             if (_passwordRepeat == string.Empty)
             {
                 IsRepeatPasswordError = true;
-                RepeatPasswordError = "*Password repeat is empty. Fill in your password";
+                RepeatPasswordError = "*Repeat password one more time";
                 canRegister = false;
             }
             else if (_password != _passwordRepeat)
             {
                 IsRepeatPasswordError = true;
-                RepeatPasswordError = "*Passwords do not match. Make sure you entered password correctly.";
+                RepeatPasswordError = "*Passwords do not match.";
                 canRegister = false;
             }
             else

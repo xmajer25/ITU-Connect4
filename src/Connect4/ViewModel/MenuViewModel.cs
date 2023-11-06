@@ -46,7 +46,6 @@ namespace Connect4.ViewModel
         public ICommand NavigateToPickVariantCommand { get; private set; }
         public ICommand NavigateToRegisterCommand { get; private set; }
         public ICommand NavigateToProfileCommand { get; private set; }
-        public ICommand LogInCommand { get; private set; }
         private string _loggedInUser;
 
         private bool _isUserLoggedIn = false;
@@ -90,7 +89,6 @@ namespace Connect4.ViewModel
             _userService = new UserService();
             Usernames = new ObservableCollection<string>(_userService.GetAllUsernames());
 
-            LogInCommand = new RelayCommand<object>(LogIn);
             NavigateToSettingsCommand = new RelayCommand<object>(NavigateToSettings);
             NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
             ExitAppCommand = new RelayCommand<object>(ExitApp);
@@ -127,24 +125,6 @@ namespace Connect4.ViewModel
         {
             _navigationService.NavigateTo("/PickVariant", CurrentUser);
         }
-
-        private void LogIn(object obj)
-        {
-            string username = obj as string;
-            if (!string.IsNullOrEmpty(username))
-            {
-                var userRepository = new UserRepository();
-                CurrentUser = userRepository.GetUserByUsername(username);
-
-                if (CurrentUser != null)
-                {
-                    LoggedInUser = CurrentUser.Username;
-                }
-                // ... rest of the code
-            }
-        }
-
-
 
         private void NavigateToSettings(object obj)
         {
