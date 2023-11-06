@@ -4,15 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+        xmlns:conv="clr-namespace:Connect4.Resources.Converters"
         xmlns:local="clr-namespace:Connect4.Views"
         mc:Ignorable="d"
         Title="Window1"
         ShowsNavigationUI="False">
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+    
     <Page.DataContext>
         <viewModel:MenuViewModel/>
     </Page.DataContext>
 
-    <Grid ShowGridLines="True">
+    <Grid>
         <!-- Define rows for the Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,10 +27,32 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0"
+              HorizontalAlignment="Right" VerticalAlignment="Top"
+              Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Margin="10"
+                Command="{Binding NavigateToRegisterCommand}"
+                Style="{StaticResource DefaultButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource PixelButtonTextStyle}"/>
+                    </Grid>
+                </Button>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top"
-                    Grid.Row="0" Grid.Column="0">
-            
+                <Button Margin="10"
+                Command="{Binding NavigateToLogInCommand}"
+                Style="{StaticResource DefaultButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource PixelButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0"
+              HorizontalAlignment="Right" VerticalAlignment="Top"
+              Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
             <Button Margin="10"
                 Command="{Binding NavigateToProfileCommand}"
                 Style="{StaticResource DefaultButton}">
@@ -34,25 +61,7 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Profile" Style="{StaticResource PixelButtonTextStyle}"/>
                 </Grid>
             </Button>
-            
-            <Button Margin="10"
-                Command="{Binding NavigateToRegisterCommand}"
-                Style="{StaticResource DefaultButton}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource PixelButtonTextStyle}"/>
-                </Grid>
-            </Button>
-
-            <Button Margin="10"
-                Command="{Binding NavigateToLogInCommand}"
-                Style="{StaticResource DefaultButton}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource PixelButtonTextStyle}"/>
-                </Grid>
-            </Button>
-        </StackPanel>
+        </Grid>
 
         <!-- Place the controls in their respective rows -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">

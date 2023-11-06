@@ -23,7 +23,23 @@ namespace Connect4.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged, ILoadUser
     {
-        public User CurrentUser { get; set; }
+        private User _currentUser = null;
+        public User CurrentUser 
+        {
+            get { return _currentUser; }
+            set
+            {
+                if (_currentUser != value)
+                {
+                    _currentUser = value;
+                    OnPropertyChanged(nameof(CurrentUser));
+                    if(value != null)
+                    {
+                        IsUserLoggedIn = true;
+                    }
+                }
+            }
+        }
         public ICommand NavigateToSettingsCommand { get; private set; }
         public ICommand ExitAppCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
@@ -32,6 +48,23 @@ namespace Connect4.ViewModel
         public ICommand NavigateToProfileCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
         private string _loggedInUser;
+
+        private bool _isUserLoggedIn = false;
+        public bool IsUserLoggedIn
+        {
+            get
+            {
+                return _isUserLoggedIn;
+            }
+            set
+            {
+                if( _isUserLoggedIn != value )
+                {
+                    _isUserLoggedIn = value;
+                    OnPropertyChanged("IsUserLoggedIn");
+                }
+            }
+        }
 
         public string LoggedInUser
         {
@@ -69,6 +102,10 @@ namespace Connect4.ViewModel
         public void LoadUser(User user)
         {
             CurrentUser = user;
+            if(user != null)
+            {
+                IsUserLoggedIn = true;
+            }
         }
 
         public void NavigateToProfile(object obj)

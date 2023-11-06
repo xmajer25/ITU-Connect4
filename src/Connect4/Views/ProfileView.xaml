@@ -8,22 +8,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProfileView">
-    
+
     <Page.DataContext>
         <viewModel:ProfileViewModel/>
     </Page.DataContext>
-    <Page.Resources>
-        <local:StringNotEmptyConverter x:Key="StringNotEmptyConverter"/>
-    </Page.Resources>
-    
+
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Enter new username:" Margin="100, 0, 0, -30" Style="{StaticResource PixelSmallTextStyle}"/>
-            <TextBox x:Name="inputName" Text="{Binding username, Mode=TwoWay}" Style="{StaticResource NoPlaceHolderInputField}" 
+            <TextBlock Text="Name:" Margin="100, 20, 0, -30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="inputName" Text="{Binding username}" Style="{StaticResource InputFieldStyle}" 
                        IsEnabled="True" IsReadOnly="False"/>
-            <Button Width="70" Height="70" Command="{Binding EditNameCommand}">
-                <TextBlock Text="Edit"/>
-            </Button>
+                <Button Margin="-30, 30, 0, 0" Content="Edit" Width="50" Height="50" Command="{Binding EditNameCommand}"/>
+            </StackPanel>
+            
+            <TextBlock Text="Email:" Margin="100, 20, 0, -30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="inputEmail" Text="{Binding email}" Style="{StaticResource InputFieldStyle}" 
+                       IsEnabled="True" IsReadOnly="False"/>
+                <Button Margin="-30, 30, 0, 0" Content="Edit" Width="50" Height="50" Command="{Binding EditEmailCommand}"/>
+            </StackPanel>
+            
+            
         </StackPanel>
 
         <Button Content="Back" Margin="10" 
