@@ -1,0 +1,93 @@
+﻿<Page x:Class="Connect4.Views.RegisterView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+      xmlns:conv="clr-namespace:Connect4.Resources.Converters"
+      xmlns:local="clr-namespace:Connect4.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegisterView"
+      ShowsNavigationUI="False">
+
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <viewModel:RegisterViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Resources/Images/StaticImages/PageRegister.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Stretch="Fill"/>
+
+        <Button Command="{Binding NavigateToMenuCommand}" 
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Background="Transparent" BorderBrush="Transparent"
+                Height="100">
+            <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
+        </Button>
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1" Grid.Column="1" Margin="0, 300, -100, 0"
+                    VerticalAlignment="Center" HorizontalAlignment="Right">
+            
+            <TextBlock Text="Name:" Margin="100,0,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <TextBox x:Name="inputName" Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"
+                       IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding NameError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsNameError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+
+            <TextBlock Text="Email:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <TextBox x:Name="inputEmail" Text="{Binding _email}" Style="{StaticResource InputFieldStyle}"
+                       IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding EmailError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsEmailError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+
+            <TextBlock Text="Password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <TextBox x:Name="inputPassword" Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"
+                       IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding PasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+
+            <TextBlock Text="Repeat password:" Margin="100,10,0,-30" Style="{StaticResource PixelSmallTextStyle}"/>
+            <TextBox x:Name="inputRepeatPassword" Text="{Binding _passwordRepeat}" Style="{StaticResource InputFieldStyle}"
+                       IsEnabled="True" IsReadOnly="False"/>
+            <TextBlock Text="{Binding RepeatPasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsRepeatPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Vertical" 
+                    Grid.Row="1" Grid.Column="2" Margin="50, 330, 0, 0"
+                    VerticalAlignment="Center" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Margin="0, 0, 0, 130"
+                        VerticalAlignment="Top" HorizontalAlignment="Center">
+                <TextBlock Text="CHOOSE AVATAR" Style="{StaticResource PixelSmallTextStyle}"/>
+                <Image Source="{Binding _imgSource}" Width="100" Height="100"></Image>
+            </StackPanel>
+
+            <Button Command="{Binding RegisterCommand}" Style="{StaticResource DefaultButton}">
+                <Grid>
+                    <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Register" Style="{StaticResource YellowButtonTextStyle}"/>
+                </Grid>
+            </Button>
+            <TextBlock Style="{StaticResource PixelSmallTextStyle}" TextAlignment="Center">
+                <Hyperlink Command="{Binding NavigateToLogInCommand}" Foreground="Black">
+                    Already have an account?
+                    <LineBreak/>
+                    Log in .
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

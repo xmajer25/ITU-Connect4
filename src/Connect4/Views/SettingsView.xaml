@@ -1,0 +1,20 @@
+﻿<Page x:Class="Connect4.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+        xmlns:local="clr-namespace:Connect4.Views"
+        mc:Ignorable="d"
+        Title="Settings">
+    <Page.DataContext>
+        <viewModel:SettingsViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Hyperlink Command="{Binding NavigateToMenuCommand}">
+                Page in progress! Click to go back.
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</Page>

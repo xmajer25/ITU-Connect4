@@ -1,1 +1,8 @@
 .vs
+bin
+obj
+*.aux
+*.out
+*.log
+*.synctex.gz
+src/Connect4/YourDatabaseName.db
