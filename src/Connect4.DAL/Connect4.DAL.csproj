@@ -64,6 +64,7 @@
     <Compile Include="DatabaseHelpers\DatabaseInitializer.cs" />
     <Compile Include="DataModels\Achievements.cs" />
     <Compile Include="DataModels\Customizable.cs" />
+    <Compile Include="DataModels\GridModel.cs" />
     <Compile Include="DataModels\JoinUserAchiev.cs" />
     <Compile Include="DataModels\JoinUserCustom.cs" />
     <Compile Include="DataModels\Settings.cs" />
