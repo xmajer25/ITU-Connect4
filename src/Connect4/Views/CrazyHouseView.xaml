@@ -4,99 +4,229 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
-      xmlns:local="clr-namespace:Connect4.Views"
+      xmlns:local="clr-namespace:Connect4.Views" xmlns:local1="clr-namespace:Connect4.ViewUserControl"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CrazyHouseView">
-
+      Title="CrazyHouseView"
+      >
     <Page.DataContext>
         <viewModel:CrazyHouseViewModel/>
     </Page.DataContext>
+
     
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/> <!-- pole -->
-            <ColumnDefinition Width="Auto"/> <!-- 1 -->
-            <ColumnDefinition Width="Auto"/> <!-- 2 -->
-            <ColumnDefinition Width="Auto"/> <!-- 3 -->
-            <ColumnDefinition Width="Auto"/> <!-- 4 -->
-            <ColumnDefinition Width="Auto"/> <!-- 5 -->
-            <ColumnDefinition Width="Auto"/> <!-- 6 -->
-            <ColumnDefinition Width="Auto"/> <!-- 7 -->
-            <ColumnDefinition Width="Auto"/> <!-- 8 -->
-            <ColumnDefinition Width="Auto"/> <!-- pole -->
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+
+    <!-- MAIN GRID -->
+    <Grid x:Name="MainGrid" DataContext="{Binding}">
+        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/> <!-- excess -->
-            <RowDefinition Height="Auto"/> <!-- 1 -->
-            <RowDefinition Height="Auto"/> <!-- 2 -->
-            <RowDefinition Height="Auto"/> <!-- 3 -->
-            <RowDefinition Height="Auto"/> <!-- 4 -->
-            <RowDefinition Height="Auto"/> <!-- 5 -->
-            <RowDefinition Height="Auto"/> <!-- 6 -->
-            <RowDefinition Height="Auto"/> <!-- excess -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
+        <!-- BACK GROUND -->
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="\Resources\Images\BackGroundDefault.png" Stretch="Fill"/>
+        
+        <!-- RANDOMIZER -->
 
-        <Image Grid.Row="0" Grid.RowSpan="10" Grid.Column="0" Grid.ColumnSpan="22" Source="\Resources\Images\BackGroundDefault.png" Stretch="Fill"/>
-        <Image Grid.Row="1" Grid.Column="1" Grid.RowSpan="9" Stretch="UniformToFill" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\GridPoleLeft.png"/>
-        <Image Grid.Row="1" Grid.Column="10" Grid.RowSpan="9" Stretch="UniformToFill" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\GridPoleRight.png"/>
-        <Image Grid.Row="2" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="2" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="3" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="4" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="5" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="6" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
-        <Image Grid.Row="7" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+        <Grid  Grid.Row="0" x:Name="TopGrid" DataContext="{Binding}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Hyperlink Command="{Binding NavigateToPickVariantCommand}">
-                Page in progress! Click to go back.
-            </Hyperlink>
-        </TextBlock>
+            <Canvas Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Grid.ColumnSpan="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="TopCanvas" DataContext="{Binding}">
+                
+            </Canvas>
+
+            <Image Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="1" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="2" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="4" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="5" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="6" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+                <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="7" Visibility="Hidden" Source="\Resources\Images\StaticImages\GridPart.png"/>
+
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton1_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton2_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="3" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton3_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="4" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton4_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="5" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton5_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="6" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton6_Click"/>
+            <Button Grid.Row="1" Grid.RowSpan="7" Grid.Column="7" Background="Transparent" BorderBrush="Transparent" Foreground="Transparent" Content="Drop Ball" Click="ColumnButton7_Click"/>
+
+
+
+            <Image Grid.Row="1" Grid.Column="1" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="2" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="3" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="4" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="5" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="6" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="1" Grid.Column="7" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="2" Grid.Column="1" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="2" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="3" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="4" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="5" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="6" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="2" Grid.Column="7" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="3" Grid.Column="1" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="2" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="3" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="4" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="5" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="6" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="3" Grid.Column="7" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="4" Grid.Column="1" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="2" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="3" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="4" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="5" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="6" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="4" Grid.Column="7" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="5" Grid.Column="1" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="2" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="3" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="4" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="5" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="6" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="5" Grid.Column="7" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="6" Grid.Column="1" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="2" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="3" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="4" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="5" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="6" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="6" Grid.Column="7" Stretch="None" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+
+                <Image Grid.Row="7" Grid.Column="1" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="2" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="3" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="4" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="5" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="6" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                <Image Grid.Row="7" Grid.Column="7" Stretch="None" HorizontalAlignment="Left" Source="\Resources\Images\StaticImages\Bouncer.png"/>
+                
+            
+            <local1:BallControl x:Name="BallControl" Visibility="Collapsed"/>
+        </Grid>
+        
+        
+        
+        <!-- GRID CONNECT 4 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="1" Grid.Column="1" Grid.RowSpan="9" Stretch="UniformToFill" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\GridPoleLeft.png"/>
+            <Image Grid.Row="1" Grid.Column="10" Grid.RowSpan="9" HorizontalAlignment="Right" Source="\Resources\Images\StaticImages\GridPoleRight.png"/>
+            <Image Grid.Row="2" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="2" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="3" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="4" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="5" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="6" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="2" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="3" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="4" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="5" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="6" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="7" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
+            <Image Grid.Row="7" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
+        </Grid>
+
+        
     </Grid>
+    
 </Page>

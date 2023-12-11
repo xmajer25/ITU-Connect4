@@ -126,6 +126,9 @@
     <Compile Include="Views\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewUserControl\BallControl.xaml.cs">
+      <DependentUpon>BallControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -141,6 +144,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Images\StaticImages\Bouncer.png" />
     <Resource Include="Resources\Images\StaticImages\GridPoleRight.png" />
     <Resource Include="Resources\Images\StaticImages\GridPart.png" />
     <Resource Include="Resources\Images\StaticImages\GridPoleLeft.png" />
@@ -201,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StandardModeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUserControl\BallControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
