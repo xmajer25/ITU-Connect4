@@ -99,10 +99,13 @@
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\StandardModeViewModel.cs" />
-    <Compile Include="Views\CrazyHouseView.xaml.cs">
+    <Compile Include="Views\PopUps\ExitGamePopUp.xaml.cs">
+      <DependentUpon>ExitGamePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VariantsViews\CrazyHouseView.xaml.cs">
       <DependentUpon>CrazyHouseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogInView.xaml.cs">
+    <Compile Include="Views\UserViews\LogInView.xaml.cs">
       <DependentUpon>LogInView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -114,10 +117,10 @@
     <Compile Include="Views\PickVariantView.xaml.cs">
       <DependentUpon>PickVariantView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfileView.xaml.cs">
+    <Compile Include="Views\UserViews\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterView.xaml.cs">
+    <Compile Include="Views\UserViews\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsView.xaml.cs">
@@ -144,11 +147,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Images\Tokens\TokenRed.png" />
+    <Resource Include="Resources\Images\Tokens\TokenBlue.png" />
+    <Resource Include="Resources\Images\StaticImages\PlaceArrow.png" />
+    <Resource Include="Resources\Images\StaticImages\BouncerBox.png" />
     <Resource Include="Resources\Images\StaticImages\Bouncer.png" />
     <Resource Include="Resources\Images\StaticImages\GridPoleRight.png" />
     <Resource Include="Resources\Images\StaticImages\GridPart.png" />
     <Resource Include="Resources\Images\StaticImages\GridPoleLeft.png" />
-    <Resource Include="Resources\Images\BackGroundDefault.png" />
+    <Resource Include="Resources\Images\BackGrounds\BackGroundDefault.png" />
     <Resource Include="Resources\Images\StaticImages\PlayCrazyHouse.png" />
     <Resource Include="Resources\Images\StaticImages\PlayStandard.png" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -172,11 +179,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CrazyHouseView.xaml">
+    <Page Include="Views\PopUps\ExitGamePopUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogInView.xaml">
+    <Page Include="Views\VariantsViews\CrazyHouseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserViews\LogInView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,11 +203,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ProfileView.xaml">
+    <Page Include="Views\UserViews\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterView.xaml">
+    <Page Include="Views\UserViews\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,7 +225,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\AvatarRn.png" />
+    <Resource Include="Resources\Images\Avatars\AvatarRn.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Connect4.BL\Connect4.BL.csproj">
@@ -247,6 +258,7 @@
   <ItemGroup>
     <Resource Include="Resources\Images\StaticImages\PageMenu.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

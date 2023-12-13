@@ -24,7 +24,7 @@ namespace Connect4.ViewModel
         public string _password { get; set; } = string.Empty;
         public string _passwordRepeat { get; set; } = string.Empty;
         public string _email { get; set; } = string.Empty;
-        public string _imgSource { get; set; } = "/Resources/Images/AvatarRn.png";
+        public string _imgSource { get; set; } = "/Resources/Images/Avatars/AvatarRn.png";
 
         private bool _isNameError = false;
         private string _nameError = string.Empty;

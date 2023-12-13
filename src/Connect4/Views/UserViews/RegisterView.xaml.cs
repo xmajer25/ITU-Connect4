@@ -14,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Connect4.Views
+namespace Connect4.Views.UserViews
 {
     /// <summary>
-    /// Interaction logic for LogInView.xaml
+    /// Interaction logic for RegisterView.xaml
     /// </summary>
-    public partial class LogInView : Page
+    public partial class RegisterView : Page
     {
-        public LogInView()
+        public RegisterView()
         {
             InitializeComponent();
-            DataContext = new LogInViewModel();
+            DataContext = new RegisterViewModel();
         }
     }
 }

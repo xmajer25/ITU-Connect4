@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace Connect4.ViewUserControl
 {
-    /// <summary>
-    /// Interaction logic for UserControl1.xaml
-    /// </summary>
     public partial class BallControl : UserControl
     {
         public BallControl()

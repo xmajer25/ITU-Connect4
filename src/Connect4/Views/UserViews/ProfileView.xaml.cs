@@ -14,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Connect4.Views
+namespace Connect4.Views.UserViews
 {
     /// <summary>
-    /// Interaction logic for RegisterView.xaml
+    /// Interaction logic for ProfileView.xaml
     /// </summary>
-    public partial class RegisterView : Page
+    public partial class ProfileView : Page
     {
-        public RegisterView()
+        public ProfileView()
         {
             InitializeComponent();
-            DataContext = new RegisterViewModel();
+            DataContext = new ProfileViewModel();
         }
     }
 }

@@ -43,39 +43,44 @@ namespace Connect4.BL.Services.GridServices
             Random random = new Random();
             List<int> possibleColumns = GetEmptyColumns();
             List<bool> path = new List<bool>();
-            int maxWidth = GetGridColumns(); int minWidth = 0;
+ 
             int endingColumn;
 
             int randomColumnIndex = random.Next(0, possibleColumns.Count);
-            endingColumn = possibleColumns[randomColumnIndex];
+            endingColumn = possibleColumns[randomColumnIndex] + 1;
 
-            while (path.Count < 7)
+            int steps = endingColumn - startingColumn;
+            int totalSteps = Math.Abs(steps) % 2 == 0 ? 8 : 7;
+
+            for (int i = 0; i < totalSteps; i++)
             {
-                bool goRight;
-                if (startingColumn - 1 < minWidth) goRight = true;
-                else if (startingColumn + 1 > maxWidth) goRight = false;
-                else goRight = startingColumn < endingColumn || (startingColumn == endingColumn && random.Next(2) == 0);
-
-                path.Add(goRight);
-                startingColumn += goRight ? 1 : -1;
+                int step = steps >= 0 ? 1 : -1;
+                path.Add(step == 1 ? true : false);
+                startingColumn += step;
+                steps -= step;
             }
 
-            return (path, endingColumn);
+            return (path, endingColumn - 1);
         }
 
         public int GetMaxRow(int column)
         {
             int[,] grid = GetGrid();
-
-            var emptyRow = Enumerable.Range(0, GetGridRows())
-            .Reverse()
-            .Where(row => grid[row, column] == 0)
-            .First();
-
-            return emptyRow;
+            try
+            {
+                var emptyRow = Enumerable.Range(0, GetGridRows())
+                .Reverse()
+                .Where(row => grid[row, column] == 0)
+                .First();
+                return emptyRow;
+            }
+            catch
+            {
+                return -1;
+            }
         }
 
-        public List<bool> PlayMove(int player, int startingColumn)
+        public (List<bool>, int endingColumn) PlayMove(int startingColumn)
         {
             List<bool> path;
             int endingColumn ;
@@ -85,14 +90,14 @@ namespace Connect4.BL.Services.GridServices
 
             changedRow = GetMaxRow(endingColumn);
 
-            SetCell(changedRow, endingColumn, player);
-
-            return path;
+            SetCell(changedRow, endingColumn, GetPlayer());
+            return (path, endingColumn);
         }
 
         public bool CheckWinHorizontal(int player)
         {
             int[,] grid = GetGrid();
+            
 
             for (int row = 0; row < GetGridRows(); row++)
             {
@@ -167,9 +172,10 @@ namespace Connect4.BL.Services.GridServices
             return false;
         }
 
-        public bool CheckForWin(int player)
+        public bool CheckForWin()
         {
-            if(CheckWinHorizontal(player)) return true;
+            int player = GetPlayer();
+            if (CheckWinHorizontal(player)) return true;
             if(CheckWinVertical(player)) return true;
             if(CheckWinDiagonal(player)) return true;
 

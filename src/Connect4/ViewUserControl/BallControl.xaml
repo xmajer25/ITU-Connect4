@@ -8,6 +8,5 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:CrazyHouseViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-    <Ellipse Fill="White" Stroke="Black" Width="30" VerticalAlignment="Top" Height="30" StrokeThickness="2"/>
+    <Image x:Name="Token" Source="{Binding TokenSkin}" Width="35" Height="35"/>
 </UserControl>

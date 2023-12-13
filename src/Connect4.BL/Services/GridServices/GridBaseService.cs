@@ -17,28 +17,29 @@ namespace Connect4.BL.Services.GridServices
         }
 
         public int[,] GetGrid()
-        {
-            return GridData.Grid;
-        }
+            => GridData.Grid;
+        
 
         public int GetGridRows()
-        {
-            return GridData.Rows;
-        }
+            => GridData.Rows;
+        
 
         public int GetGridColumns()
-        {
-            return GridData.Columns;
-        }
+            => GridData.Columns;
+
+        public int GetPlayer()
+            => GridData.CurrentPlayer;
+        
 
         public int GetCell(int row, int column)
-        {
-            return GetGrid()[row, column];
-        }
+            => GetGrid()[row, column];
+       
 
         public void SetCell(int row, int column, int value)
-        {
-            GetGrid()[row, column] = value;
-        }
+            => GetGrid()[row, column] = value;
+
+        public void SwapPlayers()
+            => GridData.CurrentPlayer = (GridData.CurrentPlayer == 1 ? 2 : 1);
+        
     }
 }

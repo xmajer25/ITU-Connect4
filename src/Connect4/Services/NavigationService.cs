@@ -3,6 +3,8 @@ using Connect4.Models;
 using Connect4.ViewModel;
 using Connect4.ViewModel.Interfaces;
 using Connect4.Views;
+using Connect4.Views.UserViews;
+using Connect4.Views.VariantsViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;

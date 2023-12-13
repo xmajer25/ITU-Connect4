@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Connect4.Views
+namespace Connect4.Views.VariantsViews
 {
     /// <summary>
     /// Interaction logic for CrazyHouseView.xaml
@@ -28,25 +28,16 @@ namespace Connect4.Views
             viewModel.MainGrid = MainGrid;
             viewModel.TopGrid = TopGrid;
             viewModel.TopCanvas = TopCanvas;
+            viewModel.BottomCanvas = BottomCanvas;
+            viewModel.BottomGrid = BottomGrid;
 
             DataContext = viewModel;
         }
-        private void ColumnButton1_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 1);
-        private void ColumnButton2_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 2);
-        private void ColumnButton3_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 3);
+
         private void ColumnButton4_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 4);
         private void ColumnButton5_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 5);
-        private void ColumnButton6_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 6);
-        private void ColumnButton7_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 7);
-        private void ColumnButton8_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 8);
 
         private void StartAnimation(object sender, RoutedEventArgs e, int column)
         {
@@ -57,6 +48,26 @@ namespace Connect4.Views
                     viewModel.DropBallCommand.Execute(column); 
                 }
             }
+        }
+
+        private void ShowLeftDrop(object sender, MouseEventArgs e)
+        {
+            LeftDrop.Visibility = Visibility.Visible;
+        }
+
+        private void HideLeftDrop(object sender, MouseEventArgs e)
+        {
+            LeftDrop.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowRightDrop(object sender, MouseEventArgs e)
+        {
+            RightDrop.Visibility = Visibility.Visible;
+        }
+
+        private void HideRightDrop(object sender, MouseEventArgs e)
+        {
+            RightDrop.Visibility = Visibility.Collapsed;
         }
     }
 }
