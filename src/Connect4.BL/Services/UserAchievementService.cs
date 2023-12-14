@@ -12,9 +12,9 @@ namespace Connect4.BL.Services
     {
         private JoinUserAchievRepository _joinUARepository;
 
-        public UserAchievementService(JoinUserAchievRepository userAchievementRepository)
+        public UserAchievementService()
         {
-            _joinUARepository = userAchievementRepository;
+            _joinUARepository = new JoinUserAchievRepository();
         }
 
         public List<UserAchievement> GetUserAchievements(int userId)

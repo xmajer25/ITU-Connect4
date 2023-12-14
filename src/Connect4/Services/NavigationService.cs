@@ -35,6 +35,7 @@ namespace Connect4.Services
             new RouteModel("/StandardMode", typeof(StandardModeView), typeof(StandardModeViewModel)),
             new RouteModel("/CrazyHouseMode", typeof(CrazyHouseView), typeof(CrazyHouseViewModel)),
             new RouteModel("/Profile", typeof(ProfileView), typeof(ProfileViewModel)),
+            new RouteModel("/EndScreen", typeof(EndScreenView), typeof(EndScreenViewModel)),
         };
 
         public void NavigateTo(string uri, User currentUser)
@@ -45,6 +46,25 @@ namespace Connect4.Services
             if (page.DataContext is ILoadUser receiveDataPage)
             {
                 receiveDataPage.LoadUser(currentUser);
+            }
+
+            _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            _window.WindowState = WindowState.Maximized;
+            _window.Content = page;
+        }
+
+        public void NavigateTo(string uri, User currentUser, int winner)
+        {
+            Type pageType = GetPageFromString(uri);
+            Page page = (Page)Activator.CreateInstance(pageType);
+
+            if (page.DataContext is ILoadUser getUserPage)
+            {
+                getUserPage.LoadUser(currentUser);
+            }
+            if(page.DataContext is ILoadWinner getWinnerPage)
+            {
+                getWinnerPage.LoadWinner(winner);
             }
 
             _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);

@@ -50,7 +50,7 @@ namespace Connect4.BL.Services.GridServices
             endingColumn = possibleColumns[randomColumnIndex] + 1;
 
             int steps = endingColumn - startingColumn;
-            int totalSteps = Math.Abs(steps) % 2 == 0 ? 8 : 7;
+            int totalSteps = Math.Abs(steps) % 2 == 0 ? 7 : 6;
 
             for (int i = 0; i < totalSteps; i++)
             {

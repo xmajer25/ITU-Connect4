@@ -9,6 +9,8 @@ using Connect4.ViewUserControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
+using System.Runtime.Remoting;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -82,7 +84,6 @@ namespace Connect4.ViewModel
             _navigationService = new NavService();
             _gridService = new GridCrazyHouseService();
             _userService = new UserService();
-
 
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             DropBallCommand = new RelayCommand<int>(DropBall);
@@ -191,12 +192,12 @@ namespace Connect4.ViewModel
                 var direction = path[i];
                 currentTime += 0.11;
                 double nextMove = direction ? bounceXPosition : (-bounceXPosition);
-                if (i == 6 && path.Count == 7)
+                if (i == 5 && path.Count == 6)
                 {   
                     endPosition += nextMove / 2;
                     animationX.KeyFrames.Add(new LinearDoubleKeyFrame(endPosition, KeyTime.FromPercent(currentTime)));
                 }
-                else if(i == 7)
+                else if(i == 6)
                 {
                     endPosition += nextMove /2;
                     animationX.KeyFrames.Add(new LinearDoubleKeyFrame(endPosition, KeyTime.FromPercent(currentTime)));
@@ -271,11 +272,11 @@ namespace Connect4.ViewModel
                 if(_gridService.CheckForWin() == true)
                 {
                     int winner = _gridService.GetPlayer();
-                    Console.WriteLine("Player " + winner + " has won!");
+                    _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
                 }
                 else if(_gridService.IsGridFull() == true)
                 {
-                    Console.WriteLine("Game ended in a draw");
+                    _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
                 }
 
                 //SWAP PLAYERS AND ALLOW NEXT MOVE
@@ -296,6 +297,8 @@ namespace Connect4.ViewModel
 
         public void NavigateToPickVariant(object obj)
         {
+            _navigationService.NavigateTo("/EndScreen", CurrentUser, 1);
+            return;
             ExitGamePopUp exitGamePopUp = new ExitGamePopUp();
             bool? result = exitGamePopUp.ShowDialog();
             if (result == true)
