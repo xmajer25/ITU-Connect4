@@ -12,6 +12,11 @@ namespace Connect4.BL.Services
         {
             _repository = repository;
         }
+        public GridModelStandard GetGridModel()
+        {
+            // Fetch and return the current grid model from the repository
+            return _repository.GetGridModel();
+        }
 
         // Example method to make a move
         public bool MakeMove(int column, CellState player)

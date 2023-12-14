@@ -126,7 +126,10 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StandardModeView.xaml.cs">
+    <Compile Include="Views\oldStandard.xaml.cs">
+      <DependentUpon>oldStandard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VariantsViews\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewUserControl\BallControl.xaml.cs">
@@ -215,7 +218,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StandardModeView.xaml">
+    <Page Include="Views\oldStandard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VariantsViews\StandardModeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

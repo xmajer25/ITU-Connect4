@@ -131,12 +131,15 @@ namespace Connect4.ViewModel
 
         public void PlaceBall(int column, double startingX)
         {
-            double endYPosition = GetRowPosition(_gridService.GetMaxRow(column) + 3, BottomGrid);
-            BallControl ball = new BallControl();
+            // Get the row position for the new ball from the service layer
+            int maxRow = _gridService.GetMaxRow(column);
+            double endYPosition = GetRowPosition(maxRow + 3, BottomGrid);
 
-            Canvas.SetLeft(ball, startingX);  // Set the X position based on the column
+            BallControl ball = new BallControl();
+            Canvas.SetLeft(ball, startingX);
             Canvas.SetTop(ball, 0);
 
+            // Animation for dropping the ball
             DoubleAnimation animation = new DoubleAnimation
             {
                 To = endYPosition,
@@ -148,42 +151,64 @@ namespace Connect4.ViewModel
 
             Storyboard.SetTarget(animation, ball);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Canvas.TopProperty));
+
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation);
 
             storyboard.Completed += (sender, e) =>
             {
-                //FIX TOKEN POSITION
-                ball.SetValue(Canvas.TopProperty, endYPosition);
-                ball.SetValue(Canvas.LeftProperty, startingX - 3);
+                // Finalize ball's position and appearance
+                FinalizeBallPlacement(ball, endYPosition, startingX);
 
-                //UNBIND TOKEN SKIN AND SET IT STATIC
-                Image ballImage = ball.FindName("Token") as Image;
-                BindingOperations.ClearBinding(ballImage, Image.SourceProperty);
-                BitmapImage bitmapImage = new BitmapImage(new Uri(TokenSkin, UriKind.RelativeOrAbsolute));
-                ballImage.Source = bitmapImage;
-
-                //CHECK END OF GAME
-                if (_gridService.CheckForWin() == true)
-                {
-                    int winner = _gridService.GetPlayer();
-                    Console.WriteLine("Player " + winner + " has won!");
-                }
-                else if (_gridService.IsGridFull() == true)
-                {
-                    Console.WriteLine("Game ended in a draw");
-                }
-
-                //SWAP PLAYERS AND ALLOW NEXT MOVE
-                SwapTokenSkins();
-                SwapPlayerTurn();
-                _gridService.SwapPlayers();
-                IsAnimationOn = false;
+                // Process game state changes and update UI accordingly
+                ProcessGameStateChanges();
             };
 
             BottomCanvas.Children.Add(ball);
             storyboard.Begin();
         }
+
+        private void FinalizeBallPlacement(BallControl ball, double endYPosition, double startingX)
+        {
+            // Fix token position
+            ball.SetValue(Canvas.TopProperty, endYPosition);
+            ball.SetValue(Canvas.LeftProperty, startingX - 3);
+
+            // Set token skin statically
+            Image ballImage = ball.FindName("Token") as Image;
+            BindingOperations.ClearBinding(ballImage, Image.SourceProperty);
+            BitmapImage bitmapImage = new BitmapImage(new Uri(TokenSkin, UriKind.RelativeOrAbsolute));
+            ballImage.Source = bitmapImage;
+        }
+
+        private void ProcessGameStateChanges()
+        {
+            // Retrieve the updated grid model from the repository
+            var result = _gridService.MakeMove();
+
+            // Check for win or draw using the service
+            if (_gridService.CheckWinCondition(gridModel))
+            {
+                // Handle win scenario
+                Console.WriteLine("Player has won!");
+            }
+            else if (_gridService.IsBoardFull(gridModel))
+            {
+                // Handle draw scenario
+                Console.WriteLine("Game ended in a draw");
+            }
+
+            // Swap players and skins for the next move
+            SwapTokenSkins();
+            SwapPlayerTurn();
+
+            // Assuming the service automatically handles player swapping and grid state
+            // If not, additional logic may be required here
+
+            // Allow the next move
+            IsAnimationOn = false;
+        }
+
 
         public void LoadUser(User user)
         {
