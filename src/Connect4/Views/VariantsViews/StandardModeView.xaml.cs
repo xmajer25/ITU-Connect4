@@ -12,37 +12,36 @@ namespace Connect4.Views.VariantsViews
                 InitializeComponent();
                 StandardModeViewModel viewModel = new StandardModeViewModel();
                 viewModel.MainGrid = MainGrid;
-               /* viewModel.TopGrid = TopGrid;
-                viewModel.TopCanvas = TopCanvas;*/
+                //viewModel.TopCanvas = TopCanvas;
                 viewModel.BottomCanvas = BottomCanvas;
-                viewModel.BottomGrid = BottomGrid;
+                viewModel.GameGrid = GameGrid;
 
                 DataContext = viewModel;
         }
         private void ColumnButton1_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 1);
-        private void ColumnButton2_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 2);
-        private void ColumnButton3_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton2_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 3);
-        private void ColumnButton4_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton3_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 4);
-        private void ColumnButton5_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton4_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 5);
-        private void ColumnButton6_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton5_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 6);
-        private void ColumnButton7_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton6_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 7);
-        private void ColumnButton8_Click(object sender, RoutedEventArgs e)
+        private void ColumnButton7_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 8);
+        private void ColumnButton8_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 9);
 
         private void StartAnimation(object sender, RoutedEventArgs e, int column)
         {
             if (sender is Button)
             {
-                if (DataContext is CrazyHouseViewModel viewModel)
+                if (DataContext is StandardModeViewModel viewModel)
                 {
-                    viewModel.DropBallCommand.Execute(column);
+                    viewModel.PlaceBallCommand.Execute(column);
                 }
             }
         }

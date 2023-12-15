@@ -3,9 +3,9 @@ using Connect4.DAL.Repositories.Interfaces;
 
 namespace Connect4.DAL.Repositories
 {
-    internal class GridStandardRepository : IGridStandardRepository
+    public class GridStandardRepository : IGridStandardRepository
     {
-        private GridModelStandard _gridModel;
+       private GridModelStandard _gridModel;
 
         public GridStandardRepository()
         {

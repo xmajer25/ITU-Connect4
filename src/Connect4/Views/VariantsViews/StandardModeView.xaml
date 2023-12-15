@@ -25,15 +25,11 @@
         </Grid.RowDefinitions>
 
         <!-- BACK GROUND -->
-        <Image Grid.Row="0" Grid.RowSpan="2" Source="\Resources\Images\BackGrounds\BackGroundDefault.png" Stretch="Fill"/>
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="\Resources\Images\BackGrounds\BackGroundDefault.png" Stretch="Fill" Margin="0,0,10,0"/>
         <!-- RANDOMIZER -->
 
-        
-
-
-
         <!-- GRID CONNECT 4 -->
-        <Grid Grid.Row="1" x:Name="BottomGrid" DataContext="{Binding}" >
+        <Grid Grid.Row="1" x:Name="GameGrid" DataContext="{Binding}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -61,14 +57,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0"  Grid.Column="2"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton1_Click" MouseEnter="Show1Drop" MouseLeave="Hide1tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="3"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton2_Click" MouseEnter="Show2Drop" MouseLeave="Hide2tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="4"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton3_Click" MouseEnter="Show3Drop" MouseLeave="Hide3tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="5"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton4_Click" MouseEnter="Show4Drop" MouseLeave="Hide4tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="6"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton5_Click" MouseEnter="Show5Drop" MouseLeave="Hide5tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="7"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton6_Click" MouseEnter="Show6Drop" MouseLeave="Hide6tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="8"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton7_Click" MouseEnter="Show7Drop" MouseLeave="Hide7tDrop"/>
-            <Button Grid.Row="0"  Grid.Column="9"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton8_Click" MouseEnter="Show8Drop" MouseLeave="Hide8tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="2"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton1_Click" MouseEnter="Show1Drop" MouseLeave="Hide1tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="3"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton2_Click" MouseEnter="Show2Drop" MouseLeave="Hide2tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="4"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton3_Click" MouseEnter="Show3Drop" MouseLeave="Hide3tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="5"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton4_Click" MouseEnter="Show4Drop" MouseLeave="Hide4tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="6"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton5_Click" MouseEnter="Show5Drop" MouseLeave="Hide5tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="7"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton6_Click" MouseEnter="Show6Drop" MouseLeave="Hide6tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="8"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton7_Click" MouseEnter="Show7Drop" MouseLeave="Hide7tDrop"/>
+            <Button Grid.Row="0"  Grid.Column="9"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton8_Click" MouseEnter="Show8Drop" MouseLeave="Hide8tDrop"/>
 
             <Image Grid.Row="0" Grid.Column="2" Visibility="Hidden" Source="\Resources\Images\StaticImages\PlaceArrow.png"/>
             <Image x:Name="Drop1" Grid.Row="0" Grid.Column="2" Visibility="Collapsed" Source="\Resources\Images\StaticImages\PlaceArrow.png"/>

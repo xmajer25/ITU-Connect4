@@ -9,7 +9,7 @@ namespace Connect4.DAL.DataModels
         public int CurrentPlayer { get; private set; }
 
         private const int Rows = 6;
-        private const int Columns = 7;
+        private const int Columns = 8;
 
         public GridModelStandard()
         {

@@ -12,6 +12,7 @@ namespace Connect4.BL.Services
         {
             _repository = repository;
         }
+
         public GridModelStandard GetGridModel()
         {
             // Fetch and return the current grid model from the repository
@@ -23,28 +24,23 @@ namespace Connect4.BL.Services
         {
             var gridModel = _repository.GetGridModel();
 
-            // Logic to make a move
-            // Check if the column is not full and place the player's piece
+            // Find the lowest empty row in the column
+            int emptyRow = GetMaxRow(column);
+            if (emptyRow == -1) return false; // Column is full, so the move cannot be made
 
-            if (IsColumnFull(column, gridModel)) return false;
-
-            for (int row = 0; row < gridModel.Grid[column].Count; row++)
-            {
-                if (gridModel.Grid[column][row] == CellState.Empty)
-                {
-                    gridModel.Grid[column][row] = player;
-                    break;
-                }
-            }
+            // Place the player's piece in the found empty row
+            gridModel.Grid[column][emptyRow] = player;
 
             // Update the grid model in the repository
             _repository.UpdateGridModel(gridModel);
 
-            // Check for win condition after the move
-            return CheckWinCondition(gridModel);
+            // Optionally, check for win condition after the move
+            //return CheckWinCondition(gridModel);
+            return true;
         }
 
-        private bool IsBoardFull(GridModelStandard gridModel)
+
+        public bool IsBoardFull(GridModelStandard gridModel)
         {
             // Iterate through each column in the grid.
             // If any column is not full, return false.
@@ -62,13 +58,39 @@ namespace Connect4.BL.Services
             return true;
         }
 
+        public int GetMaxRow(int column)
+        {
+            var gridModel = _repository.GetGridModel();
+
+            // If the column is full, return -1 immediately
+            if (IsColumnFull(column, gridModel))
+            {
+                return -1;
+            }
+
+            var columnData = gridModel.Grid[column];
+
+            // Find the lowest empty row in the column
+            for (int row = columnData.Count - 1; row >= 0; row--)
+            {
+                if (columnData[row] == CellState.Empty)
+                {
+                    return row;
+                }
+            }
+
+            // This line should theoretically never be reached because IsColumnFull would have caught it
+            return -1;
+        }
+
         private bool IsColumnFull(int column, GridModelStandard gridModel)
         {
             // Check if the column is full
+            
             return gridModel.Grid[column].All(cell => cell != CellState.Empty);
         }
 
-        private bool CheckWinCondition(GridModelStandard gridModel)
+        public bool CheckWinCondition(GridModelStandard gridModel)
         {
             return CheckHorizontalWin(gridModel) ||
                    CheckVerticalWin(gridModel) ||
@@ -149,10 +171,7 @@ namespace Connect4.BL.Services
                         return true;
                 }
             }
-            return false;
+            return false; 
         }
-
-
-        // Other game logic methods can be added here
     }
 }
