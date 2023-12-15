@@ -1,4 +1,7 @@
-﻿<UserControl x:Class="Connect4.ViewUserControl.Particles"
+﻿<!-- Author : Jakub Majer (xmajer25) -->
+<!-- Brief  : UserControl For Particles...representing sprinkles after finished game -->
+    
+<UserControl x:Class="Connect4.ViewUserControl.Particles"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

@@ -19,6 +19,12 @@ using System.Windows.Controls;
 using System.Windows;
 using Connect4.ViewModel.Interfaces;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : MenuViewModel
+ * Brief    : Main Menu Screen. Mostly navigation to other pages 
+ */
+
 namespace Connect4.ViewModel
 {
     public class MenuViewModel : INotifyPropertyChanged, ILoadUser
@@ -40,6 +46,8 @@ namespace Connect4.ViewModel
                 }
             }
         }
+
+        /* COMMANDS */
         public ICommand NavigateToSettingsCommand { get; private set; }
         public ICommand ExitAppCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
@@ -77,17 +85,15 @@ namespace Connect4.ViewModel
 
 
 
-
+        /* SERVICES */
         private readonly NavService _navigationService;
         private readonly UserService _userService;
-        private ObservableCollection<string> _usernames;
 
         public MenuViewModel()
         {
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
-            Usernames = new ObservableCollection<string>(_userService.GetAllUsernames());
 
             NavigateToSettingsCommand = new RelayCommand<object>(NavigateToSettings);
             NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
@@ -97,6 +103,7 @@ namespace Connect4.ViewModel
             NavigateToProfileCommand = new RelayCommand<object>(NavigateToProfile);
         }
 
+        /* Load logged in user */
         public void LoadUser(User user)
         {
             CurrentUser = user;
@@ -106,47 +113,42 @@ namespace Connect4.ViewModel
             }
         }
 
+        /* Navigation -> go to user profile */
         public void NavigateToProfile(object obj)
         {
             _navigationService.NavigateTo("/Profile", CurrentUser);
         }
 
+        /* Navigation -> go to register page */
         public void NavigateToRegister(object obj)
         {
             _navigationService.NavigateTo("/Register", CurrentUser);
         }
 
+        /* Application termination */
         public void ExitApp(object obj)
         {
             Application.Current.Shutdown();
         }
 
+        /* Navigation -> go to pick game variant page */
         public void NavigateToPickVariant(object obj)
         {
             _navigationService.NavigateTo("/PickVariant", CurrentUser);
         }
 
+        /* Navigation -> go to settings */
         private void NavigateToSettings(object obj)
         {
             _navigationService.NavigateTo("/Settings", CurrentUser);
         }
 
+        /* Navigation -> go to log in page*/
         private void NavigateToLogIn(object obj)
         {
             _navigationService.NavigateTo("/LogIn", CurrentUser);
         }
 
-        public ObservableCollection<string> Usernames
-        {
-            get { return _usernames; }
-            set
-            {
-                _usernames = value;
-                OnPropertyChanged(nameof(Usernames));
-            }
-        }
-
-        // Implementace INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

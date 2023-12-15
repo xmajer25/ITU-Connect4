@@ -15,6 +15,13 @@ using System.Diagnostics.Eventing.Reader;
 using System.ComponentModel;
 using System.Windows.Input;
 using Connect4.Commands;
+using Connect4.BL.Services;
+
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : EndScreenViewModel
+ * Brief    : Logic for a view shown after game end. Sprinkle animation and if user is logged in data altering.  
+ */
 
 namespace Connect4.ViewModel
 {
@@ -67,11 +74,28 @@ namespace Connect4.ViewModel
             }
         }
 
-        private readonly NavService _navigationService;
+        private int _currentGold = 0;
+        public int CurrentGold
+        {
+            get { return _currentGold; }
+            set
+            {
+                if (_currentGold != value)
+                {
+                    _currentGold = value;
+                    OnPropertyChanged("CurrentGold");
+                }
+            }
+        }
 
+        private readonly NavService _navigationService;
+        private readonly UserService _userService;
+
+        /* VIEW PARTS */
         public Grid MainGrid;
         public Canvas MainCanvas;
 
+        /* COMMANDS */
         public ICommand NavigateToPickVariantCommand { get; private set; }
         public ICommand NavigateToMenuCommand { get; private set; }
 
@@ -81,14 +105,32 @@ namespace Connect4.ViewModel
         {
             DatabaseInitializer.Initialize();
             _navigationService = new NavService();
+            _userService = new UserService();
 
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
         }
-        public void OnPageLoaded()
-            => SparkleAnimation();
-        
 
+        /* Sprinkle animation on page loaded */
+        public void OnPageLoaded()
+        {
+            SparkleAnimation();
+            if(IsUserLoggedIn)
+            {
+                _userService.UpdateUser(
+                    CurrentUser.Id, 
+                    CurrentUser.Username, 
+                    CurrentUser.Password, 
+                    CurrentUser.Email, 
+                    CurrentUser.GamesPlayed + 1, 
+                    CurrentUser.GamesWon + (Reward == 500 ? 1 : 0), 
+                    CurrentUser.GoldTotal + 
+                    Reward, CurrentUser.GoldActual + Reward
+                    );
+            }
+        }
+        
+        /* Get right-most position on screen */
         private double GetWindowWidth()
         {
             double maxWindowSize = 0;
@@ -99,6 +141,7 @@ namespace Connect4.ViewModel
             return maxWindowSize;
         }
 
+        /* Get lowest position on screen */
         private double GetWindowHeight()
         {
             double maxWindowSize = 0;
@@ -109,6 +152,7 @@ namespace Connect4.ViewModel
             return maxWindowSize;
         }
 
+        /* Animate sparkles on page load. 40 sparkles from bottom left and right with spread towards middle. */
         private void SparkleAnimation()
         {
             Random random = new Random();
@@ -186,16 +230,18 @@ namespace Connect4.ViewModel
         }
 
 
-
+        /* Get logged in user */
         public void LoadUser(User user)
         {
             CurrentUser = user;
             if (user != null)
             {
+                CurrentGold = CurrentUser.GoldActual;
                 IsUserLoggedIn = true;
             }
         }
 
+        /* Get winner and reward. If user is logged in (user is always player1) set coin reward. */
         public void LoadWinner(int winner)
         {
             if (winner == 0)
@@ -220,9 +266,11 @@ namespace Connect4.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /* Navigation -> go back */
         private void NavigateToPickVariant(object obj)
             => _navigationService.NavigateTo("/PickVariant", CurrentUser);
 
+        /* Navigation -> go to menu */
         private void NavigateToMenu(object obj)
             => _navigationService.NavigateTo("/Menu", CurrentUser);
     }

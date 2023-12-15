@@ -16,6 +16,12 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Menu = Connect4.Views.Menu;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : NavigationService
+ * Brief    : Serviced used for navigation between views 
+ */
+
 namespace Connect4.Services
 {
     public class NavigationService
@@ -25,6 +31,8 @@ namespace Connect4.Services
         {
             _window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
         }
+
+        /* Pathing system */
         public IEnumerable<RouteModel> Routes { get; } = new List<RouteModel>
         {
             new RouteModel("/Menu", typeof(Menu), typeof(MenuViewModel)),
@@ -38,6 +46,7 @@ namespace Connect4.Services
             new RouteModel("/EndScreen", typeof(EndScreenView), typeof(EndScreenViewModel)),
         };
 
+        /* Navigates to new page according to uri. Loads user if page implements ILoadUser interface. */
         public void NavigateTo(string uri, User currentUser)
         {
             Type pageType = GetPageFromString(uri);
@@ -53,6 +62,8 @@ namespace Connect4.Services
             _window.Content = page;
         }
 
+        /* Navigates to new page according to uri. Loads user if page implements ILoadUser interface */
+        /* Loads winner if page implements ILoadWinner interface */
         public void NavigateTo(string uri, User currentUser, int winner)
         {
             Type pageType = GetPageFromString(uri);
@@ -72,7 +83,7 @@ namespace Connect4.Services
             _window.Content = page;
         }
 
-
+        /* Converts string to type according to pathing system */
         private Type GetPageFromString(string str)
         {
             return Routes.First(route => route.Route == str).ViewType;

@@ -11,7 +11,5 @@ namespace Connect4.BL.Services.GridServices
         public GridStandardService() : base()
         {
         }
-        
-
     }
 }

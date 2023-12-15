@@ -9,16 +9,19 @@ using Connect4.ViewUserControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
-using System.Runtime.Remoting;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using NavService = Connect4.Services.NavigationService;
+
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : CrazyHouseViewModel
+ * Brief    : Logic behind a game variant with randomized ball drops. Mostly animations and game logic.   
+ */
 
 namespace Connect4.ViewModel
 {
@@ -26,18 +29,21 @@ namespace Connect4.ViewModel
     {
         public User CurrentUser { get; set; }
 
+        /* SERVICES */
         private readonly NavService _navigationService;
         private GridCrazyHouseService _gridService;
         private readonly UserService _userService;
         private readonly UserCustomizableService _userCustomizableService;
         private readonly UserAchievementService _userAchievementService;
 
+        /* VIEW PARTS */
         public Grid MainGrid;
         public Grid TopGrid;
         public Grid BottomGrid;
         public Canvas TopCanvas;
         public Canvas BottomCanvas;
 
+        /* COMMANDS */
         public ICommand NavigateToPickVariantCommand { get; private set; }
         public ICommand DropBallCommand { get; private set; }
         
@@ -98,6 +104,8 @@ namespace Connect4.ViewModel
         public void SwapPlayerTurn()
             => PlayerTurn = (PlayerTurn == _player1Turn ? _player2Turn : _player1Turn);
 
+
+        /* Gets x position of a column in view */
         public double GetColumnPosition(int index, Grid grid)
         {
             double columnXPosition = 0;
@@ -110,10 +118,11 @@ namespace Connect4.ViewModel
             return columnXPosition;
         }
 
+        /* Gets Width of a column in view */
         public double GetCurrentColumnWidth(int index, Grid grid)
             => grid.ColumnDefinitions[index].ActualWidth;
         
-
+        /* Gets y position of a row in view */
         public double GetRowPosition(int index, Grid grid) 
         {
             double columnYPosition = 0;
@@ -126,9 +135,11 @@ namespace Connect4.ViewModel
             return columnYPosition;
         } 
 
+        /* Gets Height of a row in view */
         public double GetCurrentRowHeight(int index, Grid grid)
             => grid.RowDefinitions[index].ActualHeight;
 
+        /* Animation for randomized ball dorp*/
         public void DropBall(int column)
         {
             if (IsAnimationOn) return; IsAnimationOn = true;
@@ -224,16 +235,19 @@ namespace Connect4.ViewModel
             storyboard.Children.Add(animationY);
             storyboard.Children.Add(animationX);
 
+            /* ON ANIMATION COMPLETED */
             storyboard.Completed += (sender, e) =>
             {
                 TopCanvas.Children.Remove(ball);
                 PlaceBall(endingColumn, endPosition);
             };
 
+            /* START ANIMATION */
             TopCanvas.Children.Add(ball);
             storyboard.Begin();
         }
 
+        /* Animation to place ball inside Grid */
         public void PlaceBall(int column, double startingX)
         {
             double endYPosition = GetRowPosition(_gridService.GetMaxRow(column) + 3, BottomGrid);
@@ -256,6 +270,7 @@ namespace Connect4.ViewModel
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(animation);
 
+            /* ON ANIMATION COMPLETED */
             storyboard.Completed += (sender, e) =>
             {
                 //FIX TOKEN POSITION
@@ -286,19 +301,20 @@ namespace Connect4.ViewModel
                 IsAnimationOn = false;
             };
 
+            /* START ANIMATION */
             BottomCanvas.Children.Add(ball);
             storyboard.Begin();
         }
 
+        /* Loads Currently Logged In User */
         public void LoadUser(User user)
         {
             CurrentUser = user;
         }
 
+        /* Navigation Command -> go back*/
         public void NavigateToPickVariant(object obj)
         {
-            _navigationService.NavigateTo("/EndScreen", CurrentUser, 1);
-            return;
             ExitGamePopUp exitGamePopUp = new ExitGamePopUp();
             bool? result = exitGamePopUp.ShowDialog();
             if (result == true)

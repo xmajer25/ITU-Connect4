@@ -1,4 +1,7 @@
-﻿<UserControl x:Class="Connect4.ViewUserControl.BallControl"
+﻿<!-- Author : Jakub Majer (xmajer25) -->
+<!-- Brief  : UserControl For Token Used In Connect4 -->
+    
+<UserControl x:Class="Connect4.ViewUserControl.BallControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

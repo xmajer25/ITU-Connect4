@@ -56,7 +56,7 @@
                 <Border Height="10"/>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Images/StaticImages/Coin.png" Stretch="UniformToFill" Width="30" Height="30"/>
-                    <TextBlock Text="12 250" Style="{StaticResource PixelButtonTextStyle}" FontSize="30" Foreground="Yellow"/>
+                    <TextBlock Text="{Binding CurrentGold}" Style="{StaticResource PixelButtonTextStyle}" FontSize="30" Foreground="Yellow"/>
                     <TextBlock Text=" + " Style="{StaticResource PixelButtonTextStyle}" FontSize="30" Foreground="Yellow"/>
                     <TextBlock Text="{Binding Reward}" Style="{StaticResource PixelButtonTextStyle}" FontSize="30" Foreground="Yellow"/>
                 </StackPanel>
