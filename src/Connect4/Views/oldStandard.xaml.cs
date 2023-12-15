@@ -6,9 +6,9 @@ namespace Connect4.Views
     /// <summary>
     /// Interaction logic for StandardModeView.xaml
     /// </summary>
-    public partial class StandardModeView : Page
+    public partial class oldStandardModeView : Page
     {
-        public StandardModeView()
+        public oldStandardModeView()
         {
             InitializeComponent();
             DataContext = new StandardModeViewModel();

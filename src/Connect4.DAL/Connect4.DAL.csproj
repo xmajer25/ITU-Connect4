@@ -65,6 +65,7 @@
     <Compile Include="DataModels\Achievements.cs" />
     <Compile Include="DataModels\Customizable.cs" />
     <Compile Include="DataModels\GridModel.cs" />
+    <Compile Include="DataModels\GridModelStandard.cs" />
     <Compile Include="DataModels\JoinUserAchiev.cs" />
     <Compile Include="DataModels\JoinUserCustom.cs" />
     <Compile Include="DataModels\Settings.cs" />
@@ -72,6 +73,8 @@
     <Compile Include="Repositories\AchievementRepository.cs" />
     <Compile Include="Repositories\CustomizableRepository.cs" />
     <Compile Include="Repositories\GridRepository.cs" />
+    <Compile Include="Repositories\GridStandardRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IGridStandardRepository.cs" />
     <Compile Include="Repositories\JoinUserAchievRepository.cs" />
     <Compile Include="Repositories\JoinUserCustomRepository.cs" />
     <Compile Include="Repositories\SettingsRepository.cs" />
