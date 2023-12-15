@@ -1,5 +1,6 @@
-﻿using Connect4.BL.Services;
-using Connect4.BL.Services.GridServices;
+﻿/*Author: Dušan Slúka*/
+/*Login: xsluka00*/
+using Connect4.BL.Services;
 using Connect4.Commands;
 using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
@@ -9,11 +10,9 @@ using Connect4.ViewModel.Interfaces;
 using Connect4.Views.PopUps;
 using Connect4.ViewUserControl;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;

@@ -1,4 +1,6 @@
-﻿using Connect4.DAL.DataModels;
+﻿/*Author: Dušan Slúka*/
+/*Login: xsluka00*/
+using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories.Interfaces;
 using System.Linq;
 
