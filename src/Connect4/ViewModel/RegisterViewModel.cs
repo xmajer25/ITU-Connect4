@@ -15,6 +15,12 @@ using System.Windows;
 using System.Windows.Input;
 using NavService = Connect4.Services.NavigationService;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : RegisterViewModel
+ * Brief    : Page for user registration
+ */
+
 namespace Connect4.ViewModel
 {
     public class RegisterViewModel : ILoadUser, INotifyPropertyChanged
@@ -131,12 +137,15 @@ namespace Connect4.ViewModel
                 }
             }
         }
+
+        /* COMMANDS */
         public ICommand NavigateToMenuCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand RegisterCommand { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /* SERVICES */
         private readonly NavService _navigationService;
         private readonly UserService _userService;
 
@@ -150,20 +159,25 @@ namespace Connect4.ViewModel
             RegisterCommand = new RelayCommand<object>(Register);
         }
 
+        /* get logged in user */
         public void LoadUser(User user)
         {
             CurrentUser = user;
         }
 
+        /* Navigation ->  go to main menu screen*/
         public void NavigateToMenu(object obj)
         {
             _navigationService.NavigateTo("/Menu", CurrentUser);
         }
 
+        /* Navigation -> go to log in screen*/
         public void NavigateToLogIn(object obj)
         {
             _navigationService.NavigateTo("/LogIn", CurrentUser);
         }
+
+        /* Create new account and navigate to log in page*/
         public void Register(object obj)
         {
             bool canRegister = true;

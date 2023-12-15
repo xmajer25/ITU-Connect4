@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : GridCrazyHouseService
+ * Brief    : Specific functions for crazy house mode
+ */
+
 namespace Connect4.BL.Services.GridServices
 {
     public class GridCrazyHouseService : GridBaseService
@@ -12,20 +18,20 @@ namespace Connect4.BL.Services.GridServices
         {
         }
 
+        /* returns true if column has been filled with tokens */
         public bool IsColumnFull(int column)
         {
-            int[,] grid = GetGrid();
-
             for(int row = 0; row < GetGridRows(); row++) 
-                if (grid[row, column] == 0) return false;
+                if (GridData.GetValue(row, column) == 0) return false;
 
             return true;
         }
 
+        /* returns true if there is no more space to place tokens in grid*/
         public bool IsGridFull()
             => GetEmptyColumns().Count == 0;
         
-
+        /* returns list of columns where token can be placed */
         public List<int> GetEmptyColumns()
         {
             List<int> emptyColumns = new List<int>();
@@ -38,6 +44,8 @@ namespace Connect4.BL.Services.GridServices
             return emptyColumns;
         }
 
+        /* creates random path for ball drop. */
+        /* returns list<bool> where TRUE->go right and FALSE->go left */
         public (List<bool>, int endingColumn) GetDropPath(int startingColumn)
         {
             Random random = new Random();
@@ -50,7 +58,7 @@ namespace Connect4.BL.Services.GridServices
             endingColumn = possibleColumns[randomColumnIndex] + 1;
 
             int steps = endingColumn - startingColumn;
-            int totalSteps = Math.Abs(steps) % 2 == 0 ? 8 : 7;
+            int totalSteps = Math.Abs(steps) % 2 == 0 ? 7 : 6;
 
             for (int i = 0; i < totalSteps; i++)
             {
@@ -63,15 +71,17 @@ namespace Connect4.BL.Services.GridServices
             return (path, endingColumn - 1);
         }
 
+        /* returns position where token should drop -> highest free position in column */
         public int GetMaxRow(int column)
         {
-            int[,] grid = GetGrid();
+            int rows = GetGridRows(); // Assuming GetGridRows returns the number of rows
+
             try
             {
-                var emptyRow = Enumerable.Range(0, GetGridRows())
-                .Reverse()
-                .Where(row => grid[row, column] == 0)
-                .First();
+                var emptyRow = Enumerable.Range(0, rows)
+                    .Reverse()
+                    .Where(row => GetCell(row, column) == 0)
+                    .First();
                 return emptyRow;
             }
             catch
@@ -80,33 +90,35 @@ namespace Connect4.BL.Services.GridServices
             }
         }
 
+        /* playes token -> sets corresponding cell in grid */
+        /* returns path to drop */
         public (List<bool>, int endingColumn) PlayMove(int startingColumn)
         {
             List<bool> path;
             int endingColumn ;
             int changedRow;
+            int player;
+
 
             (path, endingColumn) = GetDropPath(startingColumn);
 
             changedRow = GetMaxRow(endingColumn);
-
-            SetCell(changedRow, endingColumn, GetPlayer());
+            player = GetPlayer();
+            SetCell(changedRow, endingColumn, player);
             return (path, endingColumn);
         }
 
+        /* check if player has connected horizontaly */
         public bool CheckWinHorizontal(int player)
         {
-            int[,] grid = GetGrid();
-            
-
             for (int row = 0; row < GetGridRows(); row++)
             {
                 for (int col = 0; col <= GetGridColumns() - 4; col++)
                 {
-                    if (grid[row, col] == player &&
-                        grid[row, col + 1] == player &&
-                        grid[row, col + 2] == player &&
-                        grid[row, col + 3] == player)
+                    if (GetCell(row, col) == player &&
+                        GetCell(row, col + 1) == player &&
+                        GetCell(row, col + 2) == player &&
+                        GetCell(row, col + 3) == player)
                     {
                         return true; // Horizontal win
                     }
@@ -116,18 +128,17 @@ namespace Connect4.BL.Services.GridServices
             return false;
         }
 
+        /* check if player has connected  verticaly*/
         public bool CheckWinVertical(int player)
         {
-            int[,] grid = GetGrid();
-
             for (int row = 0; row <= GetGridRows() - 4; row++)
             {
                 for (int col = 0; col < GetGridColumns(); col++)
                 {
-                    if (grid[row, col] == player &&
-                        grid[row + 1, col] == player &&
-                        grid[row + 2, col] == player &&
-                        grid[row + 3, col] == player)
+                    if (GetCell(row, col) == player &&
+                        GetCell(row + 1, col) == player &&
+                        GetCell(row + 2, col) == player &&
+                        GetCell(row + 3, col) == player)
                     {
                         return true; // Vertical win
                     }
@@ -137,18 +148,17 @@ namespace Connect4.BL.Services.GridServices
             return false;
         }
 
+        /* check if player has connected diagonaly */
         public bool CheckWinDiagonal(int player)
         {
-            int[,] grid = GetGrid();
-
             for (int row = 0; row <= GetGridRows() - 4; row++)
             {
                 for (int col = 0; col <= GetGridColumns() - 4; col++)
                 {
-                    if (grid[row, col] == player &&
-                        grid[row + 1, col + 1] == player &&
-                        grid[row + 2, col + 2] == player &&
-                        grid[row + 3, col + 3] == player)
+                    if (GetCell(row, col) == player &&
+                        GetCell(row + 1, col + 1) == player &&
+                        GetCell(row + 2, col + 2) == player &&
+                        GetCell(row + 3, col + 3) == player)
                     {
                         return true;
                     }
@@ -159,10 +169,10 @@ namespace Connect4.BL.Services.GridServices
             {
                 for (int col = GetGridColumns() - 1; col >= 3; col--)
                 {
-                    if (grid[row, col] == player &&
-                        grid[row + 1, col - 1] == player &&
-                        grid[row + 2, col - 2] == player &&
-                        grid[row + 3, col - 3] == player)
+                    if (GetCell(row, col) == player &&
+                        GetCell(row + 1, col - 1) == player &&
+                        GetCell(row + 2, col - 2) == player &&
+                        GetCell(row + 3, col - 3) == player)
                     {
                         return true;
                     }
@@ -172,6 +182,7 @@ namespace Connect4.BL.Services.GridServices
             return false;
         }
 
+        /* returns true if current player has won */
         public bool CheckForWin()
         {
             int player = GetPlayer();

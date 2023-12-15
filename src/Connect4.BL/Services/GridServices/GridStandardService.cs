@@ -138,6 +138,7 @@ namespace Connect4.BL.Services
             return false;
         }
 
+
         private bool CheckDiagonalDownRightWin(GridModelStandard gridModel)
         {
             int rows = gridModel.Grid[0].Count;
