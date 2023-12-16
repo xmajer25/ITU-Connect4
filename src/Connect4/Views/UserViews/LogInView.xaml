@@ -1,0 +1,62 @@
+﻿<Page x:Class="Connect4.Views.UserViews.LogInView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+      xmlns:conv="clr-namespace:Connect4.Resources.Converters"
+      xmlns:local="clr-namespace:Connect4.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogInView">
+    
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+    
+    <Page.DataContext>
+        <viewModel:LogInViewModel/>
+    </Page.DataContext>
+    
+    <Grid>
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
+        <Image Source="\Resources\Images\StaticImages\PageLogin.png" Stretch="Fill"/>
+
+        <StackPanel Orientation="Vertical" Margin="0, 250, 0, 0"
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Name:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
+            <TextBox Text="{Binding _name}" Style="{StaticResource InputFieldStyle}"/>
+            <TextBlock Text="{Binding NameError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsNameError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+            
+            <TextBlock Text="Password:" Style="{StaticResource PixelSmallTextStyle}" Margin="100, 10, 0, -30"/>
+            <TextBox Text="{Binding _password}" Style="{StaticResource InputFieldStyle}"/>
+            <TextBlock Text="{Binding PasswordError}" Margin="100, 0, 0, 0" Style="{StaticResource ErrorMessage}" Visibility="{Binding IsPasswordError, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"/>
+
+            <StackPanel Orientation="Vertical" Margin="0, 20, 0, 0"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Style="{StaticResource DefaultButton}"
+                        Command="{Binding LogInCommand}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Log In" Style="{StaticResource YellowButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+                <TextBlock Style="{StaticResource PixelSmallTextStyle}" TextAlignment="Center">
+                <Hyperlink Command="{Binding NavigateToRegisterCommand}" Foreground="Black">
+                    Don't have an account yet?
+                    <LineBreak/>
+                    Create a new one!
+                </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Command="{Binding NavigateToMenuCommand}"
+                Grid.Row="1" Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Background="Transparent" BorderBrush="Transparent"
+                Height="100">
+            <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
+        </Button>
+    </Grid>
+</Page>

@@ -12,9 +12,9 @@ namespace Connect4.BL.Services
     {
         private JoinUserCustomRepository _userCustomizableRepository;
 
-        public UserCustomizableService(JoinUserCustomRepository userCustomizableRepository)
+        public UserCustomizableService()
         {
-            _userCustomizableRepository = userCustomizableRepository;
+            _userCustomizableRepository = new JoinUserCustomRepository();
         }
 
         // Retrieve UserCustomizable records by IsToken flag and UserId

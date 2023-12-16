@@ -1,4 +1,5 @@
-﻿using Connect4.ViewModel;
+﻿using Connect4.Services;
+using Connect4.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,12 @@ namespace Connect4.Views
         {
             InitializeComponent();
             DataContext = new SettingsViewModel();
+            Loaded += Page_Loaded;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            AudioManager.PlaySound();
         }
     }
 }

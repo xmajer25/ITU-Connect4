@@ -3,6 +3,12 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : BoolToVisibilityConverter
+ * Brief    : Converts bool to Visibility
+ */
+
 namespace Connect4.Resources.Converters
 {
     public class BoolToVisibilityConverter : IValueConverter

@@ -16,8 +16,11 @@
     <Page.DataContext>
         <viewModel:MenuViewModel/>
     </Page.DataContext>
+    
 
+    
     <Grid>
+        
         <!-- Define rows for the Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -27,6 +30,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Stretch="Fill" Source="/Resources/Images/StaticImages/PageMenu.png"/>
         <Grid Grid.Row="0" Grid.Column="0"
               HorizontalAlignment="Right" VerticalAlignment="Top"
@@ -66,8 +70,8 @@
 
         <!-- Place the controls in their respective rows -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
-            
-            
+
+
             <Button Margin="10"
                 Command="{Binding NavigateToPickVariantCommand}"
                 Style="{StaticResource BigButton}">
@@ -94,8 +98,10 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
                 </Grid>
             </Button>
-            
+
         </StackPanel>
         <TextBlock Name="ResultText" Text="{Binding LoggedInUser}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
-    </Grid>
+
+    </Grid> 
+    
 </Page>
