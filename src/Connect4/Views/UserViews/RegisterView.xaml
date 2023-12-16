@@ -31,6 +31,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Source="/Resources/Images/StaticImages/PageRegister.png" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Stretch="Fill"/>
 
         <Button Command="{Binding NavigateToMenuCommand}" 

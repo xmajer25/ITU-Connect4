@@ -14,6 +14,7 @@
     </Page.DataContext>
     
     <Grid ShowGridLines="True">
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Source="/Resources/Images/StaticImages/PageMenu.png" Stretch="Fill"/>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center" VerticalAlignment="Center">

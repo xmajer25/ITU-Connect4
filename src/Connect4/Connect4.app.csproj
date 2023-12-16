@@ -162,6 +162,9 @@
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Sounds\ButtonClickDefault.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\Images\StaticImages\Trophy.png" />
     <Resource Include="Resources\Images\StaticImages\Coin.png" />
     <Resource Include="Resources\Images\Tokens\TokenRed.png" />

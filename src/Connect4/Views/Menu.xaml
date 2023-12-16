@@ -30,6 +30,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Stretch="Fill" Source="/Resources/Images/StaticImages/PageMenu.png"/>
         <Grid Grid.Row="0" Grid.Column="0"
               HorizontalAlignment="Right" VerticalAlignment="Top"

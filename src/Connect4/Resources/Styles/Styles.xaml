@@ -166,7 +166,6 @@
         <Setter Property="Width" Value="250"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-
     </Style>
 
     <Style x:Key="TransparentButtonStyle" TargetType="Button">

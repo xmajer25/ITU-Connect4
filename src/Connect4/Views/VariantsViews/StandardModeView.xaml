@@ -56,7 +56,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
+            <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
             <Button Grid.Row="0"  Grid.Column="2"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton1_Click" MouseEnter="Show1Drop" MouseLeave="Hide1tDrop"/>
             <Button Grid.Row="0"  Grid.Column="3"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton2_Click" MouseEnter="Show2Drop" MouseLeave="Hide2tDrop"/>
             <Button Grid.Row="0"  Grid.Column="4"  Style="{StaticResource TransparentButtonStyle}" Content="Place Ball" Click="ColumnButton3_Click" MouseEnter="Show3Drop" MouseLeave="Hide3tDrop"/>
