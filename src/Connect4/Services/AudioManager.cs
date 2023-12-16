@@ -5,47 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Connect4.Services
 {
     public class AudioManager
     {
-        private static AudioManager instance;
+        private static MediaPlayer mediaPlayer = new MediaPlayer();
+        private static Uri soundUri = new Uri("pack://siteoforigin:,,,/Resources/Sounds/DefaultSound.mp3", UriKind.RelativeOrAbsolute);
 
-        public static AudioManager Instance
+        public static void PlaySound()
         {
-            get
+            if (mediaPlayer.Source == null)
             {
-                if (instance == null)
-                {
-                    instance = new AudioManager();
-                }
-                return instance;
+                mediaPlayer.Open(soundUri);
+                mediaPlayer.MediaEnded += (sender, e) => mediaPlayer.Position = TimeSpan.Zero;
             }
-        }
 
-        private MediaElement mediaElement;
-
-        private AudioManager()
-        {
-            mediaElement = new MediaElement();
-            mediaElement.LoadedBehavior = MediaState.Manual;
-            mediaElement.UnloadedBehavior = MediaState.Stop;
-            mediaElement.MediaEnded += MediaElement_MediaEnded;
-
-            // Set the default audio source
-            mediaElement.Source = new Uri("pack://siteoforigin:,,,/Resources/Sounds/DefaultSound.mp3");
-        }
-
-        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            mediaElement.Position = TimeSpan.Zero;
-            mediaElement.Play();
-        }
-
-        public MediaElement GetMediaElement()
-        {
-            return mediaElement;
+            mediaPlayer.Play();
         }
     }
 }

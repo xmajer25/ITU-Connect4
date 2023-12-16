@@ -2,6 +2,7 @@
 using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Input;
+using Connect4.Services;
 namespace Connect4.Views.VariantsViews
 {
     public partial class StandardModeView : Page
@@ -17,6 +18,11 @@ namespace Connect4.Views.VariantsViews
                 viewModel.GameGrid = GameGrid;
 
                 DataContext = viewModel;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            AudioManager.PlaySound();
         }
         private void ColumnButton1_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 2);

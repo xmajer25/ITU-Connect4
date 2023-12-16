@@ -8,8 +8,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <MediaElement x:Key="GlobalMediaElement" Source="pack://siteoforigin:,,,/Resources/Sounds/DefaultSound.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

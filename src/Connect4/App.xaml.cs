@@ -11,11 +11,5 @@ namespace Connect4
 {
     public partial class App : Application
     {
-        private void GlobalMediaElement_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            var mediaElement = (MediaElement)sender;
-            mediaElement.Position = TimeSpan.Zero;
-            mediaElement.Play();
-        }
     }
 }

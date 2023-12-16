@@ -101,7 +101,6 @@
         </StackPanel>
         <TextBlock Name="ResultText" Text="{Binding LoggedInUser}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
 
-        <ContentControl Content="{StaticResource GlobalMediaElement}"/>
     </Grid> 
     
 </Page>
