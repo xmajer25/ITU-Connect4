@@ -13,14 +13,24 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using NavService = Connect4.Services.NavigationService;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : LogInViewModel
+ * Brief    : Log In Page Logic 
+ */
+
 namespace Connect4.ViewModel
 {
     public class LogInViewModel : INotifyPropertyChanged, ILoadUser
     {
         public User CurrentUser { get; set; }
+
+        /* COMMANDS */
         public ICommand NavigateToMenuCommand { get; private set; }
         public ICommand NavigateToRegisterCommand { get; private set; }
         public ICommand LogInCommand { get; private set; }
+
+
         public string _name { get; set; } = string.Empty;
         private bool _isNameError = false;
         private string _nameError = string.Empty;
@@ -80,6 +90,8 @@ namespace Connect4.ViewModel
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /* SERVICES */
         private readonly NavService _navigationService;
         private readonly UserService _userService;
 
@@ -98,16 +110,20 @@ namespace Connect4.ViewModel
             CurrentUser = user;
         }
 
+        /* Navigation -> go to menu*/
         public void NavigateToMenu(object obj)
         {
             _navigationService.NavigateTo("/Menu", CurrentUser);
         }
 
+        /* Navigation -> go to register page*/
         public void NavigateToRegister(object obj)
         {
             _navigationService.NavigateTo("/Register", CurrentUser);
         }
 
+
+        /* Log in logic */
         public void LogIn(object obj)
         {
             bool canLogIn = true;

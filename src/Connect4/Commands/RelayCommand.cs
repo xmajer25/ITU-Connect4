@@ -3,6 +3,13 @@ using System.Windows.Input;
 
 namespace Connect4.Commands
 {
+    /*
+* Author   : Dušan Slúka (xsluka00)
+* File     : RelayCommand
+* Brief    : A generic command handler that implements the ICommand interface for MVVM pattern. 
+*            This class allows for parameterized actions to be bound to command objects, 
+*            enabling UI elements like buttons and menu items to interact with application logic.
+*/
     public class RelayCommand<T> : ICommand
     {
         private readonly Action<T> _execute;

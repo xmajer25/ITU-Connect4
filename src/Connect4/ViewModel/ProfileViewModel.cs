@@ -7,6 +7,12 @@ using System.ComponentModel;
 using System.Windows.Input;
 using NavService = Connect4.Services.NavigationService;
 
+/*
+ * Author   : Jakub Majer (xmajer25)
+ * File     : ProfileViewModel
+ * Brief    : Page for logged in user to view his profile.
+ */
+
 namespace Connect4.ViewModel
 {
     public class ProfileViewModel : ILoadUser, INotifyPropertyChanged
@@ -50,10 +56,12 @@ namespace Connect4.ViewModel
         }
         private string originalEmail { get; set; } 
 
-        
+        /* COMMANDS */
         public ICommand NavigateToMenuCommand { get; private set; }
         public ICommand EditNameCommand { get; private set; }
         public ICommand EditEmailCommand { get; private set; }
+
+        /* SERVICES */
         private readonly NavService _navigationService;
         private readonly UserService _userService;
 
@@ -68,6 +76,8 @@ namespace Connect4.ViewModel
             EditNameCommand = new RelayCommand<object>(EditName);
             EditEmailCommand = new RelayCommand<object>(EditEmail);
         }
+
+        /* Load user */
         public void LoadUser(User user)
         {
             CurrentUser = user;
@@ -84,6 +94,7 @@ namespace Connect4.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /* Edit user name command */
         public void EditName(object obj)
         {
             if (originalUsername == username) return;
@@ -94,6 +105,7 @@ namespace Connect4.ViewModel
             CurrentUser.Username = username;
         }
 
+        /* Edit user email command */
         public void EditEmail(object obj)
         {
             if(email == string.Empty) return;
@@ -104,6 +116,7 @@ namespace Connect4.ViewModel
             CurrentUser.Email = email;
         }
 
+        /* Navigation -> navigate to main menu screen */
         public void NavigateToMenu(object obj)
         {
             _navigationService.NavigateTo("/Menu", CurrentUser);

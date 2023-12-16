@@ -12,9 +12,9 @@ namespace Connect4.BL.Services
     {
         private CustomizableRepository _customizableRepository;
 
-        public CustomizableService(CustomizableRepository customizableRepository)
+        public CustomizableService()
         {
-            _customizableRepository = customizableRepository;
+            _customizableRepository = new CustomizableRepository();
         }
 
         public List<Customizable> GetAllCustomizables()

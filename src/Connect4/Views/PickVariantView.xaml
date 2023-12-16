@@ -17,29 +17,39 @@
         <Image Source="/Resources/Images/StaticImages/PageMenu.png" Stretch="Fill"/>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Margin="10"
-                    Style="{StaticResource BigButton}"
-                    Command="{Binding NavigateToStandardModeCommand}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Resources\Images\StaticImages\PlayStandard.png" HorizontalAlignment="Left" Height="40" Margin="10, 0, 20, 0"/>
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="STANDARD" Style="{StaticResource PixelButtonTextStyle}"/>
-                    </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10"
+                        Style="{StaticResource BigButton}"
+                        Command="{Binding NavigateToStandardModeCommand}">
+                    <Grid ShowGridLines="True">
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="\Resources\Images\StaticImages\PlayStandard.png" HorizontalAlignment="Left" Height="40" Margin="10, 0, 20, 0"/>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="STANDARD" Style="{StaticResource PixelButtonTextStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Border Style="{StaticResource StandardToolTip}">
+                    <TextBlock Text="i" Style="{StaticResource PixelSmallTextStyle}" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
 
-                </Grid>
-            </Button>
-            <Button Margin="10"
-                    Style="{StaticResource BigButton}"
-                    Command="{Binding NavigateToCrazyHouseModeCommand}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Resources\Images\StaticImages\PlayCrazyHouse.png" HorizontalAlignment="Left" Height="40" Margin="10, 0, 10, 0"/>
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="CRAZY HOUSE" Style="{StaticResource PixelButtonTextStyle}"/>
-                    </StackPanel>
-                </Grid>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10"
+                        Style="{StaticResource BigButton}"
+                        Command="{Binding NavigateToCrazyHouseModeCommand}">
+                    <Grid ShowGridLines="True">
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="\Resources\Images\StaticImages\PlayCrazyHouse.png" HorizontalAlignment="Left" Height="40" Margin="10, 0, 10, 0"/>
+                            <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Text="CRAZY HOUSE" Style="{StaticResource PixelButtonTextStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Button>
+                <Border Style="{StaticResource CrazyHouseToolTip}">
+                    <TextBlock Text="i" Style="{StaticResource PixelSmallTextStyle}" Foreground="Yellow" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
             <Button Margin="10"
                 Style="{StaticResource BigButton}"
                 Command="{Binding NavigateToPopOutModeCommand}">
@@ -51,6 +61,7 @@
                     </StackPanel>
                 </Grid>
             </Button>
+            
         </StackPanel>
         <Button Command="{Binding NavigateToMenuCommand}" 
                     HorizontalAlignment="Left" VerticalAlignment="Bottom"

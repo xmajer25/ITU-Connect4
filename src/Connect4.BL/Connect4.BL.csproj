@@ -50,6 +50,7 @@
     <Compile Include="Services\GridServices\GridCrazyHouseService.cs" />
     <Compile Include="Services\GridServices\GridPopService.cs" />
     <Compile Include="Services\GridServices\GridStandardService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="Services\UserAchievementService.cs" />
     <Compile Include="Services\UserCustomizableService.cs" />
     <Compile Include="Services\UserService.cs" />

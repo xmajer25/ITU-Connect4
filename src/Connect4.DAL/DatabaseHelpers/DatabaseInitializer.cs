@@ -48,6 +48,7 @@ namespace Connect4.DAL.DatabaseHelpers
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 UserId INTEGER NOT NULL,
                 MasterVolume INTEGER NOT NULL,
+                VoiceNaration INTEGER NOT NULL,
                 EffectVolume INTEGER NOT NULL
             );
 

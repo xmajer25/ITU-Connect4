@@ -2,6 +2,8 @@
 using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Diagnostics;
+
 namespace Connect4.Views.VariantsViews
 {
     public partial class StandardModeView : Page
@@ -11,42 +13,22 @@ namespace Connect4.Views.VariantsViews
             
                 InitializeComponent();
                 StandardModeViewModel viewModel = new StandardModeViewModel();
-                viewModel.MainGrid = MainGrid;
-               /* viewModel.TopGrid = TopGrid;
-                viewModel.TopCanvas = TopCanvas;*/
                 viewModel.BottomCanvas = BottomCanvas;
-                viewModel.BottomGrid = BottomGrid;
+                viewModel.GameGrid = GameGrid;
 
                 DataContext = viewModel;
         }
-        private void ColumnButton1_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 1);
-        private void ColumnButton2_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 2);
-        private void ColumnButton3_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 3);
-        private void ColumnButton4_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 4);
-        private void ColumnButton5_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 5);
-        private void ColumnButton6_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 6);
-        private void ColumnButton7_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 7);
-        private void ColumnButton8_Click(object sender, RoutedEventArgs e)
-            => StartAnimation(sender, e, 8);
 
-        private void StartAnimation(object sender, RoutedEventArgs e, int column)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (sender is Button)
-            {
-                if (DataContext is CrazyHouseViewModel viewModel)
-                {
-                    viewModel.DropBallCommand.Execute(column);
-                }
-            }
+;           var viewModel = DataContext as StandardModeViewModel;
+            viewModel?.HandleKeyPress(e.Key);
         }
-
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Assuming you have a control named 'InitialControl' that you want to focus
+            FirstColumnButton.Focus();
+        }
         private void Show1Drop(object sender, MouseEventArgs e)
         {
             Drop1.Visibility = Visibility.Visible;
