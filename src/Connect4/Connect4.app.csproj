@@ -64,6 +64,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -89,11 +90,13 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converters\ModeTextConverter.cs" />
     <Compile Include="Services\AudioManager.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
     <Compile Include="ViewModel\EndScreenViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadUser.cs" />
+    <Compile Include="ViewModel\PopOutViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadWinner.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
@@ -132,8 +135,8 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\oldStandard.xaml.cs">
-      <DependentUpon>oldStandard.xaml</DependentUpon>
+    <Compile Include="Views\VariantsViews\PopOutView.xaml.cs">
+      <DependentUpon>PopOutView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VariantsViews\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
@@ -159,6 +162,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Images\StaticImages\PlaceArrowUp.png" />
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -239,11 +243,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\oldStandard.xaml">
+    <Page Include="Views\VariantsViews\StandardModeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VariantsViews\StandardModeView.xaml">
+    <Page Include="Views\VariantsViews\PopOutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,7 +294,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\StaticImages\PageMenu.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

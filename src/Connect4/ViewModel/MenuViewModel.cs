@@ -18,11 +18,12 @@ using Connect4.DAL.DataModels;
 using System.Windows.Controls;
 using System.Windows;
 using Connect4.ViewModel.Interfaces;
+using Connect4.Views.PopUps;
 
 /*
- * Author   : Jakub Majer (xmajer25)
- * File     : MenuViewModel
- * Brief    : Main Menu Screen. Mostly navigation to other pages 
+ * Author   : Dušan Slúka (xsluka00)
+ * File     : StandardModeViewModel
+ * Brief    : ViewModel for standard game mode view. 
  */
 
 namespace Connect4.ViewModel
@@ -140,7 +141,9 @@ namespace Connect4.ViewModel
         /* Navigation -> go to settings */
         private void NavigateToSettings(object obj)
         {
-            _navigationService.NavigateTo("/Settings", CurrentUser);
+
+             _navigationService.NavigateTo("/Settings", CurrentUser);
+
         }
 
         /* Navigation -> go to log in page*/

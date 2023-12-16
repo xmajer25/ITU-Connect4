@@ -2,6 +2,7 @@
 using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Diagnostics;
 using Connect4.Services;
 namespace Connect4.Views.VariantsViews
 {
@@ -12,8 +13,6 @@ namespace Connect4.Views.VariantsViews
             
                 InitializeComponent();
                 StandardModeViewModel viewModel = new StandardModeViewModel();
-                viewModel.MainGrid = MainGrid;
-                //viewModel.TopCanvas = TopCanvas;
                 viewModel.BottomCanvas = BottomCanvas;
                 viewModel.GameGrid = GameGrid;
 
@@ -41,17 +40,16 @@ namespace Connect4.Views.VariantsViews
         private void ColumnButton8_Click(object sender, RoutedEventArgs e)
             => StartAnimation(sender, e, 9);
 
-        private void StartAnimation(object sender, RoutedEventArgs e, int column)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (sender is Button)
-            {
-                if (DataContext is StandardModeViewModel viewModel)
-                {
-                    viewModel.PlaceBallCommand.Execute(column);
-                }
-            }
+;           var viewModel = DataContext as StandardModeViewModel;
+            viewModel?.HandleKeyPress(e.Key);
         }
-
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Assuming you have a control named 'InitialControl' that you want to focus
+            FirstColumnButton.Focus();
+        }
         private void Show1Drop(object sender, MouseEventArgs e)
         {
             Drop1.Visibility = Visibility.Visible;

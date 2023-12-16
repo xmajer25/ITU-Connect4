@@ -28,7 +28,8 @@ namespace Connect4.ViewModel
         public ICommand NavigateToMenuCommand { get; private set; }
         public ICommand NavigateToStandardModeCommand { get; private set; }
         public ICommand NavigateToCrazyHouseModeCommand { get; private set; }
-
+        public ICommand NavigateToPopOutModeCommand { get; private set; }
+        
         /* SERVICES */
         private readonly NavService _navigationService;
 
@@ -39,6 +40,7 @@ namespace Connect4.ViewModel
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
             NavigateToStandardModeCommand = new RelayCommand<object>(NavigateToStandardMode);
             NavigateToCrazyHouseModeCommand = new RelayCommand<object>(NavigateToCrazyHouseMode);
+            NavigateToPopOutModeCommand = new RelayCommand<object>(NavigateToPopOutMode);
         }
 
         /* Load logged in user */
@@ -63,6 +65,11 @@ namespace Connect4.ViewModel
         public void NavigateToStandardMode(object obj)
         {
             _navigationService.NavigateTo("/StandardMode", CurrentUser);
+        }
+
+        public void NavigateToPopOutMode(object obj)
+        {
+            _navigationService.NavigateTo("/PopOutMode", CurrentUser);
         }
     }
 }

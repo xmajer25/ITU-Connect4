@@ -48,6 +48,7 @@ namespace Connect4.DAL.DatabaseHelpers
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 UserId INTEGER NOT NULL,
                 MasterVolume INTEGER NOT NULL,
+                VoiceNaration INTEGER NOT NULL,
                 EffectVolume INTEGER NOT NULL
             );
 
@@ -65,6 +66,14 @@ namespace Connect4.DAL.DatabaseHelpers
                 UserId INTEGER NOT NULL,
                 CustomizableId INTEGER NOT NULL,
                 Ownership INTEGER NOT NULL
+            );
+            
+            CREATE TABLE IF NOT EXISTS GameStates (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Rows INTEGER NOT NULL,
+                Columns INTEGER NOT NULL,
+                CurrentPlayer INTEGER NOT NULL,
+                GridData TEXT NOT NULL
             );
                 ";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
