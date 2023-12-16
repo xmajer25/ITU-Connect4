@@ -66,14 +66,14 @@
                 </Grid>
             </Button>
 
-            <Button Grid.Row="0"  Grid.Column="2"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton1_Click" MouseEnter="Show1Drop" MouseLeave="Hide1tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="3"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton2_Click" MouseEnter="Show2Drop" MouseLeave="Hide2tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="4"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton3_Click" MouseEnter="Show3Drop" MouseLeave="Hide3tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="5"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton4_Click" MouseEnter="Show4Drop" MouseLeave="Hide4tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="6"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton5_Click" MouseEnter="Show5Drop" MouseLeave="Hide5tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="7"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton6_Click" MouseEnter="Show6Drop" MouseLeave="Hide6tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="8"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton7_Click" MouseEnter="Show7Drop" MouseLeave="Hide7tDrop" IsEnabled="{Binding IsPutMode}"/>
-            <Button Grid.Row="0"  Grid.Column="9"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton8_Click" MouseEnter="Show8Drop" MouseLeave="Hide8tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="2" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton1_Click" MouseEnter="Show1Drop" MouseLeave="Hide1tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="3" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton2_Click" MouseEnter="Show2Drop" MouseLeave="Hide2tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="4" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton3_Click" MouseEnter="Show3Drop" MouseLeave="Hide3tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="5" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton4_Click" MouseEnter="Show4Drop" MouseLeave="Hide4tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="6" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton5_Click" MouseEnter="Show5Drop" MouseLeave="Hide5tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="7" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton6_Click" MouseEnter="Show6Drop" MouseLeave="Hide6tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="8" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton7_Click" MouseEnter="Show7Drop" MouseLeave="Hide7tDrop" IsEnabled="{Binding IsPutMode}"/>
+            <Button Grid.Row="0"  Grid.Column="9" Grid.RowSpan="5" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnButton8_Click" MouseEnter="Show8Drop" MouseLeave="Hide8tDrop" IsEnabled="{Binding IsPutMode}"/>
 
             <Image Grid.Row="0" Grid.Column="2" Visibility="Hidden" Source="\Resources\Images\StaticImages\PlaceArrow.png"/>
             <Image x:Name="Drop1" Grid.Row="0" Grid.Column="2" Visibility="Collapsed" Source="\Resources\Images\StaticImages\PlaceArrow.png"/>
@@ -139,14 +139,14 @@
             <Image Grid.Row="7" Grid.Column="8" Source="\Resources\Images\StaticImages\GridPart.png"/>
             <Image Grid.Row="7" Grid.Column="9" Source="\Resources\Images\StaticImages\GridPart.png"/>
 
-            <Button Grid.Row="8"  Grid.Column="2"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton1_Click" MouseEnter="Show1Pop" MouseLeave="Hide1Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="3"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton2_Click" MouseEnter="Show2Pop" MouseLeave="Hide2Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="4"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton3_Click" MouseEnter="Show3Pop" MouseLeave="Hide3Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="5"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton4_Click" MouseEnter="Show4Pop" MouseLeave="Hide4Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="6"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton5_Click" MouseEnter="Show5Pop" MouseLeave="Hide5Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="7"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton6_Click" MouseEnter="Show6Pop" MouseLeave="Hide6Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="8"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton7_Click" MouseEnter="Show7Pop" MouseLeave="Hide7Pop" IsEnabled="{Binding IsPopMode}"/>
-            <Button Grid.Row="8"  Grid.Column="9"  Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton8_Click" MouseEnter="Show8Pop" MouseLeave="Hide8Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="2" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton1_Click" MouseEnter="Show1Pop" MouseLeave="Hide1Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="3" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton2_Click" MouseEnter="Show2Pop" MouseLeave="Hide2Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="4" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton3_Click" MouseEnter="Show3Pop" MouseLeave="Hide3Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="5" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton4_Click" MouseEnter="Show4Pop" MouseLeave="Hide4Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="6" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton5_Click" MouseEnter="Show5Pop" MouseLeave="Hide5Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="7" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton6_Click" MouseEnter="Show6Pop" MouseLeave="Hide6Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="8" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton7_Click" MouseEnter="Show7Pop" MouseLeave="Hide7Pop" IsEnabled="{Binding IsPopMode}"/>
+            <Button Grid.Row="5"  Grid.Column="9" Grid.RowSpan="4" Style="{StaticResource TransparentButtonStyle}" Content="Drop Ball" Click="ColumnBottomButton8_Click" MouseEnter="Show8Pop" MouseLeave="Hide8Pop" IsEnabled="{Binding IsPopMode}"/>
 
             <Image Grid.Row="8" Grid.Column="2" Visibility="Hidden" Source="\Resources\Images\StaticImages\PlaceArrow.png"/>
             <Image x:Name="Pop1" Grid.Row="8" Grid.Column="2" Visibility="Collapsed" Source="\Resources\Images\StaticImages\PlaceArrowUp.png"/>
