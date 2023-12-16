@@ -27,7 +27,7 @@ namespace Connect4.Views.VariantsViews
             InitializeComponent();
             PopOutViewModel viewModel = new PopOutViewModel();
             viewModel.MainGrid = MainGrid;
-            viewModel.Canvas = Canvas;
+            viewModel.GameCanvas = GameCanvas;
             viewModel.GameGrid = GameGrid;
 
             DataContext = viewModel;
@@ -59,6 +59,23 @@ namespace Connect4.Views.VariantsViews
                 }
             }
         }
+
+        private void ColumnBottomButton1_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 2);
+        private void ColumnBottomButton2_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 3);
+        private void ColumnBottomButton3_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 4);
+        private void ColumnBottomButton4_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 5);
+        private void ColumnBottomButton5_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 6);
+        private void ColumnBottomButton6_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 7);
+        private void ColumnBottomButton7_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 8);
+        private void ColumnBottomButton8_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 9);
 
         private void Show1Drop(object sender, MouseEventArgs e)
         {
@@ -125,6 +142,75 @@ namespace Connect4.Views.VariantsViews
         private void Hide8tDrop(object sender, MouseEventArgs e)
         {
             Drop8.Visibility = Visibility.Collapsed;
+        }
+
+        private void Show1Pop(object sender, MouseEventArgs e)
+        {
+            Pop1.Visibility = Visibility.Visible;
+        }
+        private void Show2Pop(object sender, MouseEventArgs e)
+        {
+            Pop2.Visibility = Visibility.Visible;
+        }
+        private void Show3Pop(object sender, MouseEventArgs e)
+        {
+            Pop3.Visibility = Visibility.Visible;
+        }
+        private void Show4Pop(object sender, MouseEventArgs e)
+        {
+            Pop4.Visibility = Visibility.Visible;
+        }
+        private void Show5Pop(object sender, MouseEventArgs e)
+        {
+            Pop5.Visibility = Visibility.Visible;
+
+        }
+        private void Show6Pop(object sender, MouseEventArgs e)
+        {
+            Pop6.Visibility = Visibility.Visible;
+        }
+
+        private void Show7Pop(object sender, MouseEventArgs e)
+        {
+            Pop7.Visibility = Visibility.Visible;
+        }
+
+        private void Show8Pop(object sender, MouseEventArgs e)
+        {
+            Pop8.Visibility = Visibility.Visible;
+        }
+
+        private void Hide1Pop(object sender, MouseEventArgs e)
+        {
+            Pop1.Visibility = Visibility.Collapsed;
+        }
+        private void Hide2Pop(object sender, MouseEventArgs e)
+        {
+            Pop2.Visibility = Visibility.Collapsed;
+        }
+        private void Hide3Pop(object sender, MouseEventArgs e)
+        {
+            Pop3.Visibility = Visibility.Collapsed;
+        }
+        private void Hide4Pop(object sender, MouseEventArgs e)
+        {
+            Pop4.Visibility = Visibility.Collapsed;
+        }
+        private void Hide5Pop(object sender, MouseEventArgs e)
+        {
+            Pop5.Visibility = Visibility.Collapsed;
+        }
+        private void Hide6Pop(object sender, MouseEventArgs e)
+        {
+            Pop6.Visibility = Visibility.Collapsed;
+        }
+        private void Hide7Pop(object sender, MouseEventArgs e)
+        {
+            Pop7.Visibility = Visibility.Collapsed;
+        }
+        private void Hide8Pop(object sender, MouseEventArgs e)
+        {
+            Pop8.Visibility = Visibility.Collapsed;
         }
     }
 }

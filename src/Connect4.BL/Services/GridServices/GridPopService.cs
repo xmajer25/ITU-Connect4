@@ -24,13 +24,6 @@ namespace Connect4.BL.Services.GridServices
             _gridPopRepository.SaveGridModel(newGridModel);
         }
 
-        public GridModelPop GetCurrentGameState()
-        {
-            // Retrieve the current game state from the database
-            return _gridPopRepository.GetGridModel();
-        }
-
-
         public int MakePut(int column)
         {
             // Get the current game state
@@ -44,10 +37,9 @@ namespace Connect4.BL.Services.GridServices
                 ApplyPut(currentGridModel.Grid, column, currentGridModel.CurrentPlayer, placedRow);
 
                 // Switch to the next player and update the game state
-                currentGridModel.CurrentPlayer = 3 - currentGridModel.CurrentPlayer; // Toggle between players 1 and 2
                 _gridPopRepository.UpdateGridModel(currentGridModel.Id, currentGridModel.Grid, currentGridModel.CurrentPlayer);
 
-
+                var newGridModel = _gridPopRepository.GetGridModel();
                 // Return the row where the move was made
                 return placedRow;
             }
@@ -86,7 +78,7 @@ namespace Connect4.BL.Services.GridServices
 
         }
 
-        public void MakePop(int column)
+        public bool MakePop(int column)
         {
             // Get the current game state
             var currentGridModel = _gridPopRepository.GetGridModel();
@@ -99,10 +91,12 @@ namespace Connect4.BL.Services.GridServices
 
 
                 // Switch to the next player and update the game state
-                currentGridModel.CurrentPlayer = 3 - currentGridModel.CurrentPlayer; // Toggle between players 1 and 2
                 _gridPopRepository.UpdateGridModel(currentGridModel.Id, currentGridModel.Grid, currentGridModel.CurrentPlayer);
 
+                return true;
+
             }
+            else { return false; }
         }
 
         private bool IsValidPop(int[] grid, int column, int currentPlayer)
@@ -117,20 +111,6 @@ namespace Connect4.BL.Services.GridServices
         {
             int rows = _gridPopRepository.GetRowsCount(1);
             int columns = _gridPopRepository.GetColumnsCount(1);
-
-            // Find the first non-empty cell in the specified column
-            for (int row = 0; row < rows; row++)
-            {
-                int index = row * columns + column;
-
-                // Check if the cell belongs to the opposite player
-                if (grid[index] != currentPlayer)
-                {
-                    // Remove the token in the cell
-                    grid[index] = 0;
-                    break;
-                }
-            }
 
             // Shift all tokens above down by one position
             for (int row = rows - 1; row > 0; row--)

@@ -18,10 +18,12 @@ namespace Connect4.DAL.Repositories
             {
                 connection.Open();
 
-                string query = "SELECT * FROM GameStates ORDER BY Id DESC LIMIT 1"; // Retrieve the latest game state
+                string query = "SELECT * FROM GameStates WHERE Id = @Id"; // Retrieve the latest game state
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {
+                    cmd.Parameters.AddWithValue("@Id", 1);
+
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -80,8 +82,9 @@ namespace Connect4.DAL.Repositories
                     command.Parameters.AddWithValue("@Id", gameId);
                     command.Parameters.AddWithValue("@CurrentPlayer", newCurrentPlayer);
                     command.Parameters.AddWithValue("@GridData", SerializeGrid(newGrid));
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();  
                 }
+
             }
         }
 
