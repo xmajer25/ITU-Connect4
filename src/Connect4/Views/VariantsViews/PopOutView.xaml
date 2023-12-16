@@ -7,8 +7,8 @@
       xmlns:local="clr-namespace:Connect4.Views"
       xmlns:converters="clr-namespace:Connect4.Converters"
       xmlns:local1="clr-namespace:Connect4.ViewUserControl"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="PopOutView" Height="502">
+      mc:Ignorable="d" d:DesignHeight="1000" d:DesignWidth="1312"
+      Title="PopOutView">
 
     <Page.Resources>
         <converters:ModeTextConverter x:Key="ModeTextConverter"/>
@@ -24,13 +24,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- BACK GROUND -->
-        <Image Grid.Row="0" Grid.RowSpan="1" Source="\Resources\Images\BackGrounds\BackGroundDefault.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill"/>
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="\Resources\Images\BackGrounds\BackGroundDefault.png"  Stretch="Fill"/>
 
         <!-- GRID CONNECT 4 -->
-        <Grid x:Name="GameGrid" DataContext="{Binding}" Margin="10,10,-10,26" Grid.RowSpan="2" >
+        <Grid x:Name="GameGrid" Grid.Row="1" DataContext="{Binding}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -158,11 +159,11 @@
             <Image x:Name="Pop8" Grid.Row="8" Grid.Column="9" Visibility="Collapsed" Source="\Resources\Images\StaticImages\PlaceArrowUp.png"/>
 
             <Button Command="{Binding NavigateToPickVariantCommand}"
-            Grid.Row="9" Grid.Column="0"
+            Grid.Row="8" Grid.Column="0" Grid.RowSpan="2"
             HorizontalAlignment="Left" VerticalAlignment="Bottom"
             Background="Transparent" BorderBrush="Transparent"
             Height="100">
-                <Image Source="/Resources/Images/StaticImages/ArrowBack.png" Height="66" Width="72"/>
+                <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
             </Button>
 
             <TextBlock Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding PlayerTurn}" Style="{StaticResource PixelButtonTextStyle}" Foreground="Red"/>
