@@ -66,6 +66,14 @@ namespace Connect4.DAL.DatabaseHelpers
                 CustomizableId INTEGER NOT NULL,
                 Ownership INTEGER NOT NULL
             );
+            
+            CREATE TABLE IF NOT EXISTS GameStates (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Rows INTEGER NOT NULL,
+                Columns INTEGER NOT NULL,
+                CurrentPlayer INTEGER NOT NULL,
+                GridData TEXT NOT NULL
+            );
                 ";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {

@@ -89,9 +89,11 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converters\ModeTextConverter.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadUser.cs" />
+    <Compile Include="ViewModel\PopOutViewModel.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
@@ -129,6 +131,9 @@
     <Compile Include="Views\oldStandard.xaml.cs">
       <DependentUpon>oldStandard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VariantsViews\PopOutView.xaml.cs">
+      <DependentUpon>PopOutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VariantsViews\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
     </Compile>
@@ -150,6 +155,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Images\StaticImages\PlaceArrowUp.png" />
     <Resource Include="Resources\Images\Tokens\TokenRed.png" />
     <Resource Include="Resources\Images\Tokens\TokenBlue.png" />
     <Resource Include="Resources\Images\StaticImages\PlaceArrow.png" />
@@ -219,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\oldStandard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VariantsViews\PopOutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

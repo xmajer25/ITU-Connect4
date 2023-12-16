@@ -34,6 +34,7 @@ namespace Connect4.Services
             new RouteModel("/PickVariant", typeof(PickVariantView), typeof(PickVariantViewModel)),
             new RouteModel("/StandardMode", typeof(StandardModeView), typeof(StandardModeViewModel)),
             new RouteModel("/CrazyHouseMode", typeof(CrazyHouseView), typeof(CrazyHouseViewModel)),
+            new RouteModel("/PopOutMode", typeof(PopOutView), typeof(PopOutViewModel)),
             new RouteModel("/Profile", typeof(ProfileView), typeof(ProfileViewModel)),
         };
 
