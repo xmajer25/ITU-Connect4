@@ -58,5 +58,7 @@
                     Height="100">
             <Image Source="/Resources/Images/StaticImages/ArrowBack.png"/>
         </Button>
+        
+        <ContentControl Content="{StaticResource GlobalMediaElement}"/>
     </Grid>
 </Page>
