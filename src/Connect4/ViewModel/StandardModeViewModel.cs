@@ -74,6 +74,7 @@ namespace Connect4.ViewModel
         private string token1 = "/Resources/Images/Tokens/TokenBlue.png";
         private string token2 = "/Resources/Images/Tokens/TokenRed.png";
         private string _tokenSkin = "/Resources/Images/Tokens/TokenBlue.png";
+
         public string TokenSkin
         {
             get { return _tokenSkin; }
@@ -133,13 +134,15 @@ namespace Connect4.ViewModel
 
         private void AnnouncePlayerSwitch()
         {
+            synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
             string announcement = PlayerTurn == _player1Turn ? "Player 1's turn" : "Player 2's turn";
             synthesizer.SpeakAsync(announcement); // Asynchronously speak the announcement
         }
         private void AnnounceTokenPlacement(int column, int row)
         {
-        string announcement = $"Token placed at column {column}, {row} tokens high.";
-        synthesizer.SpeakAsync(announcement);
+            synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
+            string announcement = $"Token placed at column {column}, {row} tokens high.";
+            synthesizer.SpeakAsync(announcement);
         }
 
         public void SwapPlayerTurn()

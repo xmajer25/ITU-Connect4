@@ -12,5 +12,6 @@ namespace Connect4.DAL.DataModels
         public int UserId { get; set; }
         public int MasterVolume { get; set; }
         public int EffectVolume { get; set; }
+        public bool IsNarrationEnabled { get; set; }
     }
 }
