@@ -248,7 +248,6 @@ namespace Connect4.ViewModel
                 FinalizeBallPlacement(ball, endYPosition, startXPosition);
                 GridModelStandard = _gridService.GetGridModel();
                 ProcessGameStateChanges(); // Process the game state changes after the animation
-               
             };
 
             BottomCanvas.Children.Add(ball);

@@ -90,10 +90,12 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Resources\Converters\ModeTextConverter.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
     <Compile Include="ViewModel\EndScreenViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadUser.cs" />
+    <Compile Include="ViewModel\PopOutViewModel.cs" />
     <Compile Include="ViewModel\Interfaces\ILoadWinner.cs" />
     <Compile Include="ViewModel\ProfileViewModel.cs" />
     <Compile Include="ViewModel\LogInViewModel.cs" />
@@ -132,6 +134,9 @@
     <Compile Include="Views\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\VariantsViews\PopOutView.xaml.cs">
+      <DependentUpon>PopOutView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\VariantsViews\StandardModeView.xaml.cs">
       <DependentUpon>StandardModeView.xaml</DependentUpon>
     </Compile>
@@ -156,6 +161,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Images\StaticImages\PlaceArrowUp.png" />
     <Resource Include="Resources\Images\StaticImages\Trophy.png" />
     <Resource Include="Resources\Images\StaticImages\Coin.png" />
     <Resource Include="Resources\Images\Tokens\TokenRed.png" />
@@ -231,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\VariantsViews\StandardModeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VariantsViews\PopOutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
