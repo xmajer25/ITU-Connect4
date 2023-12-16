@@ -3,7 +3,7 @@ using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Diagnostics;
-
+using Connect4.Services;
 namespace Connect4.Views.VariantsViews
 {
     public partial class StandardModeView : Page
@@ -18,6 +18,27 @@ namespace Connect4.Views.VariantsViews
 
                 DataContext = viewModel;
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            AudioManager.PlaySound();
+        }
+        private void ColumnButton1_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 2);
+        private void ColumnButton2_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 3);
+        private void ColumnButton3_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 4);
+        private void ColumnButton4_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 5);
+        private void ColumnButton5_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 6);
+        private void ColumnButton6_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 7);
+        private void ColumnButton7_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 8);
+        private void ColumnButton8_Click(object sender, RoutedEventArgs e)
+            => StartAnimation(sender, e, 9);
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {

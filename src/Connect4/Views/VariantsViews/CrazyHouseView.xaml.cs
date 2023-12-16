@@ -1,4 +1,5 @@
-﻿using Connect4.ViewModel;
+﻿using Connect4.Services;
+using Connect4.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,11 @@ namespace Connect4.Views.VariantsViews
             viewModel.BottomGrid = BottomGrid;
 
             DataContext = viewModel;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            AudioManager.PlaySound();
         }
 
         private void ColumnButton4_Click(object sender, RoutedEventArgs e)
