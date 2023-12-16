@@ -20,9 +20,9 @@ using System.Windows;
 using Connect4.ViewModel.Interfaces;
 
 /*
- * Author   : Jakub Majer (xmajer25)
- * File     : MenuViewModel
- * Brief    : Main Menu Screen. Mostly navigation to other pages 
+ * Author   : Dušan Slúka (xsluka00)
+ * File     : StandardModeViewModel
+ * Brief    : ViewModel for standard game mode view. 
  */
 
 namespace Connect4.ViewModel

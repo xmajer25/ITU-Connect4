@@ -64,6 +64,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -89,6 +90,8 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Services\AudioFeedbackService.cs" />
+    <Compile Include="Services\Interfaces\IAudioFeedbackService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
     <Compile Include="ViewModel\EndScreenViewModel.cs" />

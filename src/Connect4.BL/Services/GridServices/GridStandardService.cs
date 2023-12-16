@@ -1,8 +1,11 @@
-﻿/*Author: Dušan Slúka*/
-/*Login: xsluka00*/
-using Connect4.DAL.DataModels;
+﻿using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories.Interfaces;
 using System.Linq;
+/*
+ * Author   : Dušan Slúka (xsluka00)
+ * File     : GridStandardService
+ * Brief    : Game logic for standard mode of connect 4
+ */
 
 namespace Connect4.BL.Services
 {
@@ -74,6 +77,31 @@ namespace Connect4.BL.Services
 
             // Find the lowest empty row in the column
             for (int row = columnData.Count - 1; row >= 0; row--)
+            {
+                if (columnData[row] == CellState.Empty)
+                {
+                    return row;
+                }
+            }
+
+            // This line should theoretically never be reached because IsColumnFull would have caught it
+            return -1;
+        }
+
+        public int GetFirstEmpty(int column)
+        {
+            var gridModel = _repository.GetGridModel();
+
+            // If the column is full, return -1 immediately
+            if (IsColumnFull(column, gridModel))
+            {
+                return -1;
+            }
+
+            var columnData = gridModel.Grid[column];
+
+            // Find the lowest empty row in the column
+            for (int row = 0; row <= columnData.Count - 1; row++)
             {
                 if (columnData[row] == CellState.Empty)
                 {
