@@ -21,6 +21,7 @@ namespace Connect4.ViewModel
 
         private string _username = string.Empty;
         private int _gold = 0;
+        private string _token2 = string.Empty;
 
         private bool _shopTokens = false;
         private bool _shopAvatars = false;
@@ -31,11 +32,16 @@ namespace Connect4.ViewModel
         public ICommand SwitchTokensCommand { get; private set; }
         public ICommand SwitchAvatarsCommand { get; private set; }
         public ICommand SwitchBckgsCommand { get; private set; }
+        public ICommand SetSelectedCommand { get; private set; }
+        public ICommand BuySkinCommand { get; private set; }
+        public ICommand SetTokenCommnad {  get; private set; }
+        public ICommand SetToken2Commnad {  get; private set; }
 
         /* SERVICES */
         private readonly NavService _navigationService;
         private readonly CustomizableService _customService;
         private readonly UserCustomizableService _userCustomizableService;
+        private readonly UserService _userService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -96,16 +102,47 @@ namespace Connect4.ViewModel
             }
         }
 
+        public int Gold
+        {
+            get { return _gold; }
+            set
+            {
+                if (_gold != value)
+                {
+                    _gold = value;
+                    OnPropertyChanged(nameof(Gold));
+                }
+            }
+        }
+
+        public string Token2
+        {
+            get { return _token2; }
+            set
+            {
+                if (_token2 != value)
+                {
+                    _token2 = value;
+                    OnPropertyChanged(nameof(Token2));
+                }
+            }
+        }
+
 
         public ShopViewModel()
         {
             _navigationService = new NavService();
             _customService = new CustomizableService();
             _userCustomizableService = new UserCustomizableService();
+            _userService = new UserService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
             SwitchTokensCommand = new RelayCommand<object>(SetTokens);
             SwitchAvatarsCommand = new RelayCommand<object>(SetAvatars);
             SwitchBckgsCommand = new RelayCommand<object>(SetBckgs);
+            SetSelectedCommand = new RelayCommand<string>(SetSelected);
+            BuySkinCommand = new RelayCommand<string>(BuySkin);
+            SetTokenCommnad = new RelayCommand<string>(SetToken);
+            SetToken2Commnad =  new RelayCommand<string>(SetToken2);
         }
 
         /* Load user */
@@ -197,6 +234,7 @@ namespace Connect4.ViewModel
             {
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
+                Token2 = _customService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
                 if (CurrentUser.GoldTotal >= 1000)
                 {
                     Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
@@ -208,6 +246,38 @@ namespace Connect4.ViewModel
                     NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
                 }
             }
+        }
+
+        // selecting customizable
+        public void SetSelected(string ImagePath)
+        {   
+            if(ShopAvatars) _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 1, false);
+            else if (ShopBckgs) _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 0, false);
+
+            LoadCustomizables();
+        }
+
+        // buying new customizable
+        public void BuySkin(string ImagePath) {
+            if(ShopAvatars || ShopBckgs) Gold = _userService.UpdateGold(CurrentUser.Id, Gold - 2000);
+            else Gold =  _userService.UpdateGold(CurrentUser.Id, Gold - 1000);
+
+            _userCustomizableService.SaveUserCustom(CurrentUser.Id, ImagePath, 0);
+            LoadCustomizables();
+        }
+
+        // for selecting Token 1
+        public void SetToken(string ImagePath)
+        {
+            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 2, false);
+            LoadCustomizables();
+        }
+
+        // for selecting token 2
+        public void SetToken2(string ImagePath)
+        {
+            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 2, true);
+            LoadCustomizables();
         }
 
         public void SetAvatars(object obj) 

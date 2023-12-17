@@ -69,6 +69,29 @@ namespace Connect4.DAL.Repositories
             return userCustomizables;
         }
 
+        public void UpdateOwnership(int userId, int customizableId, int newOwnership)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string updateQuery = @"
+                    UPDATE UserCustomizables
+                    SET Ownership = @NewOwnership
+                    WHERE UserId = @UserId AND CustomizableId = @CustomizableId;
+                ";
+
+                using (var command = new SQLiteCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@CustomizableId", customizableId);
+                    command.Parameters.AddWithValue("@NewOwnership", newOwnership);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public List<JoinUserCustom> GetUserCustomizablesByIsTokenAndUser(int userId)
         {
             List<JoinUserCustom> userCustomizables = new List<JoinUserCustom>();

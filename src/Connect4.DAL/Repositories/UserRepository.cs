@@ -134,6 +134,50 @@ namespace Connect4.DAL.Repositories
 
             return null; // Return null if no user was found
         }
+
+        public void UpdateGoldActual(int userId, int newGoldActual)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE Users SET GoldActual = @NewGoldActual WHERE Id = @UserId";
+
+                using (var command = new SQLiteCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@NewGoldActual", newGoldActual);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public int GetGoldActual(int userId)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT GoldActual FROM Users WHERE Id = @UserId";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out int goldActual))
+                    {
+                        return goldActual;
+                    }
+                }
+            }
+
+            // Default value or handle the case where the user is not found
+            throw new InvalidOperationException($"Unable to retrieve GoldActual for user with ID {userId}");
+        }
+
         public void UpdateUser(User user)
         {
             using (var connection = DatabaseConnection.GetConnection())
