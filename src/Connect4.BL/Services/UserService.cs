@@ -68,5 +68,14 @@ namespace Connect4.BL.Services
         {
             return _userRepository.GetUserByUsername(username);
         }
+
+        public int UpdateGold(int userId, int goldDeducted) {
+            int goldBefore = _userRepository.GetGoldActual(userId);
+
+            _userRepository.UpdateGoldActual(userId, goldBefore-goldDeducted);
+
+            return goldBefore - goldDeducted;
+
+        }
     }
 }
