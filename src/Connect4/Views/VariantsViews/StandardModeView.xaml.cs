@@ -6,26 +6,33 @@ using System.Diagnostics;
 using Connect4.Services;
 namespace Connect4.Views.VariantsViews
 {
+    /* 
+     * Author   : Dušan Slúka (xsluka00)
+     * File     : StandardModeView
+     * Brief    : StandardModeView contains only visuals no logic
+     */
     public partial class StandardModeView : Page
     {
         public StandardModeView()
         {
-            
-                InitializeComponent();
-                StandardModeViewModel viewModel = new StandardModeViewModel();
-                viewModel.BottomCanvas = BottomCanvas;
-                viewModel.GameGrid = GameGrid;
+            InitializeComponent();
+            StandardModeViewModel viewModel = new StandardModeViewModel();
+            viewModel.BottomCanvas = BottomCanvas;
+            viewModel.GameGrid = GameGrid;
 
-                DataContext = viewModel;
+            DataContext = viewModel;
         }
+
+        // Handles key presses and delegates the action to the ViewModel.
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-;           var viewModel = DataContext as StandardModeViewModel;
+            var viewModel = DataContext as StandardModeViewModel;
             viewModel?.HandleKeyPress(e.Key);
         }
+
+        // Sets the initial focus and plays a sound when the page is loaded.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            // Assuming you have a control named 'InitialControl' that you want to focus
             FirstColumnButton.Focus();
             AudioManager.PlaySound();
         }

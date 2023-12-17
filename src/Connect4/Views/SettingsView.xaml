@@ -8,7 +8,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsView">
-
+    <!--Author   : Dušan Slúka (xsluka00) -->
+    <!--File     : SettingsView -->
+    <!--Brief    : SettingsView for settings in app. -->
+    
     <Page.DataContext>
         <viewModel:SettingsViewModel/>
     </Page.DataContext>
@@ -19,13 +22,11 @@
         <TextBlock Text="Settings" FontSize="18" Margin="10"/>
         <TextBlock Text="Music Volume"/>
         <Slider Minimum="0" Maximum="100" Value="{Binding MasterVolume, Mode=TwoWay}" TickFrequency="1" />
-        <TextBlock Text="Effects Volume"/>
-        <Slider Minimum="0" Maximum="100" Value="{Binding EffectVolume, Mode=TwoWay}" TickFrequency="1" />
+        <TextBlock Text="Effects Volume" Visibility="Hidden"/>
+        <Slider Minimum="0" Maximum="100" Value="{Binding EffectVolume, Mode=TwoWay}" TickFrequency="1" Visibility="Hidden" />
         <!-- Additional settings for hearing-impaired users -->
         <CheckBox Content="Enable Audio Narration for Hearing Impaired" 
           IsChecked="{Binding IsNarrationEnabled, Mode=TwoWay}"/>
-    
-        <!-- Other settings as needed -->
         <!-- Save Button -->
         <Button Grid.Row="2" Content="Save" HorizontalAlignment="Center" Margin="10" Padding="10" Command="{Binding SaveSettingsCommand}"/>
     </StackPanel>

@@ -1,11 +1,13 @@
 ﻿using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
 using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+/*
+    * Author   : Dušan Slúka
+    * File     : SettingsRepository
+    * Brief    : Api for comuncating with setting based on user
+    */
 
 namespace Connect4.DAL.Repositories
 {
@@ -93,4 +95,5 @@ namespace Connect4.DAL.Repositories
             return settings;
         }
     }
+
 }

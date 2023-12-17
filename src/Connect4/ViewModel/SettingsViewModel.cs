@@ -9,6 +9,11 @@ using Connect4.ViewModel.Interfaces;
 using Connect4.Services;
 using System.Runtime.CompilerServices;
 
+/*
+ * Author   : Dušan Slúka (xsluka00)
+ * File     : SettingsViewModel
+ * Brief    : SettingsViewModel for settings in app.
+ */
 namespace Connect4.ViewModel
 {
     public class SettingsViewModel : INotifyPropertyChanged, ILoadUser
@@ -109,19 +114,26 @@ namespace Connect4.ViewModel
             try
             {
                 SettingsService.SaveSettings(_currentSettings);
+                ApplyAudioSettings(); // Apply the audio settings after saving
                 _navigationService.NavigateTo("/Menu", CurrentUser);
             }
             catch (Exception ex)
             {
-                 Console.WriteLine($"Error saving settings: {ex.Message}");
+                Console.WriteLine($"Error saving settings: {ex.Message}");
                 Console.WriteLine($"Stack Trace: {ex.StackTrace}");
             }
+        }
+
+        private void ApplyAudioSettings()
+        {
+            AudioManager.SetVolume(_currentSettings.MasterVolume / 100.0);
         }
 
         public void LoadUser(User user)
         {
             CurrentUser = user;
             LoadSettings();
+            ApplyAudioSettings(); // Apply audio settings when the user is loaded
         }
 
         public void NavigateToMenu(object obj)

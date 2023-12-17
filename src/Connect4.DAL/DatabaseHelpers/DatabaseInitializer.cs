@@ -7,7 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
+/*
+    * Author   : Dušan Slúka
+    * File     : DatabaseInitializer
+    * Brief    : Initializes the database by creating necessary tables and inserting dummy data.
+    */
 namespace Connect4.DAL.DatabaseHelpers
 {
     public class DatabaseInitializer
@@ -17,7 +21,7 @@ namespace Connect4.DAL.DatabaseHelpers
             using (var connection = DatabaseConnection.GetConnection())
             {
                 connection.Open();
-
+                // Creates tables for Users, Achievements, UserAchievements, Settings, Customizables, 
                 // Create the table if it doesn't exist
                 string createTableQuery = @"
     CREATE TABLE IF NOT EXISTS Users(
@@ -89,7 +93,7 @@ namespace Connect4.DAL.DatabaseHelpers
                 }
             }
         }
-
+        // Inserts dummy user data into the database.
         private static void InsertDummyUsers(SQLiteConnection connection)
         {
             string insertDummyQuery = @"

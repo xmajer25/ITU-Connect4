@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using System.Windows.Navigation;
 using Connect4.Commands;
 using Connect4.BL.Services;
-using Connect4.BL.Models;
 using NavService = Connect4.Services.NavigationService;
-using System.Data.Entity;
 using Connect4.DAL.DatabaseHelpers;
-using Connect4.DAL.Repositories;
 using Connect4.DAL.DataModels;
-using System.Windows.Controls;
 using System.Windows;
 using Connect4.ViewModel.Interfaces;
-using Connect4.Views.PopUps;
 
 /*
  * Author   : Dušan Slúka (xsluka00)

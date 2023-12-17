@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:Connect4.ViewModel"
         xmlns:conv="clr-namespace:Connect4.Resources.Converters"
-        xmlns:local="clr-namespace:Connect4.Views"
-        mc:Ignorable="d"
+      mc:Ignorable="d"
         Title="Window1"
         ShowsNavigationUI="False">
     <Page.Resources>
@@ -16,9 +15,11 @@
     <Page.DataContext>
         <viewModel:MenuViewModel/>
     </Page.DataContext>
-    
 
-    
+    <!--Author   : Dušan Slúka (xsluka00) -->
+    <!--File     : SettingsView -->
+    <!--Brief    : SettingsView for settings in app. -->
+
     <Grid>
         
         <!-- Define rows for the Grid -->

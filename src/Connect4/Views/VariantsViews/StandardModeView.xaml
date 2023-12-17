@@ -14,7 +14,9 @@
         <viewModel:StandardModeViewModel/>
     </Page.DataContext>
 
-
+    <!--Author   : Dušan Slúka (xsluka00) -->
+    <!--File     : StandardModeView -->
+    <!--Brief    : StandardView for basic mode in app. -->
 
     <!-- MAIN GRID -->
     <Grid x:Name="MainGrid" DataContext="{Binding}" >
