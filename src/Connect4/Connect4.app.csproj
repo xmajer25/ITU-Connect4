@@ -174,6 +174,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\StaticImages\GreenButton.png" />
+    <Resource Include="Resources\Images\Avatars\AvatarBlue.png" />
+    <Resource Include="Resources\Images\Avatars\AvatarGreen.png" />
+    <Resource Include="Resources\Images\Tokens\TokenGreen.png" />
+    <Resource Include="Resources\Images\Tokens\TokenGrey.png" />
+    <Resource Include="Resources\Images\Tokens\TokenOrange.png" />
+    <Resource Include="Resources\Images\Tokens\TokenPink.png" />
+    <Resource Include="Resources\Images\Tokens\TokenPurple.png" />
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

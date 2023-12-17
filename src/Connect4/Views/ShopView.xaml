@@ -7,7 +7,6 @@
       xmlns:conv="clr-namespace:Connect4.Resources.Converters"
       xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="ShopView" Background="Black">
     
     <Page.DataContext>
@@ -20,7 +19,6 @@
     
     <Grid Margin="100">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -78,150 +76,220 @@
 
             <!-- GRID -> TOKENS -->
             <Grid Visibility="{Binding ShopTokens, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
-                <StackPanel Orientation="Vertical">
-                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                            <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding}" Height="250" Width="280"/>
+                                            <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                                <Grid>
+                                                    <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EQUIP" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Orange"/>
+                                                </Grid>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
 
-                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="1000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" >
+                            <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding}" Height="250" Width="280"/>
+                                            <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                                <Grid>
+                                                    <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="1000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
+                                                </Grid>
+                                            </Button>
+                                        </StackPanel>
 
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid >
 
             <!-- GRID -> BGs -->
             <Grid Visibility="{Binding ShopBckgs, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
-                <StackPanel Orientation="Vertical">
-                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EQUIP" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Orange"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
-                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
-                                        <Grid>
-                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
-                                        </Grid>
-                                    </Button>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="1000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
-                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
-                                        <Grid>
-                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
-                                        </Grid>
-                                    </Button>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
+                        <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
 
             <!-- GRID -> AVATARS -->
             <Grid Visibility="{Binding ShopAvatars, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
-                <StackPanel Orientation="Vertical">
-                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EQUIP" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Orange"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
 
-                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Image Source="{Binding}" Height="250" Width="280"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
+                        <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                            <Grid>
+                                                <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
+                                            </Grid>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
             </Grid>
         </Grid>
     </Grid>
