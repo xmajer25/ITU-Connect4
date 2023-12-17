@@ -52,7 +52,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
+            <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
             <Canvas Grid.Row="0" Grid.RowSpan="9" Grid.Column="0" Grid.ColumnSpan="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="TopCanvas" DataContext="{Binding}">
                 
             </Canvas>
