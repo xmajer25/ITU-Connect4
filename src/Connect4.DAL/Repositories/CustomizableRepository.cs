@@ -95,6 +95,7 @@ namespace Connect4.DAL.Repositories
 
             using (var connection = DatabaseConnection.GetConnection())
             {
+                connection.Open();
                 string query = @"
                 SELECT C.ImagePath
                 FROM Customizables C

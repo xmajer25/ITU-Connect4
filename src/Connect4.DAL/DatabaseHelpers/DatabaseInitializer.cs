@@ -94,7 +94,7 @@ namespace Connect4.DAL.DatabaseHelpers
         (1, 'DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
         (2, 'DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
         (3, 'DummyUser3', 'DummyPass3', 'dummy3@email.com', 0, 0, 0, 0),
-        (4, 'Rudo', 'Pass', 'dummy3@email.com', 0, 0, 0, 5000);
+        (4, 'Rudo', 'Pass', 'dummy4@email.com', 0, 0, 0, 5000);
 
         INSERT INTO Achievements (Name, Description) VALUES
         ('Getting Started!', 'Play one game of Connect4.'),
@@ -119,7 +119,7 @@ namespace Connect4.DAL.DatabaseHelpers
         (1,'/Resources/BackGrounds/BackGroundDefault.png', 0),
         (2,'/Resources/BackGrounds/BackGroundForest.png', 0);
 
-        INSERT INTO JoinUserCustom (UserId, CustomizableId, Ownership) VALUES
+        INSERT INTO UserCustomizables (UserId, CustomizableId, Ownership) VALUES
         (4, 1, 1),
         (1, 2, 1),
         (1, 3, 2);
