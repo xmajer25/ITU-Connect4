@@ -38,8 +38,7 @@ namespace Connect4.ViewModel
         private readonly NavService _navigationService;
         private GridPopService _gridService;
         private readonly UserService _userService;
-        private readonly UserCustomizableService _userCustomizableService;
-        private readonly UserAchievementService _userAchievementService;
+        private readonly CustomizableService _customizableService;
 
         public Grid MainGrid;
         public Grid GameGrid;
@@ -86,6 +85,20 @@ namespace Connect4.ViewModel
         private string token2 = "/Resources/Images/Tokens/TokenRed.png";
         private string _tokenSkin = "/Resources/Images/Tokens/TokenBlue.png";
 
+        private string _background = "/Resources/Images/BackGrounds/BackGroundDefault.png";
+        public string BackGround
+        {
+            get { return _background; }
+            set
+            {
+                if (_background != value)
+                {
+                    _background = value;
+                    OnPropertyChanged("BackGround");
+                }
+            }
+        }
+
         public string TokenSkin
         {
             get { return _tokenSkin; }
@@ -117,6 +130,7 @@ namespace Connect4.ViewModel
             _navigationService = new NavService();
             _gridService = new GridPopService();
             _userService = new UserService();
+            _customizableService = new CustomizableService();
 
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             ToggleModeCommand = new RelayCommand<object>(ToggleMode);
@@ -168,6 +182,15 @@ namespace Connect4.ViewModel
         public void LoadUser(User user)
         {
             CurrentUser = user;
+            if (CurrentUser != null)
+            {
+                token1 = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 1)[0];
+                token2 = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
+                TokenSkin = token1;
+
+
+                BackGround = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 0)[0];
+            }
         }
 
         private void ToggleMode(object parameter)

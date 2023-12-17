@@ -34,7 +34,7 @@
         </Grid.RowDefinitions>
 
         <!-- BACK GROUND -->
-        <Image Grid.Row="0" Grid.RowSpan="2" Source="\Resources\Images\BackGrounds\BackGroundDefault.png"  Stretch="Fill"/>
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding BackGround}"  Stretch="Fill"/>
 
         <!-- GRID CONNECT 4 -->
         <Grid x:Name="GameGrid" Grid.Row="1" DataContext="{Binding}">
