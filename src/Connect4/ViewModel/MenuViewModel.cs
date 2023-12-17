@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using Connect4.Commands;
 using Connect4.BL.Services;
-using Connect4.BL.Models;
 using NavService = Connect4.Services.NavigationService;
 using System.Data.Entity;
 using Connect4.DAL.DatabaseHelpers;
