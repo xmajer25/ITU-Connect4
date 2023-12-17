@@ -39,10 +39,63 @@ namespace Connect4.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<string> _owned {  get; set; }
-        public ObservableCollection<string> _selected { get; set; }
-        public ObservableCollection<string> _purchasable { get; set; }
-        public ObservableCollection<string> _notPurchasable { get; set; }
+        private ObservableCollection<string> _owned {  get; set; }
+        private ObservableCollection<string> _selected { get; set; }
+        private ObservableCollection<string> _purchasable { get; set; }
+        private ObservableCollection<string> _notPurchasable { get; set; }
+
+        public ObservableCollection<string> Owned 
+        {
+            get { return _owned; }
+            set
+            {
+                if(_owned != value)
+                {
+                    _owned = value;
+                    OnPropertyChanged(nameof(Owned));
+                }
+            } 
+        }
+
+        public ObservableCollection<string> Selected
+        {
+            get { return _selected; }
+            set
+            {
+                if (_selected != value)
+                {
+                    _selected = value;
+                    OnPropertyChanged(nameof(Selected));
+                }
+            }
+        }
+
+        public ObservableCollection<string> Purchasable
+        {
+            get { return _purchasable; }
+            set
+            {
+                if (_purchasable != value)
+                {
+                    _purchasable = value;
+                    OnPropertyChanged(nameof(Purchasable));
+                }
+            }
+        }
+
+        public ObservableCollection<string> NotPurchasable
+        {
+            get { return _notPurchasable; }
+            set
+            {
+                if (_notPurchasable != value)
+                {
+                    _notPurchasable = value;
+                    OnPropertyChanged(nameof(NotPurchasable));
+                }
+            }
+        }
+
 
         public ShopViewModel()
         {
@@ -53,7 +106,6 @@ namespace Connect4.ViewModel
             SwitchTokensCommand = new RelayCommand<object>(SetTokens);
             SwitchAvatarsCommand = new RelayCommand<object>(SetAvatars);
             SwitchBckgsCommand = new RelayCommand<object>(SetBckgs);
-
         }
 
         /* Load user */
@@ -108,53 +160,53 @@ namespace Connect4.ViewModel
         }
 
         public void LoadCustomizables()
-        {
+         {
             if(_shopBckgs == true)
             {
-                _owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 0);
-                _selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 0);
+                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 0);
+                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 0);
                 if(CurrentUser.GoldTotal >= 2000)
                 {
-                    _purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
-                    _notPurchasable = null;
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    NotPurchasable = null;
                 }
                 else
                 {
-                    _purchasable = null;
-                    _notPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    Purchasable = null;
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
 
                 }
 
             }else if(_shopAvatars == true)
             {
-                _owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
-                _selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
+                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
+                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
                 if (CurrentUser.GoldTotal >= 2000)
                 {
-                    _purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
-                    _notPurchasable = null;
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    NotPurchasable = null;
                 }
                 else
                 {
-                    _purchasable = null;
-                    _notPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    Purchasable = null;
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
 
                 }
 
             }
             else if(_shopTokens == true)
             {
-                _owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
-                _selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
+                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
+                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
                 if (CurrentUser.GoldTotal >= 1000)
                 {
-                    _purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
-                    _notPurchasable = null;
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    NotPurchasable = null;
                 }
                 else
                 {
-                    _purchasable = null;
-                    _notPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    Purchasable = null;
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
 
                 }
             }

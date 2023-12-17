@@ -116,8 +116,8 @@ namespace Connect4.DAL.DatabaseHelpers
          (5, 2, 3, 0);
 
         INSERT INTO Customizables (Id, ImagePath, Type) VALUES
-        (1,'/Resources/BackGrounds/BackGroundDefault.png', 0),
-        (2,'/Resources/BackGrounds/BackGroundForest.png', 0);
+        (1,'/Resources/Images/BackGrounds/BackGroundDefault.png', 0),
+        (2,'/Resources/Images/BackGrounds/BackGroundForest.png', 0);
 
         INSERT INTO UserCustomizables (UserId, CustomizableId, Ownership) VALUES
         (4, 1, 1),

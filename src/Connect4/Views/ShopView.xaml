@@ -75,6 +75,154 @@
 
         <Grid Grid.Row="2">
             <Image Source="/Resources/Images/StaticImages/ShopBGBottom.png" Stretch="Fill"/>
+
+            <!-- GRID -> TOKENS -->
+            <Grid Visibility="{Binding ShopTokens, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid >
+
+            <!-- GRID -> BGs -->
+            <Grid Visibility="{Binding ShopBckgs, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                        <Grid>
+                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                        <Grid>
+                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+
+            <!-- GRID -> AVATARS -->
+            <Grid Visibility="{Binding ShopAvatars, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
