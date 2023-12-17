@@ -17,9 +17,11 @@ using System.Windows.Shapes;
 
 namespace Connect4.Views
 {
-    /// <summary>
-    /// Interaction logic for ShopView.xaml
-    /// </summary>
+   /*
+    * Author   : Ivan Mahút (xmahut01)
+    * File     : ShopView
+    * Brief    : Implements logic of interaction within View
+  */
     public partial class ShopView : Page
     {
         private ShopViewModel viewModel;

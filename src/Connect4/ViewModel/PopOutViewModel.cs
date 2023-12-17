@@ -3,6 +3,7 @@ using Connect4.BL.Services.GridServices;
 using Connect4.Commands;
 using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
+using Connect4.ViewModel;
 using Connect4.ViewModel.Interfaces;
 using Connect4.Views.PopUps;
 using Connect4.ViewUserControl;
@@ -21,6 +22,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using static Connect4.ViewModel.PopOutViewModel;
 using NavService = Connect4.Services.NavigationService;
+
+/*
+ * Author   : Ivan Mahút (xmahut01)
+ * File     : PopOutViewModel
+ * Brief    : View model for Pop Out game mode, implements animations and game logic by communication with BL  
+ */
 
 namespace Connect4.ViewModel
 {
