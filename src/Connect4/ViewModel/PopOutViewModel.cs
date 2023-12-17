@@ -107,7 +107,6 @@ namespace Connect4.ViewModel
 
         public PopOutViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _gridService = new GridPopService();
             _userService = new UserService();

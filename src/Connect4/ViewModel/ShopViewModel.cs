@@ -46,7 +46,6 @@ namespace Connect4.ViewModel
 
         public ShopViewModel()
         {
-            //DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _customService = new CustomizableService();
             _userCustomizableService = new UserCustomizableService();

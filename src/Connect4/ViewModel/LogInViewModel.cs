@@ -97,7 +97,6 @@ namespace Connect4.ViewModel
 
         public LogInViewModel()
         {
-            //DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu); 

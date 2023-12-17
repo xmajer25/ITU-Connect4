@@ -69,7 +69,6 @@ namespace Connect4.ViewModel
 
         public ProfileViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);

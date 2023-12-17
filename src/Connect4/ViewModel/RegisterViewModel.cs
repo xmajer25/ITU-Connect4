@@ -151,7 +151,6 @@ namespace Connect4.ViewModel
 
         public RegisterViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
