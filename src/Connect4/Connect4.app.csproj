@@ -104,12 +104,16 @@
     <Compile Include="ViewModel\PickVariantViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="ViewModel\StandardModeViewModel.cs" />
     <Compile Include="Views\EndScreenView.xaml.cs">
       <DependentUpon>EndScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PopUps\ExitGamePopUp.xaml.cs">
       <DependentUpon>ExitGamePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShopView.xaml.cs">
+      <DependentUpon>ShopView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VariantsViews\CrazyHouseView.xaml.cs">
       <DependentUpon>CrazyHouseView.xaml</DependentUpon>
@@ -208,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PopUps\ExitGamePopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShopView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
