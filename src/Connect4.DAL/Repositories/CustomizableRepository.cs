@@ -187,5 +187,28 @@ namespace Connect4.DAL.Repositories
 
             return imagePathCollection;
         }
+
+        public int GetIdByImagePath(string imagePath)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT Id FROM Customizables WHERE ImagePath = @ImagePath";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null && int.TryParse(result.ToString(), out int id))
+                    {
+                        return id;
+                    }
+                }
+            }
+            return -1;
+        }
     }
 }
