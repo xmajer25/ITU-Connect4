@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : Achievements
+ * Brief    : Data model to store information about achievements
+ */
+
+
 namespace Connect4.DAL.DataModels
 {
     public class Achievement

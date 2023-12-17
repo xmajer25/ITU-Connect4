@@ -7,6 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : JoinUserAchievRepository
+ * Brief    : Implements functions for interaction with database for Join table of User and Achievement
+ */
+
+
 namespace Connect4.DAL.Repositories
 {
     public class JoinUserAchievRepository

@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : SettingsRepository
+ * Brief    : Implements functions for interaction with database for user settings
+ */
+
 namespace Connect4.DAL.Repositories
 {
     public class SettingsRepository

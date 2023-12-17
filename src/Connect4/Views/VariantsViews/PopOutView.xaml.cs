@@ -16,9 +16,11 @@ using System.Windows.Shapes;
 
 namespace Connect4.Views.VariantsViews
 {
-    /// <summary>
-    /// Interaction logic for PopOutView.xaml
-    /// </summary>
+    /*
+    * Author   : Ivan Mahut (xmahut01)
+    * File     : PopOutView
+    * Brief    : Interaction logic for PopOutView.xaml
+    */
     public partial class PopOutView : Page
     {
         public PopOutView()

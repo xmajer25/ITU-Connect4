@@ -172,9 +172,9 @@ namespace Connect4.ViewModel
         public void DropBall(int column)
         {
             if (IsAnimationOn) return; IsAnimationOn = true;
-            if (IsPutMode)
+            if (IsPutMode) 
             {
-                double startXPosition = GetColumnPosition(column, GameGrid);
+                double startXPosition = GetColumnPosition(column, GameGrid); // Calculate starting position
                 double startYPosition = 0; // Set a fixed starting Y position
 
                 BallControl ball = new BallControl();
@@ -182,11 +182,11 @@ namespace Connect4.ViewModel
                 Canvas.SetLeft(ball, startXPosition);
                 Canvas.SetTop(ball, startYPosition);
 
-                int endRow = _gridService.MakePut(column - 2);
+                int endRow = _gridService.MakePut(column - 2); // put token into the grid
 
-                if(endRow == -1)
+                if(endRow == -1) // not valid move
                 {
-                    IsAnimationOn = false;
+                    IsAnimationOn = false; 
                     return;
                 }
 
@@ -218,11 +218,14 @@ namespace Connect4.ViewModel
                     BitmapImage bitmapImage = new BitmapImage(new Uri(TokenSkin, UriKind.RelativeOrAbsolute));
                     ballImage.Source = bitmapImage;
 
-                    // Check end of game
                     if (_gridService.IsWinner() == true)
                     {
                         int winner = _gridService.GetCurrentPlayer();
-                        Console.WriteLine("Player " + winner + " has won!");
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
+                    }
+                    else if (_gridService.IsGridFull())
+                    {
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
                     }
 
                     droppedBalls.Add(new DroppedBallInfo
@@ -278,7 +281,10 @@ namespace Connect4.ViewModel
                     if (_gridService.IsWinner() == true)
                     {
                         int winner = _gridService.GetCurrentPlayer();
-                        Console.WriteLine("Player " + winner + " has won!");
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
+                    }else if (_gridService.IsGridFull())
+                    {
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
                     }
                     // Remove the ball from the canvas
                     GameCanvas.Children.Remove(bottomBall);

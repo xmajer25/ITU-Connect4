@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : CustomizableService
+ * Brief    : Implements functions for View and data communication of Customizables data model
+ */
+
+
 namespace Connect4.BL.Services
 {
     public class CustomizableService
