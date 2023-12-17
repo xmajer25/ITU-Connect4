@@ -91,6 +91,7 @@
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Resources\Converters\ModeTextConverter.cs" />
+    <Compile Include="Resources\Converters\StringToSource.cs" />
     <Compile Include="Services\AudioManager.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />

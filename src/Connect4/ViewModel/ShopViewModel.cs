@@ -153,7 +153,7 @@ namespace Connect4.ViewModel
             if (CurrentUser != null)
             {
                 _username = CurrentUser.Username;
-                _gold = CurrentUser.GoldActual;
+                Gold = CurrentUser.GoldActual;
             }
         }
 
@@ -205,7 +205,7 @@ namespace Connect4.ViewModel
             {
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 0);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 0);
-                if(CurrentUser.GoldTotal >= 2000)
+                if(CurrentUser.GoldActual >= 2000)
                 {
                     Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
                     NotPurchasable = null;
@@ -221,7 +221,7 @@ namespace Connect4.ViewModel
             {
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 2);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 2);
-                if (CurrentUser.GoldTotal >= 2000)
+                if (CurrentUser.GoldActual >= 2000)
                 {
                     Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 2);
                     NotPurchasable = null;
@@ -238,7 +238,7 @@ namespace Connect4.ViewModel
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
                 Token2 = _customService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
-                if (CurrentUser.GoldTotal >= 1000)
+                if (CurrentUser.GoldActual >= 1000)
                 {
                     Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
                     NotPurchasable = null;
@@ -254,7 +254,7 @@ namespace Connect4.ViewModel
         // selecting customizable
         public void SetSelected(string ImagePath)
         {   
-            if(ShopAvatars) _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 1, false);
+            if(ShopAvatars) _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 2, false);
             else if (ShopBckgs) _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 0, false);
 
             LoadCustomizables();
@@ -262,24 +262,26 @@ namespace Connect4.ViewModel
 
         // buying new customizable
         public void BuySkin(string ImagePath) {
-            if(ShopAvatars || ShopBckgs) Gold = _userService.UpdateGold(CurrentUser.Id, Gold - 2000);
-            else Gold =  _userService.UpdateGold(CurrentUser.Id, Gold - 1000);
+            if(ShopAvatars || ShopBckgs) Gold = _userService.UpdateGold(CurrentUser.Id, 2000);
+            else Gold =  _userService.UpdateGold(CurrentUser.Id, 1000);
 
             _userCustomizableService.SaveUserCustom(CurrentUser.Id, ImagePath, 0);
+
+            CurrentUser = _userService.GetUserByUsername(CurrentUser.Username);
             LoadCustomizables();
         }
 
         // for selecting Token 1
         public void SetToken(string ImagePath)
         {
-            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 2, false);
+            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 1, false);
             LoadCustomizables();
         }
 
         // for selecting token 2
         public void SetToken2(string ImagePath)
         {
-            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 2, true);
+            _userCustomizableService.SetSelected(CurrentUser.Id, ImagePath, 1, true);
             LoadCustomizables();
         }
 

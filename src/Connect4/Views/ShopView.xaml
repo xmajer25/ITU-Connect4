@@ -174,8 +174,8 @@
                         <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal"> 
-                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
                                         <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0" Command="{Binding DataContext.SetSelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}">
                                             <Grid>
                                                 <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
@@ -207,11 +207,11 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="{Binding}" Height="250" Width="280"/>
+                                        <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
                                         <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0" Command="{Binding DataContext.BuySkinCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}">
                                             <Grid>
                                                 <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="1000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
                                             </Grid>
                                         </Button>
                                     </StackPanel>
@@ -247,7 +247,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="{Binding}" Height="250" Width="280"/>
-                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0" Command="{Binding DataContext.SetSelectedComand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}">
+                                        <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0" Command="{Binding DataContext.SetSelectedCommand, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}">
                                             <Grid>
                                                 <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EQUIP" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Orange"/>
@@ -309,5 +309,17 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
+        <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button Style="{StaticResource BigButton}" Command="{Binding NavigateToMenuCommand}" Width="200">
+                <Grid>
+                    <Image Source="\Resources\Images\StaticImages\ArrowBack.png" Stretch="Fill"/>
+                </Grid>
+            </Button>
+            <TextBlock Style="{StaticResource PixelButtonTextStyle}" Foreground="Yellow" FontSize="30">
+                <Run Text="{Binding Gold}" />
+                <Run Text="g" />
+            </TextBlock>
+        </StackPanel>
+        
     </Grid>
 </Page>

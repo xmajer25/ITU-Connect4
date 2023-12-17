@@ -93,7 +93,7 @@ namespace Connect4.DAL.DatabaseHelpers
         INSERT INTO Users (Id, Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual) VALUES 
         (1, 'DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
         (2, 'DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
-        (4, 'Rudo', 'Pass', 'dummy4@email.com', 0, 0, 1500, 5000);
+        (4, 'Rudo', 'Pass', 'dummy4@email.com', 0, 0, 3000, 5000);
 
         INSERT INTO Achievements (Name, Description) VALUES
         ('Getting Started!', 'Play one game of Connect4.'),
