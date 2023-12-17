@@ -121,8 +121,8 @@ namespace Connect4.ViewModel
                 token2 = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
                 TokenSkin = token1;
 
-                _background = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 0)[0];
-                BackGround = _background;
+                
+                BackGround = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 0)[0];
             }
         }
 
