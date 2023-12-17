@@ -20,16 +20,16 @@ namespace Connect4.DAL.DatabaseHelpers
 
                 // Create the table if it doesn't exist
                 string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS Users(
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                Username TEXT NOT NULL,
-                Password TEXT NOT NULL,
-                Email TEXT NOT NULL UNIQUE,
-                GamesPlayed INTEGER NOT NULL,
-                GamesWon INTEGER NOT NULL,
-                GoldTotal INTEGER NOT NULL,
-                GoldActual INTEGER NOT NULL
-            );
+    CREATE TABLE IF NOT EXISTS Users(
+        Id INTEGER PRIMARY KEY AUTOINCREMENT,
+        Username TEXT NOT NULL,
+        Password TEXT NOT NULL,
+        Email TEXT NOT NULL UNIQUE,
+        GamesPlayed INTEGER NOT NULL,
+        GamesWon INTEGER NOT NULL,
+        GoldTotal INTEGER NOT NULL,
+        GoldActual INTEGER NOT NULL
+    );
             
             CREATE TABLE IF NOT EXISTS Achievements(
                 AchievementId INTEGER PRIMARY KEY AUTOINCREMENT,

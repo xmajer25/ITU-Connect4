@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,24 @@ namespace Connect4.DAL.DatabaseHelpers
 
     internal class DatabaseConnection
     {
-        private static string _connectionString = "Data Source=YourDatabaseName.db;Version=3;";
+        private static string _connectionString;
+
+        static DatabaseConnection()
+        {
+            var dbPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "Connect4",
+                "Connect4.db");
+
+            _connectionString = $"Data Source={dbPath};Version=3;";
+
+            // Ensure the directory exists
+            var dbDirectory = Path.GetDirectoryName(dbPath);
+            if (!Directory.Exists(dbDirectory))
+            {
+                Directory.CreateDirectory(dbDirectory);
+            }
+        }
 
         public static SQLiteConnection GetConnection()
         {

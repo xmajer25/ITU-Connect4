@@ -35,6 +35,7 @@ namespace Connect4.ViewModel
         private GridStandardService _gridService;
         private GridBaseService _gridBaseService;
         private IGridStandardRepository _gridRepository;
+        private  SettingsService _settingsService;
         private readonly UserService _userService;
         private readonly UserCustomizableService _userCustomizableService;
         private readonly UserAchievementService _userAchievementService;
@@ -50,7 +51,6 @@ namespace Connect4.ViewModel
         public ICommand PlaceBallCommand { get; private set; }
 
         private bool IsAnimationOn { get; set; } = false;
-
         private readonly string _player1Turn = "Player1 Turn";
         private readonly string _player2Turn = "Player2 Turn";
         private string _playerTurn;
@@ -88,8 +88,17 @@ namespace Connect4.ViewModel
             }
         }
 
+        public void LoadUser(User user)
+        {
+            CurrentUser = user;
+            if (user != null)
+            {
+                _settingsService = new SettingsService(CurrentUser.Id);
+                SetupNarration();
+            }
 
-        
+        }
+
         public StandardModeViewModel()
         {
             DatabaseInitializer.Initialize();
@@ -100,10 +109,11 @@ namespace Connect4.ViewModel
             _userService = new UserService();
             _gridBaseService = new GridBaseService();
 
+
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
 
             PlaceBallCommand = new RelayCommand<String>(PlaceBall);
-
+            
             _tokenSkin = token1;
             PlayerTurn = _player1Turn;
 
@@ -111,6 +121,26 @@ namespace Connect4.ViewModel
 
             synthesizer = new SpeechSynthesizer();
             synthesizer.SetOutputToDefaultAudioDevice();
+        }
+
+        
+
+        private void SetupNarration()
+        {
+            
+
+            var settings = _settingsService.LoadSettings();
+
+            if (settings.IsNarrationEnabled == true)
+            {
+                synthesizer = new SpeechSynthesizer();
+                synthesizer.SetOutputToDefaultAudioDevice();
+            }
+            else if (settings.IsNarrationEnabled == false)
+            {
+
+                synthesizer = null;
+            }
         }
 
         public void HandleKeyPress(Key key)
@@ -134,15 +164,20 @@ namespace Connect4.ViewModel
 
         private void AnnouncePlayerSwitch()
         {
-            synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
             string announcement = PlayerTurn == _player1Turn ? "Player 1's turn" : "Player 2's turn";
-            synthesizer.SpeakAsync(announcement); // Asynchronously speak the announcement
+            if (synthesizer != null)
+            {
+                synthesizer.SpeakAsync(announcement); // Speak only if synthesizer is not null
+            }
         }
+
         private void AnnounceTokenPlacement(int column, int row)
         {
-            synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
             string announcement = $"Token placed at column {column}, {row} tokens high.";
-            synthesizer.SpeakAsync(announcement);
+            if (synthesizer != null)
+            {
+                synthesizer.SpeakAsync(announcement); // Speak only if synthesizer is not null
+            }
         }
 
         public void SwapPlayerTurn()
@@ -273,17 +308,25 @@ namespace Connect4.ViewModel
             if (_gridService.CheckWinCondition(GridModelStandard))
             {
                 int winner = _gridBaseService.GetPlayer();
-                synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
-                string winAnnouncement = winner == 1 ? "Player 1 wins!" : "Player 2 wins!";
-                synthesizer.SpeakAsync(winAnnouncement); // Announce the winner
+                
+                if (synthesizer != null)
+                {
+                    synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
+                    string winAnnouncement = winner == 1 ? "Player 1 wins!" : "Player 2 wins!";
+                    synthesizer.SpeakAsync(winAnnouncement); // Announce the winner
+                }
                 _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
             }
             else if (_gridService.IsBoardFull(GridModelStandard))
             {
                 // Handle draw scenario
-                synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
-                string drawAnnouncement = "The game ended in a draw.";
-                synthesizer.SpeakAsync(drawAnnouncement); // Announce the draw
+                
+                if (synthesizer != null)
+                {
+                    synthesizer.SpeakAsyncCancelAll(); // Cancel any ongoing speech
+                    string drawAnnouncement = "The game ended in a draw.";
+                    synthesizer.SpeakAsync(drawAnnouncement); // Announce the draw
+                }
                 _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
             }
 
@@ -296,18 +339,13 @@ namespace Connect4.ViewModel
             IsAnimationOn = false;
         }
 
-
-        public void LoadUser(User user)
-        {
-            CurrentUser = user;
-        }
-
         public void NavigateToPickVariant(object obj)
         {
             ExitGamePopUp exitGamePopUp = new ExitGamePopUp();
             bool? result = exitGamePopUp.ShowDialog();
             if (result == true)
             {
+                synthesizer.SpeakAsyncCancelAll();
                 _navigationService.NavigateTo("/PickVariant", CurrentUser);
             }
 
