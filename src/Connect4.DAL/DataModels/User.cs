@@ -1,8 +1,15 @@
-﻿using System;
+﻿using Connect4.DAL.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+/*
+ * Author   : Ivan Mahut(xmahut01)
+ * File     : User
+ * Brief    : Data model to store User information
+ */
 
 namespace Connect4.DAL.DataModels
 {
