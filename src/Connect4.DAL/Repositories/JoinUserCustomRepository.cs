@@ -1,11 +1,19 @@
 ﻿using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
+using Connect4.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+/*
+ * Author   : Ivan Mahut(xmahut01)
+ * File     : JoinUserCustomRepository
+ * Brief    : Implements functions for interaction with database for Join table of User and Custom
+ */
+
 
 namespace Connect4.DAL.Repositories
 {

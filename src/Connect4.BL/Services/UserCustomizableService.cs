@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : UserCustomizableService
+ * Brief    : Implements functions for View and data communication
+ */
+
+
 namespace Connect4.BL.Services
 {
     public class UserCustomizableService
