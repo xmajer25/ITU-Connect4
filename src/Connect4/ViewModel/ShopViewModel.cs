@@ -216,26 +216,9 @@ namespace Connect4.ViewModel
 
             }else if(ShopAvatars == true)
             {
-                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
-                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
-                if (CurrentUser.GoldTotal >= 2000)
-                {
-                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
-                    NotPurchasable = null;
-                }
-                else
-                {
-                    Purchasable = null;
-                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
-                }
-
-            }
-            else if(ShopTokens == true)
-            {
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 2);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 2);
-                Token2 = _customService.GetCustomizablesForUser(CurrentUser.Id, 2, 2)[0];
-                if (CurrentUser.GoldTotal >= 1000)
+                if (CurrentUser.GoldTotal >= 2000)
                 {
                     Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 2);
                     NotPurchasable = null;
@@ -244,6 +227,23 @@ namespace Connect4.ViewModel
                 {
                     Purchasable = null;
                     NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 2);
+                }
+
+            }
+            else if(ShopTokens == true)
+            {
+                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
+                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
+                Token2 = _customService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
+                if (CurrentUser.GoldTotal >= 1000)
+                {
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
+                    NotPurchasable = null;
+                }
+                else
+                {
+                    Purchasable = null;
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
                 }
             }
         }
