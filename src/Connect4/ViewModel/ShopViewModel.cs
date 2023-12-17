@@ -177,37 +177,35 @@ namespace Connect4.ViewModel
 
                 }
 
-            }else if(_shopAvatars == true)
+            }else if(ShopAvatars == true)
             {
                 Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
                 Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
                 if (CurrentUser.GoldTotal >= 2000)
                 {
-                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
                     NotPurchasable = null;
                 }
                 else
                 {
                     Purchasable = null;
-                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
-
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 1);
                 }
 
             }
-            else if(_shopTokens == true)
+            else if(ShopTokens == true)
             {
-                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 1);
-                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 1);
+                Owned = _customService.GetCustomizablesForUser(CurrentUser.Id, 0, 2);
+                Selected = _customService.GetCustomizablesForUser(CurrentUser.Id, 1, 2);
                 if (CurrentUser.GoldTotal >= 1000)
                 {
-                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
+                    Purchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 2);
                     NotPurchasable = null;
                 }
                 else
                 {
                     Purchasable = null;
-                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 0);
-
+                    NotPurchasable = _customService.GetAvailableCustomizables(CurrentUser.Id, 2);
                 }
             }
         }

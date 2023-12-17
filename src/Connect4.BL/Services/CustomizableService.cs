@@ -19,12 +19,10 @@ namespace Connect4.BL.Services
     public class CustomizableService
     {
         private CustomizableRepository _customizableRepository;
-        private UserCustomizableService _userCustomizableService;
 
         public CustomizableService()
         {
             _customizableRepository = new CustomizableRepository();
-            _userCustomizableService = new UserCustomizableService();
         }
 
         public ObservableCollection<string> GetCustomizablesForUser(int userId, int Own, int Type)
@@ -37,5 +35,9 @@ namespace Connect4.BL.Services
             return _customizableRepository.GetAvailableCustomizables(UserId, Type);
         }
 
+        public int GetIdByImagePath(string imagePath)
+        {
+            return _customizableRepository.GetIdByImagePath(imagePath);
+        }
     }
 }

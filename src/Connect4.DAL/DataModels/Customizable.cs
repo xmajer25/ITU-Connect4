@@ -20,7 +20,7 @@ namespace Connect4.DAL.DataModels
         /*
          0 - Bckg
          1 - Tok
-         3 - Ava
+         2 - Ava
          */
 
     }

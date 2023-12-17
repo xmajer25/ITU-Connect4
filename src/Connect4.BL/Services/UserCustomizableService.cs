@@ -18,10 +18,12 @@ namespace Connect4.BL.Services
     public class UserCustomizableService
     {
         private JoinUserCustomRepository _userCustomizableRepository;
+        private CustomizableService _customizableService;
 
         public UserCustomizableService()
         {
             _userCustomizableRepository = new JoinUserCustomRepository();
+            _customizableService = new CustomizableService();
         }
 
         // Retrieve UserCustomizable records by IsToken flag and UserId
@@ -40,6 +42,18 @@ namespace Connect4.BL.Services
         public List<JoinUserCustom> GetUserCustomizablesByIsBackAndUser(int userId)
         {
             return _userCustomizableRepository.GetUserCustomizablesByIsBackAndUser(userId);
+        }
+
+        public void SaveUserCustom(int UserId, string ImagePath, int Own)
+        {
+            int id = _customizableService.GetIdByImagePath(ImagePath);
+            
+            JoinUserCustom model = new JoinUserCustom();
+            model.UserId = UserId;
+            model.CustomizableId = id;
+            model.Ownership = Own;
+
+            _userCustomizableRepository.Create(model);
         }
 
     }
