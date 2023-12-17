@@ -22,15 +22,18 @@ namespace Connect4.Views
     /// </summary>
     public partial class ShopView : Page
     {
+        private ShopViewModel viewModel;
         public ShopView()
         {
             InitializeComponent();
-            DataContext = new ShopViewModel();
+            viewModel = new ShopViewModel();
+            DataContext = viewModel;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             AudioManager.PlaySound();
+            viewModel.PageLoaded();
         }
     }
 }

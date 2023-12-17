@@ -196,6 +196,9 @@ namespace Connect4.ViewModel
             }
         }
 
+        public void PageLoaded()
+            => LoadCustomizables();
+
         public void LoadCustomizables()
          {
             if(_shopBckgs == true)
