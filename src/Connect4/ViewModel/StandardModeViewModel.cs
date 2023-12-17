@@ -96,6 +96,8 @@ namespace Connect4.ViewModel
                 _settingsService = new SettingsService(CurrentUser.Id);
                 SetupNarration();
             }
+            else { 
+            }
 
         }
 
@@ -118,9 +120,6 @@ namespace Connect4.ViewModel
             PlayerTurn = _player1Turn;
 
             CommandManager.InvalidateRequerySuggested();
-
-            synthesizer = new SpeechSynthesizer();
-            synthesizer.SetOutputToDefaultAudioDevice();
         }
 
         
@@ -345,7 +344,10 @@ namespace Connect4.ViewModel
             bool? result = exitGamePopUp.ShowDialog();
             if (result == true)
             {
-                synthesizer.SpeakAsyncCancelAll();
+                if (synthesizer != null)
+                {
+                    synthesizer.SpeakAsyncCancelAll();
+                }
                 _navigationService.NavigateTo("/PickVariant", CurrentUser);
             }
 

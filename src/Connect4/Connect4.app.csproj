@@ -163,6 +163,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Resources\Images\StaticImages\PlaceArrowUp.png" />
+    <Resource Include="Resources\Images\BackGrounds\bckg_clear.png" />
+    <Resource Include="Resources\Images\StaticImages\settings_text.png" />
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

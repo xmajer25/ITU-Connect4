@@ -4,30 +4,43 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
-      xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsView">
-    <!--Author   : Dušan Slúka (xsluka00) -->
-    <!--File     : SettingsView -->
-    <!--Brief    : SettingsView for settings in app. -->
-    
+
+    <!-- Background Image -->
+    <Page.Background>
+        <ImageBrush ImageSource="/Resources/Images/BackGrounds/bckg_clear.png"/>
+    </Page.Background>
+
     <Page.DataContext>
         <viewModel:SettingsViewModel/>
     </Page.DataContext>
-    
 
-    <StackPanel>
-        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
-        <TextBlock Text="Settings" FontSize="18" Margin="10"/>
-        <TextBlock Text="Music Volume"/>
-        <Slider Minimum="0" Maximum="100" Value="{Binding MasterVolume, Mode=TwoWay}" TickFrequency="1" />
-        <TextBlock Text="Effects Volume" Visibility="Hidden"/>
-        <Slider Minimum="0" Maximum="100" Value="{Binding EffectVolume, Mode=TwoWay}" TickFrequency="1" Visibility="Hidden" />
-        <!-- Additional settings for hearing-impaired users -->
-        <CheckBox Content="Enable Audio Narration for Hearing Impaired" 
-          IsChecked="{Binding IsNarrationEnabled, Mode=TwoWay}"/>
-        <!-- Save Button -->
-        <Button Grid.Row="2" Content="Save" HorizontalAlignment="Center" Margin="10" Padding="10" Command="{Binding SaveSettingsCommand}"/>
-    </StackPanel>
+    <Grid>
+        <!-- Settings Text in the Yellow Rectangle -->
+        <Image HorizontalAlignment="Right" VerticalAlignment="Top"
+               Source="/Resources/Images/StaticImages/Settings_text.png" 
+               Margin="0,200,250,0" Height="50" Width="200"/>
+
+        <!-- Settings Controls -->
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            
+
+            <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Music:" Style="{StaticResource PixelButtonTextStyle}"/>
+            <Slider Minimum="0" Maximum="100" Value="{Binding MasterVolume, Mode=TwoWay}" TickFrequency="1" />
+            
+            <Slider Minimum="0" Maximum="100" Value="{Binding EffectVolume, Mode=TwoWay}" TickFrequency="1" Visibility="Hidden" />
+            <CheckBox Content="Enable Audio Narration for Hearing Impaired" 
+                      IsChecked="{Binding IsNarrationEnabled, Mode=TwoWay}"/>
+
+            <Button Style="{StaticResource DefaultButton}" Command="{Binding SaveSettingsCommand}" Margin="10" Padding="10" HorizontalAlignment="Center">
+                <Grid>
+                    <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Save" Style="{StaticResource YellowButtonTextStyle}"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+    </Grid>
 </Page>
