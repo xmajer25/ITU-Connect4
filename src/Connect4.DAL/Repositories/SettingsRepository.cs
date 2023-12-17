@@ -9,6 +9,12 @@ using System.Data.SQLite;
     * Brief    : Api for comuncating with setting based on user
     */
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : SettingsRepository
+ * Brief    : Implements functions for interaction with database for user settings
+ */
+
 namespace Connect4.DAL.Repositories
 {
     public class SettingsRepository

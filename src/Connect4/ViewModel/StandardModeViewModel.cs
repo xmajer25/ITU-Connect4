@@ -103,7 +103,6 @@ namespace Connect4.ViewModel
 
         public StandardModeViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _gridRepository = new GridStandardRepository(); // Instantiate the concrete repository
             _gridService = new GridStandardService(_gridRepository); // Pass the repository to the service

@@ -46,7 +46,7 @@ namespace Connect4.BL.Services
             _userRepository.CreateUser(newUser);
         }
 
-        public void UpdateUser(int userId, string username, string password, string email, int gamesPlayed, int gamesWon, int goldTotal, int goldActual)
+        public User UpdateUser(int userId, string username, string password, string email, int gamesPlayed, int gamesWon, int goldTotal, int goldActual)
         {
             User updatedUser = new User
             {
@@ -61,11 +61,21 @@ namespace Connect4.BL.Services
             };
 
             _userRepository.UpdateUser(updatedUser);
+            return updatedUser;
         }
 
         public User GetUserByUsername(string username)
         {
             return _userRepository.GetUserByUsername(username);
+        }
+
+        public int UpdateGold(int userId, int goldDeducted) {
+            int goldBefore = _userRepository.GetGoldActual(userId);
+
+            _userRepository.UpdateGoldActual(userId, goldBefore-goldDeducted);
+
+            return goldBefore - goldDeducted;
+
         }
     }
 }

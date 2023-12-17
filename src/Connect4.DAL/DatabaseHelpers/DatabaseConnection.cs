@@ -18,27 +18,25 @@ namespace Connect4.DAL.DatabaseHelpers
 
     internal class DatabaseConnection
     {
-        private static string _connectionString;
+        private static string _databaseFileName = "Connect4.db";
+        private static string _connectionString = $"Data Source={_databaseFileName};Version=3;";
 
-        static DatabaseConnection()
-        {
-            var dbPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "Connect4",
-                "Connect4.db");
-
-            _connectionString = $"Data Source={dbPath};Version=3;";
-
-            // Ensure the directory exists
-            var dbDirectory = Path.GetDirectoryName(dbPath);
-            if (!Directory.Exists(dbDirectory))
-            {
-                Directory.CreateDirectory(dbDirectory);
-            }
-        }
+        // Keep a static reference to the open connection
+        private static SQLiteConnection _openConnection;
 
         public static SQLiteConnection GetConnection()
         {
+            // Check if the database file exists
+            if (!File.Exists(_databaseFileName))
+            {
+                // If the database file doesn't exist, create it
+                SQLiteConnection.CreateFile(_databaseFileName);
+
+                // Optionally, you may want to execute initial database setup scripts here
+
+                Console.WriteLine("Database file created successfully.");
+            }
+
             return new SQLiteConnection(_connectionString);
         }
     }

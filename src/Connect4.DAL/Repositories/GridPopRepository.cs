@@ -8,6 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : GridRepository
+ * Brief    : Implements functions for interaction with database for GameState of PopOut Mode
+ */
+
+
 namespace Connect4.DAL.Repositories
 {
     public class GridPopRepository

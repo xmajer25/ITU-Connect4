@@ -33,7 +33,7 @@ namespace Connect4.ViewModel
         private readonly NavService _navigationService;
         private GridCrazyHouseService _gridService;
         private readonly UserService _userService;
-        private readonly UserCustomizableService _userCustomizableService;
+        private readonly CustomizableService _customizableService;
 
         /* VIEW PARTS */
         public Grid MainGrid;
@@ -81,21 +81,49 @@ namespace Connect4.ViewModel
             }
         }
 
+        private string _background = "/Resources/Images/BackGrounds/BackGroundDefault.png";
+        public string BackGround
+        {
+            get { return _background; }
+            set
+            {
+                if (_background != value)
+                {
+                    _background = value;
+                    OnPropertyChanged("BackGround");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public CrazyHouseViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _gridService = new GridCrazyHouseService();
             _userService = new UserService();
-            _userCustomizableService = new UserCustomizableService();
+            _customizableService = new CustomizableService();
 
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             DropBallCommand = new RelayCommand<int>(DropBall);
 
-            _tokenSkin = token1;
+
             PlayerTurn = _player1Turn;
+            BackGround = _background;
+        }
+
+        /* Loads Currently Logged In User */
+        public void LoadUser(User user)
+        {
+            CurrentUser = user;
+            if(CurrentUser != null)
+            {
+                token1 = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 1)[0];
+                token2 = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 2, 1)[0];
+                TokenSkin = token1;
+
+                _background = _customizableService.GetCustomizablesForUser(CurrentUser.Id, 1, 0)[0];
+                BackGround = _background;
+            }
         }
 
         public void SwapTokenSkins()
@@ -306,11 +334,6 @@ namespace Connect4.ViewModel
             storyboard.Begin();
         }
 
-        /* Loads Currently Logged In User */
-        public void LoadUser(User user)
-        {
-            CurrentUser = user;
-        }
 
         /* Navigation Command -> go back*/
         public void NavigateToPickVariant(object obj)

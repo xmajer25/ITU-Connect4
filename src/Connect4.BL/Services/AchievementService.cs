@@ -6,6 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : AchievementService
+ * Brief    : Implements functions for View and data communication of Achievements data model
+ */
+
 namespace Connect4.BL.Services
 {
     public class AchievementService

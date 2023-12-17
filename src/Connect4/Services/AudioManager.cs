@@ -21,6 +21,7 @@ namespace Connect4.Services
             }
 
             mediaPlayer.Volume = volume;
+
             mediaPlayer.Play();
         }
 

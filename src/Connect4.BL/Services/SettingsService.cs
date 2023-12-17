@@ -6,6 +6,7 @@ using Connect4.DAL.Repositories;
  * File     : GridStandardService
  * Brief    : Game logic for standard mode of connect 4
  */
+
 namespace Connect4.BL.Services
 {
     // A service class responsible for managing application settings.

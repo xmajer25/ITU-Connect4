@@ -3,6 +3,7 @@ using Connect4.BL.Services.GridServices;
 using Connect4.Commands;
 using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
+using Connect4.ViewModel;
 using Connect4.ViewModel.Interfaces;
 using Connect4.Views.PopUps;
 using Connect4.ViewUserControl;
@@ -21,6 +22,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using static Connect4.ViewModel.PopOutViewModel;
 using NavService = Connect4.Services.NavigationService;
+
+/*
+ * Author   : Ivan Mahút (xmahut01)
+ * File     : PopOutViewModel
+ * Brief    : View model for Pop Out game mode, implements animations and game logic by communication with BL  
+ */
 
 namespace Connect4.ViewModel
 {
@@ -107,7 +114,6 @@ namespace Connect4.ViewModel
 
         public PopOutViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _gridService = new GridPopService();
             _userService = new UserService();
@@ -172,9 +178,9 @@ namespace Connect4.ViewModel
         public void DropBall(int column)
         {
             if (IsAnimationOn) return; IsAnimationOn = true;
-            if (IsPutMode)
+            if (IsPutMode) 
             {
-                double startXPosition = GetColumnPosition(column, GameGrid);
+                double startXPosition = GetColumnPosition(column, GameGrid); // Calculate starting position
                 double startYPosition = 0; // Set a fixed starting Y position
 
                 BallControl ball = new BallControl();
@@ -182,11 +188,11 @@ namespace Connect4.ViewModel
                 Canvas.SetLeft(ball, startXPosition);
                 Canvas.SetTop(ball, startYPosition);
 
-                int endRow = _gridService.MakePut(column - 2);
+                int endRow = _gridService.MakePut(column - 2); // put token into the grid
 
-                if(endRow == -1)
+                if(endRow == -1) // not valid move
                 {
-                    IsAnimationOn = false;
+                    IsAnimationOn = false; 
                     return;
                 }
 
@@ -218,11 +224,14 @@ namespace Connect4.ViewModel
                     BitmapImage bitmapImage = new BitmapImage(new Uri(TokenSkin, UriKind.RelativeOrAbsolute));
                     ballImage.Source = bitmapImage;
 
-                    // Check end of game
                     if (_gridService.IsWinner() == true)
                     {
                         int winner = _gridService.GetCurrentPlayer();
-                        Console.WriteLine("Player " + winner + " has won!");
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
+                    }
+                    else if (_gridService.IsGridFull())
+                    {
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
                     }
 
                     droppedBalls.Add(new DroppedBallInfo
@@ -278,7 +287,10 @@ namespace Connect4.ViewModel
                     if (_gridService.IsWinner() == true)
                     {
                         int winner = _gridService.GetCurrentPlayer();
-                        Console.WriteLine("Player " + winner + " has won!");
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, winner);
+                    }else if (_gridService.IsGridFull())
+                    {
+                        _navigationService.NavigateTo("/EndScreen", CurrentUser, 0);
                     }
                     // Remove the ball from the canvas
                     GameCanvas.Children.Remove(bottomBall);

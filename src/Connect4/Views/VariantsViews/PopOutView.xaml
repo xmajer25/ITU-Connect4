@@ -10,6 +10,12 @@
       mc:Ignorable="d" d:DesignHeight="1000" d:DesignWidth="1312"
       Title="PopOutView">
 
+    <!-- 
+        Author   : Ivan Mahut (xmahut01)
+        File     : PopOutView
+        Brief    : User interface for PopOut game mode
+    -->
+
     <Page.Resources>
         <converters:ModeTextConverter x:Key="ModeTextConverter"/>
     </Page.Resources>

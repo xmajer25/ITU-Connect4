@@ -59,10 +59,7 @@ namespace Connect4.DAL.DatabaseHelpers
             CREATE TABLE IF NOT EXISTS Customizables (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 ImagePath TEXT NOT NULL,
-                IsToken INTEGER NOT NULL,
-                IsAvatar INTEGER NOT NULL,
-                IsBack INTEGER NOT NULL
-                
+                Type INTEGER NOT NULL
             );
 
             CREATE TABLE IF NOT EXISTS UserCustomizables (
@@ -97,10 +94,10 @@ namespace Connect4.DAL.DatabaseHelpers
         private static void InsertDummyUsers(SQLiteConnection connection)
         {
             string insertDummyQuery = @"
-        INSERT INTO Users (Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual) VALUES 
-        ('DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
-        ('DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
-        ('DummyUser3', 'DummyPass3', 'dummy3@email.com', 0, 0, 0, 0);
+        INSERT INTO Users (Id, Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual) VALUES 
+        (1, 'DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
+        (2, 'DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
+        (4, 'Rudo', 'Pass', 'dummy4@email.com', 0, 0, 3000, 5000);
 
         INSERT INTO Achievements (Name, Description) VALUES
         ('Getting Started!', 'Play one game of Connect4.'),
@@ -120,7 +117,38 @@ namespace Connect4.DAL.DatabaseHelpers
          (3, 2, 1, 1),
          (4, 2, 2, 1),
          (5, 2, 3, 0);
+
+        INSERT INTO Customizables (Id, ImagePath, Type) VALUES
+        (1,'/Resources/Images/BackGrounds/BackGroundDefault.png', 0),
+        (2,'/Resources/Images/BackGrounds/BackGroundForest.png', 0),
+        (3,'/Resources/Images/Avatars/AvatarBlue.png', 2),
+        (4,'/Resources/Images/Avatars/AvatarGreen.png', 2),
+        (5,'/Resources/Images/Avatars/AvatarRn.png',2),
+        (6,'/Resources/Images/Tokens/TokenBlue.png',1),
+        (7,'/Resources/Images/Tokens/TokenGreen.png',1),
+        (8,'/Resources/Images/Tokens/TokenGrey.png',1),
+        (9,'/Resources/Images/Tokens/TokenOrange.png',1),
+        (10,'/Resources/Images/Tokens/TokenPink.png',1),
+        (11,'/Resources/Images/Tokens/TokenPurple.png',1),
+        (12,'/Resources/Images/Tokens/TokenRed.png',1);
+
+
+        INSERT INTO UserCustomizables (UserId, CustomizableId, Ownership) VALUES
+        (4, 1, 1),
+        (4, 5, 1),
+        (4, 6, 1),
+        (4, 12, 2),
+        (1, 1, 1),
+        (1, 5, 1),
+        (1, 6, 1),
+        (1, 12, 2),
+        (2, 1, 1),
+        (2, 5, 1),
+        (2, 6, 1),
+        (2, 12, 2);
         ";
+
+        
 
             using (var command = new SQLiteCommand(insertDummyQuery, connection))
             {

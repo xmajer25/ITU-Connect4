@@ -30,7 +30,6 @@ namespace Connect4.ViewModel
 
         public SettingsViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavigationService();
             _userService = new UserService();
             SaveSettingsCommand = new RelayCommand<object>(SaveSettings);
