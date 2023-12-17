@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : GridModelPop
+ * Brief    : Data model to store information about PopOut game mode
+ *            It uses array of size row * column to store player tokens
+ */
+
 namespace Connect4.DAL.DataModels
 {
     public class GridModelPop

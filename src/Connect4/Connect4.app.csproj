@@ -91,6 +91,7 @@
     <Compile Include="Models\RouteModel.cs" />
     <Compile Include="Resources\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Resources\Converters\ModeTextConverter.cs" />
+    <Compile Include="Resources\Converters\StringToSource.cs" />
     <Compile Include="Services\AudioManager.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModel\CrazyHouseViewModel.cs" />
@@ -104,12 +105,16 @@
     <Compile Include="ViewModel\PickVariantViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\ShopViewModel.cs" />
     <Compile Include="ViewModel\StandardModeViewModel.cs" />
     <Compile Include="Views\EndScreenView.xaml.cs">
       <DependentUpon>EndScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PopUps\ExitGamePopUp.xaml.cs">
       <DependentUpon>ExitGamePopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShopView.xaml.cs">
+      <DependentUpon>ShopView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VariantsViews\CrazyHouseView.xaml.cs">
       <DependentUpon>CrazyHouseView.xaml</DependentUpon>
@@ -163,6 +168,20 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Resource Include="Resources\Images\StaticImages\PlaceArrowUp.png" />
+    <Resource Include="Resources\Images\StaticImages\ShopBGBottom.png" />
+    <Resource Include="Resources\Images\StaticImages\ShopBGTop.png" />
+    <Resource Include="Resources\Images\StaticImages\PlayPopOut.png" />
+    <Resource Include="Resources\Images\BackGrounds\BackGroundForest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\StaticImages\GreenButton.png" />
+    <Resource Include="Resources\Images\Avatars\AvatarBlue.png" />
+    <Resource Include="Resources\Images\Avatars\AvatarGreen.png" />
+    <Resource Include="Resources\Images\Tokens\TokenGreen.png" />
+    <Resource Include="Resources\Images\Tokens\TokenGrey.png" />
+    <Resource Include="Resources\Images\Tokens\TokenOrange.png" />
+    <Resource Include="Resources\Images\Tokens\TokenPink.png" />
+    <Resource Include="Resources\Images\Tokens\TokenPurple.png" />
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -208,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PopUps\ExitGamePopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShopView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

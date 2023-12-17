@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connect4.DAL.DatabaseHelpers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,5 +12,9 @@ namespace Connect4
 {
     public partial class App : Application
     {
+        public App()
+        {
+            DatabaseInitializer.Initialize();
+        }
     }
 }

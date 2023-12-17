@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : JoinUserCustom
+ * Brief    : Data model for join table of users and customizables
+ */
+
+
 namespace Connect4.DAL.DataModels
 {
     public class JoinUserCustom

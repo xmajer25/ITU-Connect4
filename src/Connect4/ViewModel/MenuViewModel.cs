@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Navigation;
 using Connect4.Commands;
 using Connect4.BL.Services;
-using Connect4.BL.Models;
 using NavService = Connect4.Services.NavigationService;
 using System.Data.Entity;
 using Connect4.DAL.DatabaseHelpers;
@@ -50,6 +49,7 @@ namespace Connect4.ViewModel
 
         /* COMMANDS */
         public ICommand NavigateToSettingsCommand { get; private set; }
+        public ICommand NavigateToShopCommand { get; private set; }
         public ICommand ExitAppCommand { get; private set; }
         public ICommand NavigateToLogInCommand { get; private set; }
         public ICommand NavigateToPickVariantCommand { get; private set; }
@@ -92,7 +92,6 @@ namespace Connect4.ViewModel
 
         public MenuViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
 
@@ -102,6 +101,7 @@ namespace Connect4.ViewModel
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             NavigateToRegisterCommand = new RelayCommand<object>(NavigateToRegister);
             NavigateToProfileCommand = new RelayCommand<object>(NavigateToProfile);
+            NavigateToShopCommand = new RelayCommand<object>(NavigateToShop);
         }
 
         /* Load logged in user */
@@ -136,6 +136,11 @@ namespace Connect4.ViewModel
         public void NavigateToPickVariant(object obj)
         {
             _navigationService.NavigateTo("/PickVariant", CurrentUser);
+        }
+
+        public void NavigateToShop(object obj)
+        {
+            _navigationService.NavigateTo("/Shop", CurrentUser);
         }
 
         /* Navigation -> go to settings */

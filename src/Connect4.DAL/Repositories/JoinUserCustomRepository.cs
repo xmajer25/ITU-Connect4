@@ -1,11 +1,19 @@
 ﻿using Connect4.DAL.DatabaseHelpers;
 using Connect4.DAL.DataModels;
+using Connect4.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+/*
+ * Author   : Ivan Mahut(xmahut01)
+ * File     : JoinUserCustomRepository
+ * Brief    : Implements functions for interaction with database for Join table of User and Custom
+ */
+
 
 namespace Connect4.DAL.Repositories
 {
@@ -59,6 +67,29 @@ namespace Connect4.DAL.Repositories
             }
 
             return userCustomizables;
+        }
+
+        public void UpdateOwnership(int userId, int customizableId, int newOwnership)
+        {
+            using (var connection = DatabaseConnection.GetConnection())
+            {
+                connection.Open();
+
+                string updateQuery = @"
+                    UPDATE UserCustomizables
+                    SET Ownership = @NewOwnership
+                    WHERE UserId = @UserId AND CustomizableId = @CustomizableId;
+                ";
+
+                using (var command = new SQLiteCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+                    command.Parameters.AddWithValue("@CustomizableId", customizableId);
+                    command.Parameters.AddWithValue("@NewOwnership", newOwnership);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public List<JoinUserCustom> GetUserCustomizablesByIsTokenAndUser(int userId)

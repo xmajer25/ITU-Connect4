@@ -10,6 +10,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : AchievementRepository
+ * Brief    : Implements functions for interaction with database for Achievements model
+ */
+
+
 namespace Connect4.DAL.Repositories
 {
     public class AchievementRepository

@@ -21,7 +21,7 @@ namespace Connect4.Services
                 mediaPlayer.Open(soundUri);
                 mediaPlayer.MediaEnded += (sender, e) => mediaPlayer.Position = TimeSpan.Zero;
             }
-
+            
             mediaPlayer.Play();
         }
     }

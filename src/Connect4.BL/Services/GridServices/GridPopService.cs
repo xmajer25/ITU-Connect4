@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories;
 
+/*
+ * Author   : Ivan Mahut (xmahut01)
+ * File     : GridPopService
+ * Brief    : Implements functions for game and data communication
+ */
+
 namespace Connect4.BL.Services.GridServices
 {
     public class GridPopService
@@ -133,9 +139,6 @@ namespace Connect4.BL.Services.GridServices
             int rows = _gridPopRepository.GetRowsCount(1);
             int columns = _gridPopRepository.GetColumnsCount(1);
 
-            // Check if board is full
-            if (IsGridFull(currentGridModel.Grid)) return true;
-
             // Check horizontally
             if (CheckDirection(currentGridModel.Grid, rows, columns, currentGridModel.CurrentPlayer, 0, 1)) return true;
 
@@ -210,14 +213,16 @@ namespace Connect4.BL.Services.GridServices
         }
 
 
-        private bool IsGridFull(int[] grid)
+        public bool IsGridFull()
         {
+            var currentGridModel = _gridPopRepository.GetGridModel();
+
             int rows = _gridPopRepository.GetRowsCount(1);
             int columns = _gridPopRepository.GetColumnsCount(1);
 
             for (int i = 0; i < rows * columns; i++)
             {
-                if (grid[i] == 0)
+                if (currentGridModel.Grid[i] == 0)
                 {
                     return false;
                 }

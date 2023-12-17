@@ -103,7 +103,6 @@ namespace Connect4.ViewModel
 
         public EndScreenViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
 
@@ -117,7 +116,7 @@ namespace Connect4.ViewModel
             SparkleAnimation();
             if(IsUserLoggedIn)
             {
-                _userService.UpdateUser(
+                CurrentUser = _userService.UpdateUser(
                     CurrentUser.Id, 
                     CurrentUser.Username, 
                     CurrentUser.Password, 

@@ -148,12 +148,13 @@ namespace Connect4.ViewModel
         /* SERVICES */
         private readonly NavService _navigationService;
         private readonly UserService _userService;
+        private readonly UserCustomizableService _userCustomService;
 
         public RegisterViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
+            _userCustomService = new UserCustomizableService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
             NavigateToLogInCommand = new RelayCommand<object>(NavigateToLogIn);
             RegisterCommand = new RelayCommand<object>(Register);
@@ -257,6 +258,9 @@ namespace Connect4.ViewModel
             if (!canRegister) return;
 
             _userService.CreateUser(_name, _password, _email);
+            User newUser = _userService.GetUserByUsername(_name);
+            _userCustomService.SetDefaultSkins(newUser.Id);
+
             NavigateToLogIn(obj);
         }
         protected virtual void OnPropertyChanged(string propertyName)

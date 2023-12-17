@@ -149,6 +149,23 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="PopOutToolTip" TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="50"/>
+        <Setter Property="BorderBrush" Value="Yellow"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <ToolTip Style="{StaticResource CustomToolTip}" Content="Swap between placing your token inside and popping your opponent's token outside of the grid.&#x0a;Sabotage your enemies for the win."/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 
 
     <!-- Button Styles -->
