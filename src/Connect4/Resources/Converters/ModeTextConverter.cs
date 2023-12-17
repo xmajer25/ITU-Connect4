@@ -2,6 +2,12 @@
 using System.Globalization;
 using System.Windows.Data;
 
+/*
+ * Author   : Ivan Mahút (xmahut01)
+ * File     : ModeTextConverter
+ * Brief    : Converts Mode to Text
+ */
+
 namespace Connect4.Converters
 {
     public class ModeTextConverter : IValueConverter

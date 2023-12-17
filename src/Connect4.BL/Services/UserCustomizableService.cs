@@ -56,6 +56,25 @@ namespace Connect4.BL.Services
             _userCustomizableRepository.Create(model);
         }
 
+        public void SetDefaultSkins(int UserId)
+        {
+            JoinUserCustom model = new JoinUserCustom();
+            model.UserId = UserId;
+            model.CustomizableId = 1;
+            model.Ownership = 1;
+            _userCustomizableRepository.Create(model);
+
+            model.CustomizableId = 5;
+            _userCustomizableRepository.Create(model);
+
+            model.CustomizableId = 6;
+            _userCustomizableRepository.Create(model);
+
+            model.CustomizableId = 12;
+            model.Ownership = 2;
+            _userCustomizableRepository.Create(model);
+        }
+
         public void UpdateOwnership(int UserId, string ImagePath, int Ownership)
         {
             int id = _customizableService.GetIdByImagePath(ImagePath);

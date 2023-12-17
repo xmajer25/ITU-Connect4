@@ -13,6 +13,12 @@ using System.Windows.Input;
 using NavService = Connect4.Services.NavigationService;
 using System.Collections.ObjectModel;
 
+/*
+ * Author   : Ivan Mahút (xmahut01)
+ * File     : ShopViewModel
+ * Brief    : View model for Shop, implements loading of items and changes of Ownership
+ */
+
 namespace Connect4.ViewModel
 {
     public class ShopViewModel : INotifyPropertyChanged, ILoadUser
