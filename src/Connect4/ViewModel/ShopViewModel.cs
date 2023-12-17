@@ -34,8 +34,8 @@ namespace Connect4.ViewModel
         public ICommand SwitchBckgsCommand { get; private set; }
         public ICommand SetSelectedCommand { get; private set; }
         public ICommand BuySkinCommand { get; private set; }
-        public ICommand SetTokenCommnad {  get; private set; }
-        public ICommand SetToken2Commnad {  get; private set; }
+        public ICommand SetTokenCommand {  get; private set; }
+        public ICommand SetToken2Command {  get; private set; }
 
         /* SERVICES */
         private readonly NavService _navigationService;
@@ -141,8 +141,8 @@ namespace Connect4.ViewModel
             SwitchBckgsCommand = new RelayCommand<object>(SetBckgs);
             SetSelectedCommand = new RelayCommand<string>(SetSelected);
             BuySkinCommand = new RelayCommand<string>(BuySkin);
-            SetTokenCommnad = new RelayCommand<string>(SetToken);
-            SetToken2Commnad =  new RelayCommand<string>(SetToken2);
+            SetTokenCommand = new RelayCommand<string>(SetToken);
+            SetToken2Command =  new RelayCommand<string>(SetToken2);
         }
 
         /* Load user */
