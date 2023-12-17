@@ -16,7 +16,7 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Menu = Connect4.Views.Menu;
 
-/*
+/* 
  * Author   : Jakub Majer (xmajer25)
  * File     : NavigationService
  * Brief    : Serviced used for navigation between views 

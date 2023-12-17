@@ -1,18 +1,18 @@
 ﻿using Connect4.DAL.DataModels;
 using Connect4.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
+/*
+ * Author   : Dušan Slúka (xsluka00)
+ * File     : GridStandardService
+ * Brief    : Game logic for standard mode of connect 4
+ */
 
 namespace Connect4.BL.Services
 {
+    // A service class responsible for managing application settings.
     public class SettingsService
     {
-       
+
         private readonly SettingsRepository _settingsRepository;
         private readonly int _currentUserId;
 
@@ -45,6 +45,7 @@ namespace Connect4.BL.Services
             _settingsRepository.Update(settings);
         }
     }
+
 
 
 }

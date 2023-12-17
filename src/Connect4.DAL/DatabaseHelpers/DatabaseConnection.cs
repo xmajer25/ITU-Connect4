@@ -18,7 +18,7 @@ namespace Connect4.DAL.DatabaseHelpers
 
     internal class DatabaseConnection
     {
-        private static string _databaseFileName = "YourDatabaseName.db";
+        private static string _databaseFileName = "Connect4.db";
         private static string _connectionString = $"Data Source={_databaseFileName};Version=3;";
 
         // Keep a static reference to the open connection
