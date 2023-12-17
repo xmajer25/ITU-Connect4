@@ -97,6 +97,15 @@
                 </Button>
 
                 <Button Margin="10"
+                        Command="{Binding NavigateToSettingsCommand}"
+                        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SETTINGS" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+
+                <Button Margin="10"
                         Command="{Binding ExitAppCommand}"
                         Style="{StaticResource BigButton}">
                     <Grid>
@@ -121,8 +130,8 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
                 <Button Margin="10"
-        Command="{Binding NavigateToPickVariantCommand}"
-        Style="{StaticResource BigButton}">
+                        Command="{Binding NavigateToPickVariantCommand}"
+                        Style="{StaticResource BigButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="PLAY" Style="{StaticResource PixelBigButtonTextStyle}"/>
@@ -130,8 +139,8 @@
                 </Button>
 
                 <Button Margin="10"
-        Command="{Binding NavigateToSettingsCommand}"
-        Style="{StaticResource BigButton}">
+                        Command="{Binding NavigateToSettingsCommand}"
+                        Style="{StaticResource BigButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SETTINGS" Style="{StaticResource PixelBigButtonTextStyle}"/>
@@ -139,8 +148,8 @@
                 </Button>
 
                 <Button Margin="10"
-        Command="{Binding NavigateToShopCommand}"
-        Style="{StaticResource BigButton}">
+                        Command="{Binding NavigateToShopCommand}"
+                        Style="{StaticResource BigButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SHOP" Style="{StaticResource PixelBigButtonTextStyle}"/>
@@ -148,8 +157,8 @@
                 </Button>
 
                 <Button Margin="10"
-        Command="{Binding ExitAppCommand}"
-        Style="{StaticResource BigButton}">
+                        Command="{Binding ExitAppCommand}"
+                        Style="{StaticResource BigButton}">
                     <Grid>
                         <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
