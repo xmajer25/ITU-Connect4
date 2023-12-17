@@ -7,11 +7,48 @@
       xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ShopView">
+      Title="ShopView" Background="Black">
     <Page.DataContext>
         <viewModel:ShopViewModel/>
     </Page.DataContext>
-    <Grid>
+    <Grid Margin="100">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
+        
+        <Grid Grid.Row="1">
+            <Image Source="/Resources/Images/StaticImages/ShopBGTop.png" Stretch="Fill"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Left" Margin="0,0,70,0">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TOKENS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                    </Grid>
+                </Button>
+
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Center">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="B.GROUNDS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                    </Grid>
+                </Button>
+
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="70,0,0,0">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="AVATARS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Image Source="/Resources/Images/StaticImages/ShopBGBottom.png" Stretch="Fill"/>
+        </Grid>
     </Grid>
 </Page>
