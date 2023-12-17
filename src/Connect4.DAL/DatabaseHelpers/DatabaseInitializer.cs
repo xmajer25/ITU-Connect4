@@ -55,7 +55,6 @@ namespace Connect4.DAL.DatabaseHelpers
             CREATE TABLE IF NOT EXISTS Customizables (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 ImagePath TEXT NOT NULL,
-                Price INTEGER NOT NULL,
                 Type INTEGER NOT NULL
             );
 

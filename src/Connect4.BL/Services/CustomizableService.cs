@@ -27,17 +27,6 @@ namespace Connect4.BL.Services
             _userCustomizableService = new UserCustomizableService();
         }
 
-        public List<Customizable> GetAllCustomizables()
-        {
-            List<Customizable> customizables = _customizableRepository.GetAllCustomizables();
-            return customizables;
-        }
-
-        public Customizable GetCustomizableById(int id)
-        {
-            return _customizableRepository.GetCustomizableById(id);
-        }
-
         public ObservableCollection<string> GetCustomizablesForUser(int userId, int Own, int Type)
         {
             return _customizableRepository.GetCustomizablesForUser(userId, Own, Type);

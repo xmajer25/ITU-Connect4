@@ -171,6 +171,7 @@
     <Resource Include="Resources\Images\StaticImages\ShopBGTop.png" />
     <Resource Include="Resources\Images\StaticImages\PlayPopOut.png" />
     <Resource Include="Resources\Images\BackGrounds\BackGroundForest.png" />
+    <Resource Include="Resources\Images\StaticImages\GreenButton.png" />
     <Content Include="Resources\Sounds\DefaultSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
