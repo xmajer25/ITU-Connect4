@@ -55,7 +55,6 @@ namespace Connect4.DAL.DatabaseHelpers
             CREATE TABLE IF NOT EXISTS Customizables (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 ImagePath TEXT NOT NULL,
-                Price INTEGER NOT NULL,
                 Type INTEGER NOT NULL
             );
 
@@ -94,7 +93,7 @@ namespace Connect4.DAL.DatabaseHelpers
         INSERT INTO Users (Id, Username, Password, Email, GamesPlayed, GamesWon, GoldTotal, GoldActual) VALUES 
         (1, 'DummyUser1', 'DummyPass1', 'dummy1@email.com', 0, 0, 0, 0),
         (2, 'DummyUser2', 'DummyPass2', 'dummy2@email.com', 0, 0, 0, 0),
-        (4, 'Rudo', 'Pass', 'dummy3@email.com', 0, 0, 0, 5000);
+        (4, 'Rudo', 'Pass', 'dummy4@email.com', 0, 0, 0, 5000);
 
         INSERT INTO Achievements (Name, Description) VALUES
         ('Getting Started!', 'Play one game of Connect4.'),
@@ -128,9 +127,9 @@ namespace Connect4.DAL.DatabaseHelpers
         (10,'/Resources/Images/Tokens/TokenPink.png',1),
         (11,'/Resources/Images/Tokens/TokenPurple.png',1),
         (12,'/Resources/Images/Tokens/TokenRed.png',1);
-        
 
-        INSERT INTO JoinUserCustom (UserId, CustomizableId, Ownership) VALUES
+
+        INSERT INTO UserCustomizables (UserId, CustomizableId, Ownership) VALUES
         (4, 1, 1),
         (4, 5, 1),
         (4, 6, 1),

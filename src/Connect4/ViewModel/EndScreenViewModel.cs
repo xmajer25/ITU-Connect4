@@ -103,7 +103,6 @@ namespace Connect4.ViewModel
 
         public EndScreenViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
 

@@ -35,7 +35,6 @@ namespace Connect4.ViewModel
 
         public PickVariantViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             NavigateToMenuCommand = new RelayCommand<object>(NavigateToMenu);
             NavigateToStandardModeCommand = new RelayCommand<object>(NavigateToStandardMode);

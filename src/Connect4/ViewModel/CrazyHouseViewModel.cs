@@ -85,7 +85,6 @@ namespace Connect4.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public CrazyHouseViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _gridService = new GridCrazyHouseService();
             _userService = new UserService();

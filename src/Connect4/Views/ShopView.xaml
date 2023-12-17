@@ -4,13 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:Connect4.ViewModel"
+      xmlns:conv="clr-namespace:Connect4.Resources.Converters"
       xmlns:local="clr-namespace:Connect4.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ShopView" Background="Black">
+    
     <Page.DataContext>
         <viewModel:ShopViewModel/>
     </Page.DataContext>
+    
+    <Page.Resources>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+    
     <Grid Margin="100">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -24,24 +31,43 @@
         <Grid Grid.Row="1">
             <Image Source="/Resources/Images/StaticImages/ShopBGTop.png" Stretch="Fill"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Left" Margin="0,0,70,0">
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Left" Margin="0,0,70,0" Command="{Binding SwitchTokensCommand}">
                     <Grid>
-                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TOKENS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        <Grid  Visibility="{Binding ShopTokens, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
+                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TOKENS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
+                        <Grid  Visibility="{Binding ShopTokens, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                            <Image Source="\Resources\Images\StaticImages\GreenButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="TOKENS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
+                    </Grid>
+                    
+                </Button>
+
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Center" Command="{Binding SwitchBckgsCommand}">
+                    <Grid>
+                        <Grid  Visibility="{Binding ShopBckgs, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
+                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="B.GROUNDS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
+                        <Grid  Visibility="{Binding ShopBckgs, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                            <Image Source="\Resources\Images\StaticImages\GreenButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="B.GROUNDS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
                     </Grid>
                 </Button>
 
-                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Center">
+                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="70,0,0,0" Command="{Binding SwitchAvatarsCommand}">
                     <Grid>
-                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="B.GROUNDS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
-                    </Grid>
-                </Button>
-
-                <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="70,0,0,0">
-                    <Grid>
-                        <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="AVATARS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        <Grid  Visibility="{Binding ShopAvatars, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
+                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="AVATARS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
+                        <Grid  Visibility="{Binding ShopAvatars, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                            <Image Source="\Resources\Images\StaticImages\GreenButton.png" Stretch="Fill"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="AVATARS" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Yellow"/>
+                        </Grid>
                     </Grid>
                 </Button>
             </StackPanel>
@@ -49,6 +75,154 @@
 
         <Grid Grid.Row="2">
             <Image Source="/Resources/Images/StaticImages/ShopBGBottom.png" Stretch="Fill"/>
+
+            <!-- GRID -> TOKENS -->
+            <Grid Visibility="{Binding ShopTokens, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid >
+
+            <!-- GRID -> BGs -->
+            <Grid Visibility="{Binding ShopBckgs, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                        <Grid>
+                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SELECTED" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Green"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding}" Height="250" Width="280" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="100,0,0,0"/>
+                                    <Button Style="{StaticResource BigButton}" HorizontalAlignment="Right" Margin="300,0,0,0">
+                                        <Grid>
+                                            <Image Source="\Resources\Images\StaticImages\BlackButton.png" Stretch="Fill"/>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="2000g" Style="{StaticResource PixelBigButtonTextStyle}" Foreground="Red"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
+
+            <!-- GRID -> AVATARS -->
+            <Grid Visibility="{Binding ShopAvatars, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+                <StackPanel Orientation="Vertical">
+                    <ListBox ItemsSource="{Binding Owned}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Selected}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding Purchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox ItemsSource="{Binding NotPurchasable}" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding}" Height="250" Width="280"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -92,7 +92,6 @@ namespace Connect4.ViewModel
 
         public MenuViewModel()
         {
-            DatabaseInitializer.Initialize();
             _navigationService = new NavService();
             _userService = new UserService();
 
