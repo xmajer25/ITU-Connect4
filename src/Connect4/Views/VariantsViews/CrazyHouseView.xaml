@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
         
         <!-- BACK GROUND -->
-        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding BackGround, Converter={StaticResource StringToSourceConverter}}" Stretch="Fill"/>
+        <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding BackGround}" Stretch="Fill"/>
         
         <!-- RANDOMIZER -->
 
