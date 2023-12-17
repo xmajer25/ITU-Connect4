@@ -34,7 +34,6 @@ namespace Connect4.ViewModel
         private GridCrazyHouseService _gridService;
         private readonly UserService _userService;
         private readonly UserCustomizableService _userCustomizableService;
-        private readonly UserAchievementService _userAchievementService;
 
         /* VIEW PARTS */
         public Grid MainGrid;
@@ -90,6 +89,7 @@ namespace Connect4.ViewModel
             _navigationService = new NavService();
             _gridService = new GridCrazyHouseService();
             _userService = new UserService();
+            _userCustomizableService = new UserCustomizableService();
 
             NavigateToPickVariantCommand = new RelayCommand<object>(NavigateToPickVariant);
             DropBallCommand = new RelayCommand<int>(DropBall);

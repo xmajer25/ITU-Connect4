@@ -19,6 +19,7 @@
     </Page.DataContext>
     
     <Grid>
+        <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Source="\Resources\Images\StaticImages\PageLogin.png" Stretch="Fill"/>
 
         <StackPanel Orientation="Vertical" Margin="0, 250, 0, 0"

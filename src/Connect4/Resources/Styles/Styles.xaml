@@ -157,6 +157,8 @@
         <Setter Property="Width" Value="150"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
+
+        
     </Style>
 
     <Style x:Key="BigButton" TargetType="Button">

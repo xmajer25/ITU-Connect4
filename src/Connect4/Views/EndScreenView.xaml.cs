@@ -1,4 +1,5 @@
-﻿using Connect4.ViewModel;
+﻿using Connect4.Services;
+using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,6 +20,7 @@ namespace Connect4.Views
 
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
+            AudioManager.PlaySound();
             viewModel.OnPageLoaded();
         }
     }

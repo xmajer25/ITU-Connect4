@@ -3,7 +3,7 @@ using Connect4.ViewModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Diagnostics;
-
+using Connect4.Services;
 namespace Connect4.Views.VariantsViews
 {
     public partial class StandardModeView : Page
@@ -18,7 +18,6 @@ namespace Connect4.Views.VariantsViews
 
                 DataContext = viewModel;
         }
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
 ;           var viewModel = DataContext as StandardModeViewModel;
@@ -28,6 +27,7 @@ namespace Connect4.Views.VariantsViews
         {
             // Assuming you have a control named 'InitialControl' that you want to focus
             FirstColumnButton.Focus();
+            AudioManager.PlaySound();
         }
         private void Show1Drop(object sender, MouseEventArgs e)
         {
