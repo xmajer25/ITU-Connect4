@@ -24,14 +24,18 @@
         <!-- Define rows for the Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+
         <MediaElement Source="pack://siteoforigin:,,,/Resources/Sounds/ButtonClickDefault.mp3" LoadedBehavior="Play" UnloadedBehavior="Stop"/>
         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Stretch="Fill" Source="/Resources/Images/StaticImages/PageMenu.png"/>
+        
+        <!-- USER NOT LOGGED IN -->
         <Grid Grid.Row="0" Grid.Column="0"
               HorizontalAlignment="Right" VerticalAlignment="Top"
               Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
@@ -55,6 +59,8 @@
                 </Button>
             </StackPanel>
         </Grid>
+        
+        <!-- USER LOGGED IN -->
         <Grid Grid.Row="0" Grid.Column="0"
               HorizontalAlignment="Right" VerticalAlignment="Top"
               Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
@@ -68,40 +74,88 @@
             </Button>
         </Grid>
 
-        <!-- Place the controls in their respective rows -->
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+        <!-- USER NOT LOGGED IN -->
+        <Grid Grid.Row="0" Grid.RowSpan="3"
+            Grid.Column="0" Grid.ColumnSpan="1"
+            Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=True}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+                <Button Margin="10"
+                        Command="{Binding NavigateToPickVariantCommand}"
+                        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="PLAY" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
 
+                <Button Margin="10"
+                        Command="{Binding ExitAppCommand}"
+                        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
 
-            <Button Margin="10"
-                Command="{Binding NavigateToPickVariantCommand}"
-                Style="{StaticResource BigButton}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="PLAY" Style="{StaticResource PixelBigButtonTextStyle}"/>
-                </Grid>
-            </Button>
+        <!-- USER LOGGED IN -->
+        <Grid Grid.Row="0" Grid.RowSpan="3"
+              Grid.Column="0" Grid.ColumnSpan="1"
+              Visibility="{Binding IsUserLoggedIn, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+                <Button Margin="10"
+        Command="{Binding NavigateToPickVariantCommand}"
+        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="PLAY" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
 
-            <Button Margin="10"
-                Command="{Binding NavigateToSettingsCommand}"
-                Style="{StaticResource BigButton}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SETTINGS" Style="{StaticResource PixelBigButtonTextStyle}"/>
-                </Grid>
-            </Button>
+                <Button Margin="10"
+        Command="{Binding NavigateToSettingsCommand}"
+        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SETTINGS" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
 
-            <Button Margin="10"
-                Command="{Binding ExitAppCommand}"
-                Style="{StaticResource BigButton}">
-                <Grid>
-                    <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
-                </Grid>
-            </Button>
+                <Button Margin="10"
+        Command="{Binding NavigateToShopCommand}"
+        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="SHOP" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
 
-        </StackPanel>
-        <TextBlock Name="ResultText" Text="{Binding LoggedInUser}" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1"/>
-
+                <Button Margin="10"
+        Command="{Binding ExitAppCommand}"
+        Style="{StaticResource BigButton}">
+                    <Grid>
+                        <Image Source="\Resources\Images\StaticImages\YellowButton.png" Stretch="Fill"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="EXIT" Style="{StaticResource PixelBigButtonTextStyle}"/>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid> 
-    
 </Page>

@@ -45,6 +45,7 @@ namespace Connect4.Services
             new RouteModel("/PopOutMode", typeof(PopOutView), typeof(PopOutViewModel)),
             new RouteModel("/Profile", typeof(ProfileView), typeof(ProfileViewModel)),
             new RouteModel("/EndScreen", typeof(EndScreenView), typeof(EndScreenViewModel)),
+            new RouteModel("/Shop", typeof(ShopView), typeof(ShopViewModel)),
         };
 
         /* Navigates to new page according to uri. Loads user if page implements ILoadUser interface. */
